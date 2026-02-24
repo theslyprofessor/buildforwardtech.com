@@ -1,0 +1,62 @@
+---
+import "@/styles/global.css";
+import { SITE_CONFIG } from "@/lib/constants";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_CONFIG.name,
+  description = SITE_CONFIG.description
+} = Astro.props;
+
+const fullTitle = title === SITE_CONFIG.name
+  ? `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`
+  : `${title} | ${SITE_CONFIG.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={SITE_CONFIG.url} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${SITE_CONFIG.url}/og-image.jpg`} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE_CONFIG.url}/og-image.jpg`} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{fullTitle}</title>
+
+    <style>
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="antialiased min-h-screen">
+    <slot />
+  </body>
+</html>

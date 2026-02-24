@@ -1,0 +1,72 @@
+---
+import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
+---
+
+<footer class="bg-card border-t border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2 font-bold text-xl mb-4">
+          <span class="gradient-text">Build Forward</span>
+          <span class="text-foreground">Tech</span>
+        </a>
+        <p class="text-muted-foreground max-w-md">
+          Future-ready technology consulting led by enterprise veterans.
+          Transform your business with AI readiness, modern web solutions,
+          and scalable architecture.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          {NAV_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-muted-foreground hover:text-foreground transition-colors text-sm"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold mb-4">Contact</h4>
+        <ul class="space-y-2 text-muted-foreground text-sm">
+          <li>
+            <a
+              href={`mailto:${SITE_CONFIG.email}`}
+              class="hover:text-foreground transition-colors"
+            >
+              {SITE_CONFIG.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`tel:${SITE_CONFIG.phone.replace(/[^0-9+]/g, '')}`}
+              class="hover:text-foreground transition-colors"
+            >
+              {SITE_CONFIG.phone}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-muted-foreground text-sm">
+        &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
+      </p>
+      <p class="text-muted-foreground text-sm">
+        San Diego, California
+      </p>
+    </div>
+  </div>
+</footer>
