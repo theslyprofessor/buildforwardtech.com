@@ -10,7 +10,7 @@ import {
   AI_READINESS_PILLARS,
   AI_READINESS_DELIVERABLES,
   PORTFOLIO_SITES,
-  VINNIE_BIO
+  TEAM
 } from "@/lib/constants";
 import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "lucide-react";
 ---
@@ -137,46 +137,39 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
     </div>
   </section>
 
-  <!-- Credibility / About Section -->
+  <!-- Leadership / About Section -->
   <section id="about" class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Photo placeholder -->
-        <div class="relative">
-          <div class="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-            <div class="text-center">
-              <div class="w-32 h-32 rounded-full bg-card border-4 border-primary/30 mx-auto mb-4 flex items-center justify-center">
-                <span class="text-4xl font-bold gradient-text">VT</span>
-              </div>
-              <p class="text-sm text-muted-foreground">Professional Photo</p>
+      <div class="text-center mb-16">
+        <Badge variant="secondary" className="mb-4">
+          Leadership
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Team</h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Enterprise veterans delivering Fortune 500 expertise with boutique attention
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {TEAM.map((member) => (
+          <div class="flex flex-col items-center text-center p-8 rounded-xl bg-card border border-border">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/30 flex items-center justify-center mb-6">
+              <span class="text-2xl font-bold gradient-text">{member.initials}</span>
             </div>
+            <h3 class="text-2xl font-bold mb-1">{member.name}</h3>
+            <p class="text-lg text-primary font-semibold mb-1">{member.title}</p>
+            <p class="text-sm text-accent font-medium mb-4">{member.credential}</p>
+            <p class="text-muted-foreground leading-relaxed">{member.bio}</p>
           </div>
-        </div>
-
-        <div>
-          <Badge variant="secondary" className="mb-4">
-            Leadership
-          </Badge>
-          <h2 class="text-3xl sm:text-4xl font-bold mb-2">
-            {VINNIE_BIO.name}
-          </h2>
-          <p class="text-xl text-primary font-semibold mb-2">
-            {VINNIE_BIO.title}
-          </p>
-          <p class="text-lg text-accent font-medium mb-6">
-            {VINNIE_BIO.credential}
-          </p>
-          <p class="text-muted-foreground text-lg leading-relaxed mb-8">
-            {VINNIE_BIO.bio}
-          </p>
-          <a
-            href="#contact"
-            class="inline-flex items-center gap-2 text-primary hover:underline font-medium"
-          >
-            Let's discuss your project
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a
+          href="#contact"
+          class="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+        >
+          Let's discuss your project
+          <ArrowRight className="h-4 w-4" />
+        </a>
       </div>
     </div>
   </section>

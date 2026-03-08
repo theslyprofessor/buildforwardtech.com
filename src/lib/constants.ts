@@ -80,9 +80,21 @@ export const PORTFOLIO_SITES = [
   { name: "MIDI Maze", url: "https://midimaze.com" },
 ] as const;
 
-export const VINNIE_BIO = {
-  name: "Vinnie Tiruviluamala",
-  title: "Principal Consultant",
-  credential: "Former CIO of Sony Latin America",
-  bio: "With over two decades of executive technology leadership, Vinnie brings enterprise-level expertise to organizations of all sizes. His experience steering technology strategy for Sony Latin America gives clients access to Fortune 500 insights and best practices, applied with the personalized attention of a boutique consultancy.",
-} as const;
+export const TEAM = [
+  {
+    name: "Vinnie Tiruviluamala",
+    title: "Principal Consultant",
+    credential: "Former CIO of Sony Latin America",
+    initials: "VT",
+    bio: "With over two decades of executive technology leadership, Vinnie brings enterprise-level expertise to organizations of all sizes. His experience steering technology strategy for Sony Latin America gives clients access to Fortune 500 insights and best practices, applied with the personalized attention of a boutique consultancy.",
+  },
+  {
+    name: "Nakul Tiruviluamala",
+    title: "Chief Technology Officer",
+    credential: "Full-Stack Engineer & Systems Architect",
+    initials: "NT",
+    bio: "Nakul leads the technical execution at Build Forward Tech, architecting modern web applications, cloud infrastructure, and AI integrations. With deep expertise in full-stack development, DevOps, and audio engineering systems, he ensures every project is built on a solid, scalable foundation.",
+  },
+] as const;
+
+export const VINNIE_BIO = TEAM[0];
