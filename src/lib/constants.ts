@@ -101,7 +101,7 @@ export const PORTFOLIO_SITES = [
     description: "Music business agency offering entertainment consulting, contract and licensing support, business certifications, and entertainment law guidance for artists and industry professionals.",
     tag: "Music Business",
     gradient: "from-cyan-500/20 to-blue-500/20",
-    thumbnail: null,
+    thumbnail: "/thumbnails/musicmind.webp",
   },
   {
     name: "Southwestern Recording",
