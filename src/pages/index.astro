@@ -180,26 +180,62 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Portfolio</h2>
         <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Websites we've built and maintain for our clients
+          A range of projects — from full-stack platforms to small business sites — each tailored to the client's needs
         </p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PORTFOLIO_SITES.map((site) => (
           <a
             href={site.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="group p-6 rounded-xl bg-background border border-border hover:border-primary/50 transition-all card-hover"
+            class="group flex flex-col rounded-xl bg-background border border-border hover:border-primary/50 transition-all card-hover overflow-hidden"
           >
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-medium text-sm truncate">{site.name}</span>
-              <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+            {/* Gradient thumbnail */}
+            <div class={`h-32 bg-gradient-to-br ${site.gradient} flex items-center justify-center`}>
+              <span class="text-3xl font-bold text-foreground/20 group-hover:text-foreground/40 transition-colors tracking-wider uppercase">
+                {site.name.split(' ').map((w: string) => w[0]).join('').slice(0, 3)}
+              </span>
             </div>
-            <p class="text-xs text-muted-foreground truncate">
-              {site.url.replace('https://', '')}
-            </p>
+            <div class="p-5 flex flex-col flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                  {site.tag}
+                </span>
+              </div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-semibold text-foreground group-hover:text-primary transition-colors">{site.name}</h3>
+                <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+              </div>
+              <p class="text-xs text-muted-foreground mb-3 leading-relaxed flex-1">
+                {site.description}
+              </p>
+              <p class="text-[11px] text-muted-foreground/60 font-mono">
+                {site.url.replace('https://', '')}
+              </p>
+            </div>
           </a>
         ))}
+
+        {/* CTA Card */}
+        <a
+          href="#contact"
+          class="group flex flex-col rounded-xl border-2 border-dashed border-border hover:border-primary/50 transition-all card-hover overflow-hidden"
+        >
+          <div class="h-32 bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center">
+            <span class="text-4xl text-muted-foreground/30 group-hover:text-primary/50 transition-colors">+</span>
+          </div>
+          <div class="p-5 flex flex-col flex-1 items-center justify-center text-center">
+            <h3 class="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">Your Project Here</h3>
+            <p class="text-xs text-muted-foreground leading-relaxed mb-3">
+              Need a custom website, web app, or platform? Let's build something tailored to your vision.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-medium text-primary">
+              Start a conversation
+              <ArrowRight className="h-3 w-3" />
+            </span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

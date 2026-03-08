@@ -71,13 +71,70 @@ export const AI_READINESS_DELIVERABLES = [
 ] as const;
 
 export const PORTFOLIO_SITES = [
-  { name: "Verse & Vow", url: "https://verseandvow.com" },
-  { name: "Nakul Tiruviluamala", url: "https://nakultiruviluamala.com" },
-  { name: "April Garnica", url: "https://aprilgarnica.com" },
-  { name: "Zora Cohen", url: "https://zoracohen.com" },
-  { name: "Southwestern Recording", url: "https://southwesternrecording.org" },
-  { name: "MEC Info", url: "https://mecinfo.org" },
-  { name: "MIDI Maze", url: "https://midimaze.com" },
+  {
+    name: "Verse & Vow",
+    url: "https://verseandvow.com",
+    description: "Full-service wedding and event agency featuring entertainment booking, photography packages, and event coordination.",
+    tag: "Event Agency",
+    gradient: "from-rose-500/20 to-pink-500/20",
+    icon: "Heart",
+  },
+  {
+    name: "Zora's Little Batch Bakehouse",
+    url: "https://zoracohen.com",
+    description: "Artisan bakery showcasing handcrafted small-batch pastries, custom cakes, and seasonal menus.",
+    tag: "Small Business",
+    gradient: "from-amber-500/20 to-orange-500/20",
+    icon: "ChefHat",
+  },
+  {
+    name: "Midimaze",
+    url: "https://midimaze.com",
+    description: "Full-stack educational platform built with Astro, React, and TypeScript — featuring knowledge-graph navigation, full-text search, real-time collaboration, and 1,000+ interconnected articles powered by a headless Obsidian CMS.",
+    tag: "EdTech Platform",
+    gradient: "from-violet-500/20 to-purple-500/20",
+    icon: "GraduationCap",
+  },
+  {
+    name: "MusicMind",
+    url: "https://musicmind.biz",
+    description: "AI-powered music education tools and resources for students, educators, and working musicians.",
+    tag: "AI / Music",
+    gradient: "from-cyan-500/20 to-blue-500/20",
+    icon: "Music",
+  },
+  {
+    name: "Southwestern Recording",
+    url: "https://southwesternrecording.org",
+    description: "Official college program website for Southwestern College's Recording Arts & Technology department.",
+    tag: "Education",
+    gradient: "from-emerald-500/20 to-teal-500/20",
+    icon: "School",
+  },
+  {
+    name: "Musician's Empowerment Collective",
+    url: "https://mecinfo.org",
+    description: "Website for a non-profit organization dedicated to empowering musicians through community, resources, and advocacy.",
+    tag: "Non-Profit",
+    gradient: "from-sky-500/20 to-indigo-500/20",
+    icon: "Users",
+  },
+  {
+    name: "April Garnica",
+    url: "https://aprilgarnica.com",
+    description: "Portfolio site for a professional videographer and photographer showcasing cinematic work and booking info.",
+    tag: "Portfolio",
+    gradient: "from-fuchsia-500/20 to-pink-500/20",
+    icon: "Camera",
+  },
+  {
+    name: "Nakul Tiruviluamala",
+    url: "https://nakultiruviluamala.com",
+    description: "Personal portfolio for a full-stack engineer, music technologist, and educator.",
+    tag: "Portfolio",
+    gradient: "from-slate-500/20 to-zinc-500/20",
+    icon: "User",
+  },
 ] as const;
 
 export const TEAM = [
