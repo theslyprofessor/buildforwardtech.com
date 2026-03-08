@@ -77,7 +77,7 @@ export const PORTFOLIO_SITES = [
     description: "Full-service wedding and event agency featuring entertainment booking, photography packages, and event coordination.",
     tag: "Event Agency",
     gradient: "from-rose-500/20 to-pink-500/20",
-    icon: "Heart",
+    thumbnail: "/thumbnails/verseandvow.webp",
   },
   {
     name: "Zora's Little Batch Bakehouse",
@@ -85,7 +85,7 @@ export const PORTFOLIO_SITES = [
     description: "Artisan bakery showcasing handcrafted small-batch pastries, custom cakes, and seasonal menus.",
     tag: "Small Business",
     gradient: "from-amber-500/20 to-orange-500/20",
-    icon: "ChefHat",
+    thumbnail: "/thumbnails/zoracohen.webp",
   },
   {
     name: "Midimaze",
@@ -93,15 +93,15 @@ export const PORTFOLIO_SITES = [
     description: "Full-stack educational platform built with Astro, React, and TypeScript — featuring knowledge-graph navigation, full-text search, real-time collaboration, and 1,000+ interconnected articles powered by a headless Obsidian CMS.",
     tag: "EdTech Platform",
     gradient: "from-violet-500/20 to-purple-500/20",
-    icon: "GraduationCap",
+    thumbnail: "/thumbnails/midimaze.webp",
   },
   {
     name: "MusicMind",
     url: "https://musicmind.biz",
-    description: "AI-powered music education tools and resources for students, educators, and working musicians.",
-    tag: "AI / Music",
+    description: "Music business agency offering entertainment consulting, contract and licensing support, business certifications, and entertainment law guidance for artists and industry professionals.",
+    tag: "Music Business",
     gradient: "from-cyan-500/20 to-blue-500/20",
-    icon: "Music",
+    thumbnail: null,
   },
   {
     name: "Southwestern Recording",
@@ -109,7 +109,7 @@ export const PORTFOLIO_SITES = [
     description: "Official college program website for Southwestern College's Recording Arts & Technology department.",
     tag: "Education",
     gradient: "from-emerald-500/20 to-teal-500/20",
-    icon: "School",
+    thumbnail: "/thumbnails/southwesternrecording.webp",
   },
   {
     name: "Musician's Empowerment Collective",
@@ -117,7 +117,7 @@ export const PORTFOLIO_SITES = [
     description: "Website for a non-profit organization dedicated to empowering musicians through community, resources, and advocacy.",
     tag: "Non-Profit",
     gradient: "from-sky-500/20 to-indigo-500/20",
-    icon: "Users",
+    thumbnail: "/thumbnails/mecinfo.webp",
   },
   {
     name: "April Garnica",
@@ -125,7 +125,7 @@ export const PORTFOLIO_SITES = [
     description: "Portfolio site for a professional videographer and photographer showcasing cinematic work and booking info.",
     tag: "Portfolio",
     gradient: "from-fuchsia-500/20 to-pink-500/20",
-    icon: "Camera",
+    thumbnail: "/thumbnails/aprilgarnica.webp",
   },
   {
     name: "Nakul Tiruviluamala",
@@ -133,7 +133,7 @@ export const PORTFOLIO_SITES = [
     description: "Personal portfolio for a full-stack engineer, music technologist, and educator.",
     tag: "Portfolio",
     gradient: "from-slate-500/20 to-zinc-500/20",
-    icon: "User",
+    thumbnail: "/thumbnails/nakultiruviluamala.webp",
   },
 ] as const;
 

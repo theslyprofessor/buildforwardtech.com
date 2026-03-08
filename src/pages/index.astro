@@ -191,11 +191,22 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
             rel="noopener noreferrer"
             class="group flex flex-col rounded-xl bg-background border border-border hover:border-primary/50 transition-all card-hover overflow-hidden"
           >
-            {/* Gradient thumbnail */}
-            <div class={`h-32 bg-gradient-to-br ${site.gradient} flex items-center justify-center`}>
-              <span class="text-3xl font-bold text-foreground/20 group-hover:text-foreground/40 transition-colors tracking-wider uppercase">
-                {site.name.split(' ').map((w: string) => w[0]).join('').slice(0, 3)}
-              </span>
+            {/* Thumbnail with gradient fallback */}
+            <div class={`h-40 bg-gradient-to-br ${site.gradient} relative overflow-hidden`}>
+              {site.thumbnail ? (
+                <img
+                  src={site.thumbnail}
+                  alt={`${site.name} screenshot`}
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center">
+                  <span class="text-3xl font-bold text-foreground/20 group-hover:text-foreground/40 transition-colors tracking-wider uppercase">
+                    {site.name.split(' ').map((w: string) => w[0]).join('').slice(0, 3)}
+                  </span>
+                </div>
+              )}
             </div>
             <div class="p-5 flex flex-col flex-1">
               <div class="flex items-center gap-2 mb-2">
