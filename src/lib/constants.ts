@@ -105,7 +105,7 @@ export const PORTFOLIO_SITES = [
   },
   {
     name: "Southwestern Recording",
-    url: "https://southwesternrecording.org",
+    url: "https://southwesternrecording.com",
     description: "Official college program website for Southwestern College's Recording Arts & Technology department.",
     tag: "Education",
     gradient: "from-emerald-500/20 to-teal-500/20",
