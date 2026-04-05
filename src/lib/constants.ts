@@ -1,18 +1,19 @@
 export const SITE_CONFIG = {
   name: "Build Forward Tech",
-  tagline: "Future-Ready Technology Consulting",
-  description: "AI readiness consulting, web development, security audits, and scalability services. Led by Vinnie Tiruviluamala, Former CIO of Sony Latin America.",
+  tagline: "Curating World-Changing Technology",
+  description: "Tracking the companies and breakthroughs reshaping our world — from fusion energy to autonomous vehicles. Technology consulting, sector intelligence, and forward-looking investment insights. Led by Vinnie Tiruviluamala, Former CIO of Sony Latin America.",
   email: "vinnie@buildforwardtech.com",
   phone: "(619) 555-0123",
   url: "https://buildforwardtech.com",
 } as const;
 
 export const NAV_LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#ai-readiness", label: "AI Readiness" },
-  { href: "#about", label: "About" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/sectors", label: "Sectors" },
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/newsletter", label: "Newsletter" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const SERVICES = [

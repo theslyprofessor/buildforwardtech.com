@@ -1,28 +1,61 @@
 ---
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
+import { SECTORS } from "@/lib/sectors";
 ---
 
 <footer class="bg-card border-t border-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
       <!-- Brand -->
-      <div class="md:col-span-2">
+      <div class="lg:col-span-2">
         <a href="/" class="flex items-center gap-2 font-bold text-xl mb-4">
           <span class="gradient-text">Build Forward</span>
           <span class="text-foreground">Tech</span>
         </a>
         <p class="text-muted-foreground max-w-md">
-          Future-ready technology consulting led by enterprise veterans.
-          Transform your business with AI readiness, modern web solutions,
-          and scalable architecture.
+          Curating the technology sectors reshaping our world. Sector
+          intelligence, company profiles, and forward-looking investment
+          insights — led by enterprise veterans.
         </p>
+      </div>
+
+      <!-- Sectors -->
+      <div>
+        <h4 class="font-semibold mb-4">Sectors</h4>
+        <ul class="space-y-2">
+          {SECTORS.map((sector) => (
+            <li>
+              <a
+                href={`/sectors/${sector.slug}`}
+                class="text-muted-foreground hover:text-foreground transition-colors text-sm"
+              >
+                {sector.name}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <!-- Quick Links -->
       <div>
         <h4 class="font-semibold mb-4">Quick Links</h4>
         <ul class="space-y-2">
-          {NAV_LINKS.map((link) => (
+          <li>
+            <a href="/sectors" class="text-muted-foreground hover:text-foreground transition-colors text-sm">
+              All Sectors
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard" class="text-muted-foreground hover:text-foreground transition-colors text-sm">
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/newsletter" class="text-muted-foreground hover:text-foreground transition-colors text-sm">
+              Newsletter
+            </a>
+          </li>
+          {NAV_LINKS.filter(l => l.href.startsWith('/#')).map((link) => (
             <li>
               <a
                 href={link.href}

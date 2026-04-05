@@ -1,0 +1,107 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { SectorCard } from "@/components/react/SectorCard";
+import { SECTORS, getTotalCompanies } from "@/lib/sectors";
+import { ArrowRight } from "lucide-react";
+---
+
+<PageLayout
+  title="Forward Tech Sectors"
+  description="Tracking 8 transformative technology sectors reshaping our world — from fusion energy to autonomous vehicles. Explore the companies building tomorrow."
+>
+  <!-- Hero -->
+  <section class="gradient-hero pt-32 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Badge variant="outline" className="mb-6">
+        {SECTORS.length} Sectors &middot; {getTotalCompanies()} Companies
+      </Badge>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+        <span class="gradient-text">Forward Tech</span>{" "}
+        <span class="text-foreground">Sectors</span>
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        We track the technology sectors with the power to reshape civilization.
+        Each sector represents a multi-billion-dollar opportunity where
+        breakthrough innovation meets urgent human need.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sector Grid -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {SECTORS.map((sector) => (
+          <SectorCard
+            client:visible
+            name={sector.name}
+            slug={sector.slug}
+            icon={sector.icon}
+            tagline={sector.tagline}
+            maturity={sector.maturity}
+            companyCount={sector.companies.length}
+            marketSize={sector.marketSizeEstimate}
+            color={sector.color}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why These Sectors -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Why These Sectors?</h2>
+        <p class="text-muted-foreground text-lg mb-8">
+          Build Forward Tech curates technology that passes three filters:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div class="p-6 rounded-xl bg-background border border-border">
+            <div class="text-2xl mb-3">&#127757;</div>
+            <h3 class="font-semibold mb-2">Civilizational Impact</h3>
+            <p class="text-sm text-muted-foreground">
+              Addresses a fundamental human need — energy, water, shelter,
+              mobility, health, or intelligence augmentation.
+            </p>
+          </div>
+          <div class="p-6 rounded-xl bg-background border border-border">
+            <div class="text-2xl mb-3">&#128200;</div>
+            <h3 class="font-semibold mb-2">Market Viability</h3>
+            <p class="text-sm text-muted-foreground">
+              Real companies with real funding, real milestones, and a credible
+              path to commercial deployment within the decade.
+            </p>
+          </div>
+          <div class="p-6 rounded-xl bg-background border border-border">
+            <div class="text-2xl mb-3">&#9889;</div>
+            <h3 class="font-semibold mb-2">Acceleration Point</h3>
+            <p class="text-sm text-muted-foreground">
+              At or near a critical inflection — where decades of R&D are
+              transitioning into commercial reality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold mb-4">Stay Ahead of the Curve</h2>
+      <p class="text-muted-foreground mb-6 max-w-xl mx-auto">
+        Get weekly sector intelligence delivered to your inbox — curated
+        breakthroughs, company updates, and investment insights.
+      </p>
+      <a
+        href="/newsletter"
+        class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+      >
+        Subscribe to the Newsletter
+        <ArrowRight className="h-5 w-5" />
+      </a>
+    </div>
+  </section>
+</PageLayout>

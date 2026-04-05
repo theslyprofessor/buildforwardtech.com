@@ -1,0 +1,177 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { CompanyCard } from "@/components/react/CompanyCard";
+import { SECTORS, getSectorBySlug, getAllSectorSlugs } from "@/lib/sectors";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+export function getStaticPaths() {
+  return getAllSectorSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const sector = getSectorBySlug(slug!);
+
+if (!sector) {
+  return Astro.redirect("/sectors");
+}
+
+// Find prev/next sectors for navigation
+const currentIndex = SECTORS.findIndex((s) => s.slug === slug);
+const prevSector = currentIndex > 0 ? SECTORS[currentIndex - 1] : null;
+const nextSector = currentIndex < SECTORS.length - 1 ? SECTORS[currentIndex + 1] : null;
+---
+
+<PageLayout
+  title={sector.name}
+  description={sector.description}
+>
+  <!-- Sector Header -->
+  <section class="gradient-hero pt-32 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a
+        href="/sectors"
+        class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm mb-6"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        All Sectors
+      </a>
+
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <Badge variant="outline">{sector.maturity}</Badge>
+        <Badge variant="secondary">{sector.companies.length} companies</Badge>
+        <Badge variant="secondary">{sector.marketSizeEstimate}</Badge>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+        <span class="gradient-text">{sector.name}</span>
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-3xl mb-4">
+        {sector.tagline}
+      </p>
+      <p class="text-muted-foreground max-w-3xl">
+        {sector.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-bold mb-4">Why It Matters</h2>
+          <p class="text-muted-foreground leading-relaxed text-lg">
+            {sector.whyItMatters}
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Key Metrics</h3>
+          <div class="space-y-4">
+            <div class="p-4 rounded-lg bg-background border border-border">
+              <p class="text-xs text-muted-foreground uppercase tracking-wider mb-1">Market Size</p>
+              <p class="font-bold text-primary">{sector.marketSizeEstimate}</p>
+            </div>
+            <div class="p-4 rounded-lg bg-background border border-border">
+              <p class="text-xs text-muted-foreground uppercase tracking-wider mb-1">Timeline to Impact</p>
+              <p class="font-bold">{sector.timelineToImpact}</p>
+            </div>
+            <div class="p-4 rounded-lg bg-background border border-border">
+              <p class="text-xs text-muted-foreground uppercase tracking-wider mb-1">Maturity Stage</p>
+              <p class="font-bold">{sector.maturity}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-6">Key Challenges</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {sector.challenges.map((challenge, i) => (
+          <div class="p-4 rounded-lg bg-card border border-border flex gap-3">
+            <span class="text-primary font-bold shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <p class="text-sm text-muted-foreground">{challenge}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Companies -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold">
+          Companies in {sector.name}
+        </h2>
+        <span class="text-muted-foreground text-sm">
+          {sector.companies.length} tracked
+        </span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sector.companies.map((company) => (
+          <CompanyCard
+            client:visible
+            name={company.name}
+            description={company.description}
+            hq={company.hq}
+            founded={company.founded}
+            ticker={company.ticker}
+            fundingStage={company.fundingStage}
+            keyMilestone={company.keyMilestone}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Prev/Next Navigation -->
+  <section class="py-8 bg-background border-t border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        {prevSector ? (
+          <a
+            href={`/sectors/${prevSector.slug}`}
+            class="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span class="text-sm">{prevSector.name}</span>
+          </a>
+        ) : <div />}
+        {nextSector ? (
+          <a
+            href={`/sectors/${nextSector.slug}`}
+            class="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <span class="text-sm">{nextSector.name}</span>
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        ) : <div />}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold mb-4">
+        Track {sector.name} Weekly
+      </h2>
+      <p class="text-muted-foreground mb-6 max-w-xl mx-auto">
+        Get curated updates on {sector.name.toLowerCase()} breakthroughs,
+        funding rounds, and milestones — delivered every week.
+      </p>
+      <a
+        href="/newsletter"
+        class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+      >
+        Subscribe to Build Forward Tech
+        <ArrowRight className="h-5 w-5" />
+      </a>
+    </div>
+  </section>
+</PageLayout>

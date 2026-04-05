@@ -1,0 +1,167 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { NewsletterForm } from "@/components/react/NewsletterForm";
+import { SECTORS } from "@/lib/sectors";
+import { ArrowRight, CheckCircle } from "lucide-react";
+---
+
+<PageLayout
+  title="Newsletter"
+  description="The Build Forward Tech weekly newsletter — curated breakthroughs, company updates, and investment insights across the technology sectors reshaping our world."
+>
+  <!-- Hero -->
+  <section class="gradient-hero pt-32 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Badge variant="accent" className="mb-6">Free Weekly Newsletter</Badge>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+        <span class="gradient-text">The Future,</span>{" "}
+        <span class="text-foreground">Curated</span>
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        Every week, we scan hundreds of sources — from TLDR to research papers
+        to funding announcements — and distill the most important breakthroughs
+        across {SECTORS.length} transformative technology sectors into one
+        actionable newsletter.
+      </p>
+    </div>
+  </section>
+
+  <!-- Two-Column: Form + What You Get -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Left: What You Get -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6">What You'll Get</h2>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold mb-1">Sector Intelligence</h3>
+                <p class="text-sm text-muted-foreground">
+                  The most important developments across fusion, robotics,
+                  water tech, batteries, autonomous vehicles, humanitarian
+                  tech, construction innovation, and AI — all in one place.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold mb-1">Company Spotlight</h3>
+                <p class="text-sm text-muted-foreground">
+                  Deep dives into one standout company per issue — their
+                  technology, milestones, funding, and why they matter.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold mb-1">Funding & Deal Flow</h3>
+                <p class="text-sm text-muted-foreground">
+                  Notable funding rounds, acquisitions, partnerships, and
+                  IPOs across forward-tech sectors.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold mb-1">Investment Perspective</h3>
+                <p class="text-sm text-muted-foreground">
+                  Market analysis, thematic investment thesis updates, and
+                  sector trend signals from our team's enterprise technology
+                  experience.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold mb-1">TLDR-Style Format</h3>
+                <p class="text-sm text-muted-foreground">
+                  Bite-sized, scannable format. Read the headlines in 2
+                  minutes or dive deep into the links. Designed for busy
+                  professionals and investors.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Source Badges -->
+          <div class="mt-8 p-6 rounded-xl bg-card border border-border">
+            <h3 class="text-sm font-semibold mb-3 text-muted-foreground uppercase tracking-wider">
+              Sources We Monitor
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {["TLDR", "TLDR AI", "TechCrunch", "ArXiv", "Crunchbase", "SEC Filings",
+                "Nature", "Science", "Hacker News", "Bloomberg", "MIT Tech Review"].map((source) => (
+                <span class="px-3 py-1 rounded-full bg-background border border-border text-xs text-muted-foreground">
+                  {source}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Signup Form -->
+        <div>
+          <div class="bg-card rounded-xl p-8 border border-border sticky top-24">
+            <h2 class="text-xl font-semibold mb-2">Subscribe</h2>
+            <p class="text-sm text-muted-foreground mb-6">
+              Join forward-thinking technologists, investors, and builders.
+            </p>
+            <NewsletterForm client:visible />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sectors Covered -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-8 text-center">Sectors We Cover</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {SECTORS.map((sector) => (
+          <a
+            href={`/sectors/${sector.slug}`}
+            class="p-4 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors text-center group"
+          >
+            <p class="font-semibold text-sm group-hover:text-primary transition-colors">
+              {sector.name}
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+              {sector.companies.length} companies
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: View Dashboard -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold mb-4">Want Real-Time Sector Data?</h2>
+      <p class="text-muted-foreground mb-6 max-w-xl mx-auto">
+        Explore our interactive dashboard for sector breakdowns, company
+        profiles, and maturity tracking across all forward-tech sectors.
+      </p>
+      <a
+        href="/dashboard"
+        class="inline-flex items-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
+      >
+        View the Dashboard
+        <ArrowRight className="h-5 w-5" />
+      </a>
+    </div>
+  </section>
+</PageLayout>

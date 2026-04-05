@@ -3,6 +3,7 @@ import PageLayout from "@/layouts/PageLayout.astro";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ServiceCard } from "@/components/react/ServiceCard";
+import { SectorCard } from "@/components/react/SectorCard";
 import { ContactForm } from "@/components/react/ContactForm";
 import {
   SITE_CONFIG,
@@ -12,7 +13,8 @@ import {
   PORTFOLIO_SITES,
   TEAM
 } from "@/lib/constants";
-import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "lucide-react";
+import { SECTORS, getTotalCompanies } from "@/lib/sectors";
+import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspaper } from "lucide-react";
 ---
 
 <PageLayout>
@@ -21,7 +23,7 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div class="max-w-4xl">
         <Badge variant="outline" className="mb-6">
-          Enterprise Experience, Boutique Attention
+          {SECTORS.length} Sectors &middot; {getTotalCompanies()} Companies &middot; Enterprise Experience
         </Badge>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
           <span class="gradient-text">Build Forward</span>
@@ -29,23 +31,25 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
           <span class="text-foreground">Into the Future</span>
         </h1>
         <p class="text-xl text-muted-foreground mb-8 max-w-2xl">
-          Technology consulting that prepares your business for tomorrow.
-          AI readiness, modern web development, security audits, and
-          scalable architecture — led by Fortune 500 veterans.
+          Curating the technology sectors reshaping our world. From fusion
+          energy to autonomous vehicles — we track breakthroughs, profile
+          companies, and publish weekly sector intelligence. Led by Fortune
+          500 veterans.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            href="#contact"
+            href="/sectors"
             class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
           >
-            Schedule Consultation
+            Explore Sectors
             <ArrowRight className="h-5 w-5" />
           </a>
           <a
-            href="#services"
+            href="/newsletter"
             class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
           >
-            View Services
+            <Newspaper className="h-5 w-5" />
+            Subscribe to Newsletter
           </a>
         </div>
       </div>
@@ -71,6 +75,44 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
             price={service.price}
           />
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Forward Tech Sectors Preview -->
+  <section id="sectors-preview" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="accent" className="mb-4">Sector Intelligence</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Technology That Changes Everything</h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          We track {SECTORS.length} transformative technology sectors and {getTotalCompanies()} companies
+          building the future. Explore the breakthroughs reshaping civilization.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {SECTORS.slice(0, 4).map((sector) => (
+          <SectorCard
+            client:visible
+            name={sector.name}
+            slug={sector.slug}
+            icon={sector.icon}
+            tagline={sector.tagline}
+            maturity={sector.maturity}
+            companyCount={sector.companies.length}
+            marketSize={sector.marketSizeEstimate}
+            color={sector.color}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a
+          href="/sectors"
+          class="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+        >
+          View all {SECTORS.length} sectors
+          <ArrowRight className="h-4 w-4" />
+        </a>
       </div>
     </div>
   </section>
@@ -246,6 +288,30 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight } from "
               <ArrowRight className="h-3 w-3" />
             </span>
           </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <Badge variant="outline" className="mb-4">Weekly Newsletter</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+          The Future, Delivered Weekly
+        </h2>
+        <p class="text-muted-foreground text-lg mb-8">
+          Curated breakthroughs across fusion, robotics, water tech, batteries,
+          autonomous vehicles, and more. TLDR-style format — scan in 2 minutes
+          or dive deep.
+        </p>
+        <a
+          href="/newsletter"
+          class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+        >
+          Subscribe for Free
+          <ArrowRight className="h-5 w-5" />
         </a>
       </div>
     </div>

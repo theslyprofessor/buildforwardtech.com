@@ -1,0 +1,132 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { DashboardStats } from "@/components/react/DashboardStats";
+import { SECTORS, getSectorStats, getTotalCompanies } from "@/lib/sectors";
+import { ArrowRight } from "lucide-react";
+
+const sectorStats = getSectorStats();
+const totalCompanies = getTotalCompanies();
+---
+
+<PageLayout
+  title="Forward Tech Dashboard"
+  description="Real-time overview of the technology sectors reshaping our world. Track companies, maturity stages, and market opportunities across 8 frontier technology sectors."
+>
+  <!-- Header -->
+  <section class="gradient-hero pt-32 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Badge variant="outline" className="mb-6">Live Dashboard</Badge>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+        <span class="gradient-text">Forward Tech</span>{" "}
+        <span class="text-foreground">Dashboard</span>
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        A bird's-eye view of the companies and sectors building the future.
+        Track maturity, market size, and key players across {SECTORS.length}
+        transformative technology sectors.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <DashboardStats
+        client:visible
+        sectors={sectorStats}
+        totalCompanies={totalCompanies}
+      />
+    </div>
+  </section>
+
+  <!-- Maturity Legend -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-8">Maturity Stages</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-xl bg-background border border-border">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+            <h3 class="font-semibold">Emerging</h3>
+          </div>
+          <p class="text-sm text-muted-foreground">
+            Technology proven in lab / pilot. First commercial deployments
+            within 3–5 years. High risk, highest potential return.
+          </p>
+        </div>
+        <div class="p-6 rounded-xl bg-background border border-border">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+            <h3 class="font-semibold">Growth</h3>
+          </div>
+          <p class="text-sm text-muted-foreground">
+            Early commercial traction. Products in market with paying
+            customers. Revenue growing but not yet profitable at scale.
+          </p>
+        </div>
+        <div class="p-6 rounded-xl bg-background border border-border">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <h3 class="font-semibold">Scaling</h3>
+          </div>
+          <p class="text-sm text-muted-foreground">
+            Proven product-market fit. Rapidly expanding deployment. Multiple
+            competitors validating the market. Clear path to profitability.
+          </p>
+        </div>
+        <div class="p-6 rounded-xl bg-background border border-border">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-3 h-3 rounded-full bg-purple-500"></div>
+            <h3 class="font-semibold">Established</h3>
+          </div>
+          <p class="text-sm text-muted-foreground">
+            Mature market with established leaders. Innovation continues but
+            the fundamental technology is proven and deployed at scale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Thesis Preview -->
+  <section class="py-16 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <Badge variant="accent" className="mb-4">Coming Soon</Badge>
+        <h2 class="text-3xl font-bold mb-6">
+          The Build Forward Tech Index
+        </h2>
+        <p class="text-muted-foreground text-lg mb-6">
+          We're developing a thematic investment strategy that weights exposure
+          across these sectors based on maturity, market timing, and impact
+          potential. Our goal: a diversified approach to investing in the
+          technologies that will define the next decade.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="p-4 rounded-lg bg-card border border-border text-center">
+            <p class="text-2xl font-bold text-primary">{SECTORS.length}</p>
+            <p class="text-xs text-muted-foreground">Sectors Tracked</p>
+          </div>
+          <div class="p-4 rounded-lg bg-card border border-border text-center">
+            <p class="text-2xl font-bold text-primary">{totalCompanies}</p>
+            <p class="text-xs text-muted-foreground">Companies Profiled</p>
+          </div>
+          <div class="p-4 rounded-lg bg-card border border-border text-center">
+            <p class="text-2xl font-bold text-primary">
+              {SECTORS.reduce((sum, s) => sum + s.companies.filter(c => c.ticker).length, 0)}
+            </p>
+            <p class="text-xs text-muted-foreground">Publicly Traded</p>
+          </div>
+        </div>
+        <a
+          href="/newsletter"
+          class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+        >
+          Get Early Access via Newsletter
+          <ArrowRight className="h-5 w-5" />
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
