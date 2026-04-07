@@ -164,6 +164,14 @@ export const AI_READINESS_DELIVERABLES = [
 
 export const PORTFOLIO_SITES = [
   {
+    name: "Health in Small Doses",
+    url: "https://healthinsmalldoses.com",
+    description: "Curated medical technology reviews, health research, and life wisdom by Paravathi Tiruviluamala. Sister publication to Build Forward Tech, applying the same research-driven curation methodology to medicine and wellness.",
+    tag: "Sister Publication",
+    gradient: "from-emerald-500/20 to-amber-500/20",
+    thumbnail: "/thumbnails/healthinsmalldoses.webp",
+  },
+  {
     name: "Verse & Vow",
     url: "https://verseandvow.com",
     description: "Full-service wedding and event agency featuring entertainment booking, photography packages, and event coordination.",
