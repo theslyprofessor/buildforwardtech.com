@@ -1,12 +1,16 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Code, Shield, TrendingUp, type LucideIcon } from "lucide-react";
+import { Brain, Code, Shield, TrendingUp, Compass, FileSearch, Briefcase, Radar, type LucideIcon } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
   Brain,
   Code,
   Shield,
   TrendingUp,
+  Compass,
+  FileSearch,
+  Briefcase,
+  Radar,
 };
 
 interface ServiceCardProps {

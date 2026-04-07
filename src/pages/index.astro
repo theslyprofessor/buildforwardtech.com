@@ -4,17 +4,21 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ServiceCard } from "@/components/react/ServiceCard";
 import { SectorCard } from "@/components/react/SectorCard";
+import { PillarCard } from "@/components/react/PillarCard";
+import { LabsCard } from "@/components/react/LabsCard";
 import { ContactForm } from "@/components/react/ContactForm";
 import {
   SITE_CONFIG,
   SERVICES,
+  PILLARS,
+  LABS_PROJECTS,
   AI_READINESS_PILLARS,
   AI_READINESS_DELIVERABLES,
   PORTFOLIO_SITES,
   TEAM
 } from "@/lib/constants";
 import { SECTORS, getTotalCompanies } from "@/lib/sectors";
-import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspaper } from "lucide-react";
+import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspaper, Beaker } from "lucide-react";
 ---
 
 <PageLayout>
@@ -23,25 +27,29 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspap
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div class="max-w-4xl">
         <Badge variant="outline" className="mb-6">
-          {SECTORS.length} Sectors &middot; {getTotalCompanies()} Companies &middot; Enterprise Experience
+          Research &middot; Advisory &middot; Capital &middot; Led by Fortune 500 Veterans
         </Badge>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
           <span class="gradient-text">Build Forward</span>
           <br />
           <span class="text-foreground">Into the Future</span>
         </h1>
-        <p class="text-xl text-muted-foreground mb-8 max-w-2xl">
-          Curating the technology sectors reshaping our world. From fusion
-          energy to autonomous vehicles — we track breakthroughs, profile
-          companies, and publish weekly sector intelligence. Led by Fortune
-          500 veterans.
+        <p class="text-xl text-muted-foreground mb-4 max-w-3xl">
+          A research-driven advisory firm tracking {SECTORS.length} frontier technology sectors
+          and {getTotalCompanies()}+ companies — from fusion energy and robotics to autonomous
+          vehicles and solid-state batteries.
+        </p>
+        <p class="text-lg text-muted-foreground mb-8 max-w-3xl">
+          We turn sector intelligence into <strong class="text-foreground">strategic consulting</strong>
+          for executives and <strong class="text-foreground">investment insights</strong> for capital allocators.
+          Every engagement is informed by the same research we publish in our weekly newsletter.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            href="/sectors"
+            href="#pillars"
             class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
           >
-            Explore Sectors
+            How We Work
             <ArrowRight className="h-5 w-5" />
           </a>
           <a
@@ -56,13 +64,53 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspap
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-24 bg-background">
+  <!-- Three Pillars — The Unified BFT Value Stack -->
+  <section id="pillars" class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Services</h2>
+        <Badge variant="accent" className="mb-4">How We Work</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Three Pillars, One Thesis</h2>
+        <p class="text-muted-foreground text-lg max-w-3xl mx-auto">
+          Everything we do flows from one core capability: deep, systematic research on the
+          technology sectors reshaping civilization. That research powers our consulting
+          engagements and informs our investment theses.
+        </p>
+      </div>
+
+      <!-- Pillar Flow Diagram -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+        {PILLARS.map((pillar, i) => (
+          <PillarCard
+            client:visible
+            title={pillar.title}
+            description={pillar.description}
+            icon={pillar.icon}
+            cta={pillar.cta}
+            ctaHref={pillar.ctaHref}
+            badge={pillar.badge}
+            number={String(i + 1)}
+          />
+        ))}
+      </div>
+
+      <!-- Flow explanation -->
+      <div class="mt-12 text-center">
+        <p class="text-sm text-muted-foreground italic">
+          Research feeds advisory. Advisory feeds capital. Each pillar strengthens the next.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting Engagements Detail -->
+  <section id="consulting" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="outline" className="mb-4">Advisory Engagements</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Consulting That Starts With Research</h2>
         <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Comprehensive technology consulting to modernize, secure, and scale your business
+          Fortune 500-caliber advisory for leaders navigating frontier technology decisions.
+          Every engagement draws on the same sector intelligence we publish publicly.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -80,7 +128,7 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspap
   </section>
 
   <!-- Forward Tech Sectors Preview -->
-  <section id="sectors-preview" class="py-24 bg-card">
+  <section id="sectors-preview" class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <Badge variant="accent" className="mb-4">Sector Intelligence</Badge>
@@ -117,8 +165,41 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspap
     </div>
   </section>
 
+  <!-- BFT Labs — What We're Building -->
+  <section id="labs" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="outline" className="mb-4 inline-flex items-center gap-1.5">
+          <Beaker className="h-3 w-3" />
+          BFT Labs
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">We Don't Just Watch. We Build.</h2>
+        <p class="text-muted-foreground text-lg max-w-3xl mx-auto">
+          The best way to understand frontier technology is to ship it. Our in-house R&D
+          produces PhD research, educational platforms, business software, and AI-powered
+          intelligence tools — all informing the advice we give clients.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {LABS_PROJECTS.map((project) => (
+          <LabsCard
+            client:visible
+            name={project.name}
+            fullName={project.fullName}
+            url={project.url}
+            tagline={project.tagline}
+            description={project.description}
+            tag={project.tag}
+            status={project.status}
+            gradient={project.gradient}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- AI Readiness Package (Featured) -->
-  <section id="ai-readiness" class="py-24 bg-card">
+  <section id="ai-readiness" class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -152,7 +233,7 @@ import { Shield, DollarSign, Cpu, CheckCircle, ExternalLink, ArrowRight, Newspap
           </div>
 
           <div class="flex items-baseline gap-2 mb-6">
-            <span class="text-3xl font-bold text-primary">Starting at $1,000</span>
+            <span class="text-3xl font-bold text-primary">$7,500 – $25,000</span>
           </div>
           <a
             href="#contact"
