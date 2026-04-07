@@ -920,6 +920,101 @@ export const SECTORS: Sector[] = [
       },
     ],
   },
+
+  // ─────────────────────────────────────────────
+  // 11. Defense & Security Robotics
+  // ─────────────────────────────────────────────
+  {
+    id: "defense-security",
+    name: "Defense & Security Tech",
+    slug: "defense-security",
+    icon: "Shield",
+    tagline: "Autonomous robots and AI systems keeping people and places safe",
+    description:
+      "From the K5 patrol robot rolling through shopping malls to Anduril's AI-powered defense systems on the battlefield, autonomous security technology is reshaping how we protect infrastructure, borders, and public spaces. This sector combines robotics, AI, computer vision, and counter-drone systems into one of the fastest-growing investment categories of the decade.",
+    whyItMatters:
+      "The US Department of Defense budget exceeds $850 billion annually, and traditional defense primes (Lockheed, Raytheon, Boeing) are being challenged for the first time in decades by software-native startups. Anduril raised $1.5B in 2024 at a $14B valuation. Private security costs US businesses $350B+ per year, and autonomous patrol robots are proving they can reduce that cost while improving coverage. Ukraine's war has accelerated defense tech innovation by 20 years — proving that drones, AI-guided systems, and autonomous platforms are the future of both warfare and civilian security. This is the sector where Silicon Valley and the Pentagon are finally working together at scale.",
+    maturity: "Growth",
+    marketSizeEstimate: "$200B+ defense tech + $60B private security by 2030",
+    timelineToImpact: "Already deployed — rapid scaling through 2028",
+    challenges: [
+      "Ethical and regulatory concerns around autonomous weapons",
+      "Export controls (ITAR) limiting international markets",
+      "Integration with legacy military procurement processes",
+      "Public acceptance of surveillance robots in civilian spaces",
+      "Countering adversarial AI and drone swarms",
+    ],
+    color: "from-red-500/20 to-orange-500/20",
+    companies: [
+      {
+        name: "Anduril Industries",
+        slug: "anduril",
+        description:
+          "Founded by Palmer Luckey (Oculus founder), Anduril is the defense industry's answer to Silicon Valley. Their Lattice AI platform unifies sensors, drones, counter-drone systems, and autonomous submarines into a single command-and-control OS. Major contracts with US DoD, UK, and Australia.",
+        hq: "Costa Mesa, CA",
+        founded: 2017,
+        fundingStage: "Series F ($1.5B at $14B valuation)",
+        keyMilestone:
+          "Selected as primary CCA (Collaborative Combat Aircraft) contractor; Lattice OS deployed across US military and allied forces",
+      },
+      {
+        name: "Knightscope",
+        slug: "knightscope",
+        description:
+          "Makers of the iconic K5 autonomous security robot — the 5-foot egg-shaped patrol bot deployed in shopping malls, parking lots, hospitals, and corporate campuses. Uses AI, thermal imaging, and 360° cameras to detect threats and alert human security teams. Basically WALL-E with a badge.",
+        hq: "Mountain View, CA",
+        founded: 2013,
+        ticker: "KSCP",
+        fundingStage: "Public (NASDAQ)",
+        keyMilestone:
+          "Deployed 100+ Autonomous Security Robots across US clients including Samsung, malls, hospitals, and law enforcement agencies",
+      },
+      {
+        name: "Cobalt Robotics",
+        slug: "cobalt-robotics",
+        description:
+          "Indoor security robots for corporate offices, data centers, and warehouses. Unlike outdoor patrol bots, Cobalt's elegantly designed robots roam office interiors, detecting intruders, environmental anomalies, and safety issues. Combines AI autonomy with human remote operators for verification.",
+        hq: "San Mateo, CA",
+        founded: 2016,
+        fundingStage: "Series C ($35M+)",
+        keyMilestone:
+          "Deployed at Fortune 500 corporate campuses; human-in-the-loop model provides near-zero false alarm rates",
+      },
+      {
+        name: "Gecko Robotics",
+        slug: "gecko-robotics",
+        description:
+          "Wall-climbing robots that inspect critical infrastructure — power plants, ships, bridges, oil tanks — using ultrasonic sensors and AI to detect defects before they become disasters. Core partner to the US Navy for warship hull inspection. Moving from inspection into autonomous defense applications.",
+        hq: "Pittsburgh, PA",
+        founded: 2013,
+        fundingStage: "Series D ($125M at $630M valuation)",
+        keyMilestone:
+          "US Navy contract for autonomous ship hull inspection; Cantilever AI platform processes millions of infrastructure data points",
+      },
+      {
+        name: "Saronic Technologies",
+        slug: "saronic",
+        description:
+          "Autonomous surface vessels (drone boats) for naval defense and maritime security. Builds small, swarm-capable unmanned boats that can patrol coastlines, escort shipping, and conduct reconnaissance. Part of the 'Replicator Initiative' to field thousands of autonomous systems for the US Navy.",
+        hq: "Austin, TX",
+        founded: 2022,
+        fundingStage: "Series B ($175M at $1B+ valuation)",
+        keyMilestone:
+          "Unicorn status within 2 years of founding; selected by DoD for autonomous maritime programs",
+      },
+      {
+        name: "Epirus",
+        slug: "epirus",
+        description:
+          "Directed-energy counter-drone systems using high-power microwave technology to disable swarms of hostile drones at range. Their Leonidas system can fry the electronics of dozens of drones simultaneously — critical defense against the drone-swarm warfare seen in Ukraine.",
+        hq: "Torrance, CA",
+        founded: 2018,
+        fundingStage: "Series D ($200M+ at $1.35B valuation)",
+        keyMilestone:
+          "Leonidas system selected by US Army for Indirect Fire Protection Capability; deployed to counter drone threats globally",
+      },
+    ],
+  },
 ];
 
 // ─────────────────────────────────────────────

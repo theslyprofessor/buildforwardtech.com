@@ -17,6 +17,7 @@ export function NewsletterForm() {
     { id: "ai-ml", label: "AI & Machine Learning" },
     { id: "circular-economy", label: "Recycling & Circular Economy" },
     { id: "drone-networks", label: "Drone Networks & Delivery" },
+    { id: "defense-security", label: "Defense & Security Tech" },
   ];
 
   const toggleSector = (id: string) => {

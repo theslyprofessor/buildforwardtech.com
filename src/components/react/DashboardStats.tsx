@@ -1,12 +1,12 @@
 import {
   Atom, Bot, Droplets, Battery, Car, Heart, HardHat, Brain,
-  Recycle, Plane,
+  Recycle, Plane, Shield,
   type LucideIcon,
   TrendingUp, Building2, Users, Globe
 } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
-  Atom, Bot, Droplets, Battery, Car, Heart, HardHat, Brain, Recycle, Plane, Building2,
+  Atom, Bot, Droplets, Battery, Car, Heart, HardHat, Brain, Recycle, Plane, Shield, Building2,
 };
 
 interface SectorStat {

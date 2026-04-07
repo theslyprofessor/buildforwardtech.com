@@ -1,11 +1,11 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import {
   Atom, Bot, Droplets, Battery, Car, Heart, HardHat, Brain,
-  Recycle, Plane, ArrowRight, Building2, type LucideIcon
+  Recycle, Plane, Shield, ArrowRight, Building2, type LucideIcon
 } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
-  Atom, Bot, Droplets, Battery, Car, Heart, HardHat, Brain, Recycle, Plane, Building2,
+  Atom, Bot, Droplets, Battery, Car, Heart, HardHat, Brain, Recycle, Plane, Shield, Building2,
 };
 
 interface SectorCardProps {
