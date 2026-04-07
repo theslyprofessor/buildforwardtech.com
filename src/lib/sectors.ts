@@ -731,6 +731,195 @@ export const SECTORS: Sector[] = [
       },
     ],
   },
+
+  // ─────────────────────────────────────────────
+  // 9. Recycling & Circular Economy Robotics
+  // ─────────────────────────────────────────────
+  {
+    id: "circular-economy",
+    name: "Recycling & Circular Economy",
+    slug: "circular-economy",
+    icon: "Recycle",
+    tagline: "WALL-E tech — AI-powered waste sorting and material recovery",
+    description:
+      "Robotic waste sorting, AI-driven material recovery, chemical recycling, and food waste transformation. Companies in this sector are making recycling dramatically more efficient — turning the garbage dump into a mine, and landfill into energy.",
+    whyItMatters:
+      "Humanity generates 2 billion tons of municipal solid waste per year, projected to reach 3.4 billion by 2050. Traditional recycling relies on error-prone manual sorting, and roughly 91% of plastics ever produced have never been recycled. A new generation of AI-powered robots can identify and sort hundreds of materials per minute with superhuman accuracy. Combined with breakthroughs in chemical recycling (breaking plastics down to their molecular building blocks) and enzymatic processes, this sector represents the infrastructure for a true circular economy. Think WALL-E — but profitable, at scale, and happening now.",
+    maturity: "Growth",
+    marketSizeEstimate: "$60B+ global recycling tech market by 2030",
+    timelineToImpact: "2024–2028 for broad commercial deployment",
+    challenges: [
+      "Economics — virgin plastic is often cheaper than recycled material",
+      "Contamination in waste streams degrading recovery rates",
+      "Scaling chemical recycling from pilot to industrial volume",
+      "Sorting complex composite materials (multi-layer packaging)",
+      "Regulatory fragmentation across municipalities and countries",
+    ],
+    color: "from-lime-500/20 to-green-500/20",
+    companies: [
+      {
+        name: "AMP Robotics",
+        slug: "amp-robotics",
+        description:
+          "AI-powered sorting robots deployed at 200+ recycling facilities. Their neural networks recognize 100+ material categories at 80+ picks per minute per arm — dramatically more accurate and faster than human sorters. The AMP Neuron platform is essentially the brain of modern recycling.",
+        hq: "Louisville, CO",
+        founded: 2014,
+        fundingStage: "Series C ($300M+, backed by Blue Earth Capital, Microsoft Climate Innovation Fund)",
+        keyMilestone:
+          "Deployed AI sorting systems at 200+ facilities across North America; processes over 2 billion items per year",
+      },
+      {
+        name: "Glacier",
+        slug: "glacier",
+        description:
+          "YC-backed startup building lower-cost recycling robots designed for mid-sized materials recovery facilities (MRFs) that can't afford traditional industrial sorters. Their robots install on existing conveyor lines and use computer vision to sort plastics, metals, and paper.",
+        hq: "San Francisco, CA",
+        founded: 2019,
+        fundingStage: "Series A ($16M, backed by NEA, New Enterprise Associates)",
+        keyMilestone:
+          "Deployed robots at recycling facilities across California and the Midwest; targeting the underserved mid-market MRF segment",
+      },
+      {
+        name: "ZenRobotics",
+        slug: "zenrobotics",
+        description:
+          "Finnish pioneer of heavy-picker recycling robots for construction and demolition waste — handling materials up to 30kg that humans can't safely lift repeatedly. Acquired by Terex (NYSE: TEX) and deployed across Europe and North America.",
+        hq: "Helsinki, Finland",
+        founded: 2007,
+        fundingStage: "Subsidiary (Terex)",
+        keyMilestone:
+          "First commercial waste-sorting robots; Heavy Picker handles C&D waste at scale across 50+ installations globally",
+      },
+      {
+        name: "Mill",
+        slug: "mill-industries",
+        description:
+          "Founded by Nest co-founder Matt Rogers. Mill's kitchen bin dehydrates and grinds food scraps into nutrient-rich grounds that are mailed back to farms as chicken feed, closing the food waste loop at the household level. Beautiful design, subscription model.",
+        hq: "San Bruno, CA",
+        founded: 2020,
+        fundingStage: "Series B ($100M+, backed by Breakthrough Energy Ventures)",
+        keyMilestone:
+          "Launched consumer product in 2023; diverting tens of thousands of tons of food waste from landfills annually",
+      },
+      {
+        name: "Carbios",
+        slug: "carbios",
+        description:
+          "French company pioneering enzymatic PET plastic recycling — using engineered enzymes to break plastic bottles back into their raw molecular components, enabling infinite recycling without quality degradation. Partnered with L'Oréal, Nestlé, and PepsiCo.",
+        hq: "Clermont-Ferrand, France",
+        founded: 2011,
+        ticker: "ALCRB.PA",
+        fundingStage: "Public (Euronext)",
+        keyMilestone:
+          "Building world's first industrial-scale enzymatic PET recycling plant in France; commercial production targeted for 2026",
+      },
+      {
+        name: "Novoloop",
+        slug: "novoloop",
+        description:
+          "Upcycles hard-to-recycle polyethylene plastic waste into high-performance thermoplastic polyurethanes (TPUs) used in footwear, automotive, and electronics. Partners with On Running and other premium consumer brands.",
+        hq: "Menlo Park, CA",
+        founded: 2015,
+        fundingStage: "Series A ($21M, backed by Valo Ventures)",
+        keyMilestone:
+          "First commercial products incorporating upcycled PE-derived TPU launched with On Running; industrial scale-up underway",
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────
+  // 10. Drone Networks & Autonomous Delivery
+  // ─────────────────────────────────────────────
+  {
+    id: "drone-networks",
+    name: "Drone Networks & Delivery",
+    slug: "drone-networks",
+    icon: "Plane",
+    tagline: "Fast, autonomous aerial logistics — from medical supplies to pizza",
+    description:
+      "Autonomous drones are moving from novelty to critical infrastructure. Medical drones deliver blood and vaccines in minutes where roads would take hours. Food and retail drones are operating commercially across multiple countries. Military-grade autonomous drones reshape defense. This is aerial logistics at computational speed.",
+    whyItMatters:
+      "The drone delivery market grew from pilot programs to commercial operations carrying millions of packages. Zipline alone has completed over 1 million commercial deliveries, primarily medical supplies in Africa and the US. Drones bypass ground traffic entirely and can deliver in under 30 minutes for routes that would take hours by truck. Beyond delivery: drone networking enables real-time aerial monitoring of infrastructure, emergency response, agriculture, and defense. The combination of autonomous flight, 5G/6G networking, and AI-driven traffic management is building the aerial layer of global logistics.",
+    maturity: "Growth",
+    marketSizeEstimate: "$55B+ drone delivery market by 2030",
+    timelineToImpact: "Already operational — rapid scaling through 2028",
+    challenges: [
+      "FAA Part 108 regulations for Beyond Visual Line of Sight (BVLOS) operations",
+      "Air traffic management (UTM) for coordinating thousands of drones simultaneously",
+      "Battery energy density limiting range and payload",
+      "Weather reliability — wind, rain, and icing constraints",
+      "Public acceptance and noise concerns in residential areas",
+    ],
+    color: "from-indigo-500/20 to-blue-500/20",
+    companies: [
+      {
+        name: "Zipline",
+        slug: "zipline",
+        description:
+          "World's largest autonomous delivery system by distance and volume. Originally launched to deliver blood and medicine in Rwanda, now operating commercially in 7+ countries across medical, retail, and food delivery. Their Platform 2 drone hovers and lowers packages via tether, enabling precise residential delivery.",
+        hq: "South San Francisco, CA",
+        founded: 2014,
+        fundingStage: "Series F ($330M at $4.2B valuation)",
+        keyMilestone:
+          "Completed 1 million+ commercial deliveries; Platform 2 launched for US residential delivery with Walmart, Sweetgreen, Jet's Pizza",
+      },
+      {
+        name: "Wing",
+        slug: "wing-aviation",
+        description:
+          "Alphabet's drone delivery company, operating commercially in Australia, Finland, and the US. Wing focuses on small-package consumer delivery from retail partners and has completed hundreds of thousands of deliveries. First company with FAA Air Carrier Certificate for drone deliveries in 2019.",
+        hq: "Palo Alto, CA",
+        founded: 2012,
+        fundingStage: "Subsidiary (Alphabet)",
+        keyMilestone:
+          "First company to receive FAA Air Carrier Certificate; operating commercial delivery in Dallas-Fort Worth, Logan (Australia), and Helsinki",
+      },
+      {
+        name: "Matternet",
+        slug: "matternet",
+        description:
+          "Specializes in on-demand medical delivery networks connecting hospitals, labs, and clinics. Matternet's M2 drone and automated station network moves blood samples, medications, and diagnostic specimens between healthcare facilities in Switzerland, UAE, and the US.",
+        hq: "Mountain View, CA",
+        founded: 2011,
+        fundingStage: "Series B ($100M+, backed by McKesson, Boeing)",
+        keyMilestone:
+          "Permanent medical delivery network in Zurich; US launch with UPS Flight Forward for hospital system deliveries",
+      },
+      {
+        name: "Skydio",
+        slug: "skydio",
+        description:
+          "Leading US-based autonomous drone manufacturer for commercial, public safety, and defense use. Their drones use AI to fly autonomously through complex environments without GPS. Major defense contracts supporting Ukraine and US military modernization.",
+        hq: "San Mateo, CA",
+        founded: 2014,
+        fundingStage: "Series E ($230M at $2.2B valuation)",
+        keyMilestone:
+          "Pivoted from consumer to defense/enterprise; Skydio X10 selected for US Army and deployed in Ukraine; leading US-made alternative to DJI",
+      },
+      {
+        name: "Shield AI",
+        slug: "shield-ai",
+        description:
+          "Defense-focused autonomous drone company building Hivemind — an AI pilot that enables drones and aircraft to operate without GPS or communication links. V-BAT tactical UAV deployed with US and allied militaries.",
+        hq: "San Diego, CA",
+        founded: 2015,
+        fundingStage: "Series F ($500M at $5.3B valuation)",
+        keyMilestone:
+          "Hivemind AI pilot deployed on V-BAT drones; awarded major DoD contracts; leading autonomous aviation for defense applications",
+      },
+      {
+        name: "DroneUp",
+        slug: "droneup",
+        description:
+          "Walmart's primary drone delivery partner, operating suburban last-mile delivery across multiple US states. DroneUp focuses on high-volume, low-cost drone delivery integrated with existing retail operations.",
+        hq: "Virginia Beach, VA",
+        founded: 2016,
+        fundingStage: "Strategic (Walmart investment)",
+        keyMilestone:
+          "Completed 100,000+ Walmart drone deliveries; operating from 37+ delivery hubs across 7 states",
+      },
+    ],
+  },
 ];
 
 // ─────────────────────────────────────────────

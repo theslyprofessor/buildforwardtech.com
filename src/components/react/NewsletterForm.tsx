@@ -15,6 +15,8 @@ export function NewsletterForm() {
     { id: "humanitarian-tech", label: "Hygiene & Humanitarian Tech" },
     { id: "innovative-construction", label: "Innovative Construction" },
     { id: "ai-ml", label: "AI & Machine Learning" },
+    { id: "circular-economy", label: "Recycling & Circular Economy" },
+    { id: "drone-networks", label: "Drone Networks & Delivery" },
   ];
 
   const toggleSector = (id: string) => {
