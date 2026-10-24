@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 ---
 
 <PageLayout
-  title="Displays for macOS — Native Multi-Monitor History & Room Presets | Build Forward Tech"
-  description="Every room remembers every screen. Native SwiftUI macOS menu bar & desktop utility with hardware UUID room detection, per-space monitor history, self-explanatory role badges, and CLI automation."
+  title="ScreenStage (Displays) — Native macOS & Windows Multi-Monitor History & Room Presets | Build Forward Tech"
+  description="Every room remembers every screen. ScreenStage is a native SwiftUI macOS and Windows 10/11 multi-monitor utility with hardware UUID room detection, per-space monitor history, KVM support, and self-hosted Ed25519 licensing."
 >
   <!-- Hero + Launch Video Section -->
   <section class="relative pt-28 pb-20 overflow-hidden">
@@ -13,15 +13,16 @@ import { Badge } from "@/components/ui/badge";
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <div class="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-6">
-          <span>BFT Labs × <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="underline hover:text-emerald-300">MusicMind.biz</a> Release · v1.0</span>
+          <span>BFT Labs × <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="underline hover:text-emerald-300">MusicMind.biz</a> Release · ScreenStage v1.0</span>
           <span>•</span>
           <span>macOS 14+ (SwiftUI) &amp; Windows 10/11 (Win32 CCD)</span>
         </div>
         <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-          Every Room Remembers <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Every Screen.</span>
+          Meet <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">ScreenStage.</span><br />
+          Every Room Remembers Every Screen.
         </h1>
         <p class="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
-          <strong>Displays</strong> is a standalone native macOS and Windows multi-monitor engine built by <strong>Build Forward Tech Labs</strong> in affiliation with <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="text-sky-400 underline hover:text-emerald-400">MusicMind</a>. It auto-detects homes, studios, and classrooms by hardware screen UUIDs, tracks every monitor's history (including KVM switches &amp; TVs), hides remote machine-room screens, and switches arrangements in one click.
+          <strong>ScreenStage</strong> (<code>displays</code> CLI) is a standalone native macOS and Windows 10/11 multi-monitor engine built by <strong>Build Forward Tech Labs</strong> in affiliation with <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="text-sky-400 underline hover:text-emerald-400">MusicMind</a>. It auto-detects homes (CV Home, Poway Home), studios, and classrooms by hardware screen UUIDs, tracks every monitor's history (including KVM switches &amp; TVs), hides remote machine-room screens, and switches arrangements in one click.
         </p>
 
         <div class="flex flex-wrap justify-center gap-3">
@@ -30,17 +31,17 @@ import { Badge } from "@/components/ui/badge";
             onclick="window.openDisplaysCheckout && window.openDisplaysCheckout()"
             class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-sky-500/20 hover:opacity-95 transition cursor-pointer"
           >
-            Buy License — $19 (Stripe / LemonSqueezy)
+            Get ScreenStage License — $19 Personal / $199 Lab Pack
           </button>
           <a
-            href="/releases/Displays-macOS-v1.0.0.zip"
+            href="/releases/ScreenStage-macOS-v1.0.0.zip"
             download
             class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-sky-400/50 bg-sky-500/15 text-sky-200 font-bold text-sm hover:bg-sky-500/25 transition"
           >
             Download macOS (.app)
           </a>
           <a
-            href="/releases/Displays-Windows-v1.0.0.zip"
+            href="/releases/ScreenStage-Windows-v1.0.0.zip"
             download
             class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-bold text-sm hover:bg-emerald-500/25 transition"
           >
@@ -70,7 +71,7 @@ import { Badge } from "@/components/ui/badge";
           class="w-full aspect-video block"
         ></video>
         <div class="px-6 py-3 bg-slate-900/90 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
-          <span>🎬 <strong>Displays for macOS Launch Reel</strong> — Rendered programmatically in 1080p60 with Remotion 4 (unmute player for synthwave soundtrack)</span>
+          <span>🎬 <strong>ScreenStage Launch Reel (16:9)</strong> — Rendered programmatically in 1080p60 with Remotion 4 (unmute player for synthwave soundtrack)</span>
           <span class="font-mono text-sky-400">~/.config/displays/presets.json</span>
         </div>
       </div>
@@ -316,7 +317,7 @@ import { Badge } from "@/components/ui/badge";
           <span class="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-bold">
             MusicMind × Build Forward Tech
           </span>
-          <h3 class="text-xl font-bold text-white">Displays v1.0 License ($19)</h3>
+          <h3 class="text-xl font-bold text-white">ScreenStage v1.0 License ($19)</h3>
         </div>
         <button
           type="button"
@@ -328,7 +329,7 @@ import { Badge } from "@/components/ui/badge";
       </div>
 
       <p class="text-xs text-slate-300 mb-4">
-        Includes lifetime personal license for both <strong>macOS (signed Displays.app)</strong> and <strong>Windows 10/11 (Displays.exe)</strong>.
+        Includes lifetime Ed25519 license for both <strong>macOS (signed ScreenStage / Displays.app)</strong> and <strong>Windows 10/11 (ScreenStage.exe)</strong>.
       </p>
 
       <div class="space-y-3 mb-4">
@@ -365,14 +366,14 @@ import { Badge } from "@/components/ui/badge";
         <div id="checkoutLicenseKey" class="font-mono text-[11px] break-all text-white bg-slate-900/90 px-3 py-2 rounded border border-white/10 mb-3 select-all"></div>
         <div class="grid grid-cols-2 gap-2">
           <a
-            href="/releases/Displays-macOS-v1.0.0.zip"
+            href="/releases/ScreenStage-macOS-v1.0.0.zip"
             download
             class="py-2 px-3 rounded-lg bg-sky-400 text-slate-950 text-center font-bold text-xs"
           >
             Download macOS (.app)
           </a>
           <a
-            href="/releases/Displays-Windows-v1.0.0.zip"
+            href="/releases/ScreenStage-Windows-v1.0.0.zip"
             download
             class="py-2 px-3 rounded-lg bg-emerald-400 text-slate-950 text-center font-bold text-xs"
           >
