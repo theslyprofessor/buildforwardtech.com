@@ -15,27 +15,35 @@ import { Badge } from "@/components/ui/badge";
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-6">
           <span>BFT Labs Product Release · v1.0</span>
           <span>•</span>
-          <span>macOS 14+ Native SwiftUI</span>
+          <span>macOS 14+ (SwiftUI) &amp; Windows 10/11 (Win32 CCD)</span>
         </div>
         <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
           Every Room Remembers <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Every Screen.</span>
         </h1>
         <p class="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
-          <strong>Displays for macOS</strong> is a standalone native SwiftUI menu bar and desktop engine that auto-detects studios, classrooms, and offices by hardware screen UUIDs, tracks every monitor's history, hides remote machine-room screens, and switches multi-monitor arrangements in one click.
+          <strong>Displays</strong> is a standalone native macOS and Windows multi-monitor engine that auto-detects homes, studios, and classrooms by hardware screen UUIDs, tracks every monitor's history (including KVM switches &amp; TVs), hides remote machine-room screens, and switches arrangements in one click.
         </p>
 
-        <div class="flex flex-wrap justify-center gap-4">
+        <div class="flex flex-wrap justify-center gap-3">
           <a
-            href="#pricing"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-sky-500/20 hover:opacity-95 transition"
+            href="/releases/Displays-macOS-v1.0.0.zip"
+            download
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-sky-500/20 hover:opacity-95 transition"
           >
-            Get Signed macOS App — $19
+            Download macOS (.app) — $19
+          </a>
+          <a
+            href="/releases/Displays-Windows-v1.0.0.zip"
+            download
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-sky-400/50 bg-sky-500/15 text-sky-200 font-bold text-sm hover:bg-sky-500/25 transition"
+          >
+            Download Windows 10/11 (.exe)
           </a>
           <a
             href="https://github.com/theslyprofessor/displays"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-background/80 hover:border-sky-500/50 text-sm font-semibold transition"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background/80 hover:border-sky-500/50 text-sm font-semibold transition"
           >
             View Open Source on GitHub
           </a>
@@ -194,26 +202,35 @@ import { Badge } from "@/components/ui/badge";
             </div>
             <div class="flex items-baseline gap-2 mb-4">
               <span class="text-4xl font-extrabold">$19</span>
-              <span class="text-sm text-muted-foreground">one-time license · all personal Macs</span>
+              <span class="text-sm text-muted-foreground">one-time license · all personal Macs &amp; Windows PCs</span>
             </div>
             <p class="text-sm text-muted-foreground mb-6">
-              Ready-to-run, Apple Developer code-signed <code>Displays.app</code> bundle with persistent Login Item support, menu bar popover, and lifetime updates.
+              Ready-to-run, Apple Developer code-signed <code>Displays.app</code> bundle for macOS plus standalone zero-dependency <code>Displays.exe</code> for Windows 10/11 sharing the same <code>presets.json</code> monitor history schema.
             </p>
             <ul class="space-y-2.5 text-sm mb-8">
-              <li>✓ Signed native <code>Displays.app</code> (Apple Silicon & Intel)</li>
-              <li>✓ Persistent macOS Login Item & display permissions</li>
+              <li>✓ Signed native <code>Displays.app</code> (macOS Apple Silicon &amp; Intel)</li>
+              <li>✓ Native <code>Displays.exe</code> (Windows 10/11 Win32 CCD + KVM TV support)</li>
               <li>✓ Auto-detects multi-monitor rooms + Single-Space desktop mode</li>
               <li>✓ Direct download + commercial invoice for studio/institutional seats</li>
             </ul>
           </div>
           <div class="space-y-3">
-            <a
-              href="/releases/Displays-macOS-v1.0.0.zip"
-              download
-              class="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-bold text-sm hover:opacity-95 transition"
-            >
-              Purchase & Download Displays v1.0 ($19) →
-            </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <a
+                href="/releases/Displays-macOS-v1.0.0.zip"
+                download
+                class="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-bold text-sm hover:opacity-95 transition"
+              >
+                Download macOS (.app) →
+              </a>
+              <a
+                href="/releases/Displays-Windows-v1.0.0.zip"
+                download
+                class="block w-full py-3 px-4 rounded-xl border border-sky-400/50 bg-sky-500/15 text-sky-200 text-center font-bold text-sm hover:bg-sky-500/25 transition"
+              >
+                Download Windows (.exe) →
+              </a>
+            </div>
             <a
               href="mailto:vinnie@buildforwardtech.com?subject=Displays%20for%20macOS%20Site%20or%20Single%20License%20(%2419)"
               class="block w-full text-center text-xs text-muted-foreground hover:text-sky-400 transition"
