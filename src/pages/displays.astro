@@ -387,38 +387,62 @@ import { Badge } from "@/components/ui/badge";
         </div>
       </div>
 
-      <!-- Unlocked Download & License Box (Hidden until purchase or valid key) -->
+      <!-- Pending Order Invoice View (Shown when an order is created — NEVER unlocks downloads before payment!) -->
+      <div id="checkoutOrderInvoiceBox" class="hidden rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 mb-4">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-xs font-bold text-amber-300">⏳ Order Created — Awaiting Payment Verification</span>
+          <span id="invoiceOrderId" class="font-mono text-xs font-bold text-white bg-slate-900 px-2 py-0.5 rounded border border-white/10"></span>
+        </div>
+        <p class="text-xs text-slate-200 mb-3 leading-relaxed">
+          Complete your <strong id="invoiceAmountText" class="text-emerald-300"></strong> payment using our <strong>0%-fee direct storefront</strong> below. As soon as payment is confirmed, your signed <code>MM1-...</code> license key is sent to <strong id="invoiceEmailText" class="text-sky-300"></strong> to unlock all downloads.
+        </p>
+        <div class="rounded-lg bg-slate-900/90 border border-white/10 p-3 text-xs space-y-1.5 mb-3">
+          <div><span class="text-slate-400">Zelle / Apple Cash / Direct Transfer:</span> <strong class="text-white select-all">vinnie@buildforwardtech.com</strong></div>
+          <div><span class="text-slate-400">Required Memo:</span> <code id="invoiceMemoText" class="text-sky-300 font-mono select-all"></code></div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a
+            id="invoiceConfirmMailto"
+            href="mailto:vinnie@buildforwardtech.com"
+            class="flex-1 py-2.5 px-3 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-center font-extrabold text-xs transition"
+          >
+            Send 1-Click Payment Confirmation →
+          </a>
+        </div>
+      </div>
+
+      <!-- Unlocked Download & License Box (Hidden until verified Ed25519 signature or paid Stripe session) -->
       <div id="checkoutLicenseBox" class="hidden rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 mb-4">
-        <div class="text-xs font-bold text-emerald-300 mb-1">✓ License Verified — Downloads Unlocked</div>
+        <div class="text-xs font-bold text-emerald-300 mb-1">✓ Ed25519 Cryptographic License Verified — Downloads Unlocked</div>
         <p class="text-[11px] text-slate-300 mb-2">
-          Copy your license key below and choose your platform installer:
+          Licensed to <strong id="verifiedLicenseEmail" class="text-white"></strong> (<span id="verifiedLicenseTier" class="text-emerald-300"></span>). Copy your key and choose your platform installer:
         </p>
         <div id="checkoutLicenseKey" class="font-mono text-[11px] break-all text-white bg-slate-900/90 px-3 py-2 rounded border border-white/10 mb-3 select-all"></div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <a
-            href="/releases/ScreenStage-macOS-v1.0.0.zip"
-            download
+            id="dlLinkMac"
+            href="#"
             class="py-2.5 px-3 rounded-lg bg-sky-400 text-slate-950 text-center font-bold text-xs hover:opacity-95"
           >
             Download for macOS (.app)
           </a>
           <a
-            href="/releases/ScreenStage-Windows-v1.0.0.zip"
-            download
+            id="dlLinkWin"
+            href="#"
             class="py-2.5 px-3 rounded-lg bg-emerald-400 text-slate-950 text-center font-bold text-xs hover:opacity-95"
           >
             Download for Windows 10/11 (.exe)
           </a>
           <a
-            href="/releases/ScreenStage-Linux-x86_64-v1.1.0.tar.gz"
-            download
+            id="dlLinkLinuxX64"
+            href="#"
             class="py-2.5 px-3 rounded-lg bg-purple-400 text-slate-950 text-center font-bold text-xs hover:opacity-95"
           >
             Download for Linux (x86_64)
           </a>
           <a
-            href="/releases/ScreenStage-Linux-arm64-v1.1.0.tar.gz"
-            download
+            id="dlLinkLinuxArm64"
+            href="#"
             class="py-2.5 px-3 rounded-lg bg-purple-300 text-slate-950 text-center font-bold text-xs hover:opacity-95"
           >
             Download for Linux (ARM64)
@@ -427,7 +451,7 @@ import { Badge } from "@/components/ui/badge";
       </div>
 
       <div class="text-[11px] text-slate-400 flex items-center justify-between border-t border-white/10 pt-3 mt-2">
-        <span>Build Forward Tech × MusicMind</span>
+        <span>Self-Hosted Storefront · 0% Middleman Fee</span>
         <a href="mailto:vinnie@buildforwardtech.com?subject=ScreenStage%20Support" class="text-sky-400 hover:underline">
           Need help? Contact Support →
         </a>
@@ -436,10 +460,74 @@ import { Badge } from "@/components/ui/badge";
   </div>
 
   <script is:inline>
-    window.DISPLAYS_CHECKOUT_CONFIG = {
-      stripePersonalUrl: "",
-      stripeTeamUrl: ""
-    };
+    // Embedded 32-byte raw Ed25519 public key for WebCrypto verification fallback
+    var SCREENSTAGE_PUBKEY_B64 = "lKfWuwe6m2o92MiIRoKZOf3u41hxthu9mO7m7oRa8vY=";
+
+    function b64UrlToUint8Array(b64url) {
+      var b64 = b64url.replace(/-/g, "+").replace(/_/g, "/");
+      while (b64.length % 4 !== 0) b64 += "=";
+      var bin = atob(b64);
+      var bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes;
+    }
+
+    async function verifyEd25519InBrowser(rawKey) {
+      try {
+        if (!rawKey || !rawKey.startsWith("MM1-")) return null;
+        var body = rawKey.slice(4);
+        var dot = body.indexOf(".");
+        if (dot <= 0) return null;
+        var payloadB64Url = body.slice(0, dot);
+        var sigB64Url = body.slice(dot + 1);
+        var sigBytes = b64UrlToUint8Array(sigB64Url);
+        if (sigBytes.length !== 64) return null;
+        var pubBytes = b64UrlToUint8Array(SCREENSTAGE_PUBKEY_B64);
+        var cryptoKey = await window.crypto.subtle.importKey(
+          "raw",
+          pubBytes,
+          { name: "Ed25519" },
+          false,
+          ["verify"]
+        );
+        var dataBytes = new TextEncoder().encode(payloadB64Url);
+        var valid = await window.crypto.subtle.verify("Ed25519", cryptoKey, sigBytes, dataBytes);
+        if (!valid) return null;
+        var payloadJson = new TextDecoder().decode(b64UrlToUint8Array(payloadB64Url));
+        return JSON.parse(payloadJson);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function showUnlockedDownloads(licenseKey, payload, downloads) {
+      var invoiceBox = document.getElementById("checkoutOrderInvoiceBox");
+      if (invoiceBox) invoiceBox.classList.add("hidden");
+      var keyEl = document.getElementById("checkoutLicenseKey");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      var emailEl = document.getElementById("verifiedLicenseEmail");
+      var tierEl = document.getElementById("verifiedLicenseTier");
+      if (keyEl) keyEl.textContent = licenseKey;
+      if (emailEl && payload) emailEl.textContent = payload.e || "Verified Customer";
+      if (tierEl && payload) tierEl.textContent = (payload.t === "lab" ? "Studio & Team Pack · " : "Personal License · ") + (payload.s || 3) + " seats";
+      var q = encodeURIComponent(licenseKey);
+      var d = downloads || {
+        macos: "/api/download?platform=macos&key=" + q,
+        windows: "/api/download?platform=windows&key=" + q,
+        linuxX64: "/api/download?platform=linux-x64&key=" + q,
+        linuxArm64: "/api/download?platform=linux-arm64&key=" + q
+      };
+      var macBtn = document.getElementById("dlLinkMac");
+      var winBtn = document.getElementById("dlLinkWin");
+      var lx64Btn = document.getElementById("dlLinkLinuxX64");
+      var larmBtn = document.getElementById("dlLinkLinuxArm64");
+      if (macBtn) macBtn.href = d.macos;
+      if (winBtn) winBtn.href = d.windows;
+      if (lx64Btn) lx64Btn.href = d.linuxX64;
+      if (larmBtn) larmBtn.href = d.linuxArm64;
+      if (boxEl) boxEl.classList.remove("hidden");
+    }
+
     window.openDisplaysCheckout = function (mode) {
       var modal = document.getElementById("displaysCheckoutModal");
       var title = document.getElementById("checkoutModalTitle");
@@ -464,6 +552,7 @@ import { Badge } from "@/components/ui/badge";
         if (emailInput) emailInput.focus();
       }
     };
+
     window.closeDisplaysCheckout = function () {
       var modal = document.getElementById("displaysCheckoutModal");
       if (modal) {
@@ -471,23 +560,54 @@ import { Badge } from "@/components/ui/badge";
         modal.classList.remove("flex");
       }
     };
-    window.unlockWithExistingKey = function () {
+
+    window.unlockWithExistingKey = async function () {
       var keyInput = document.getElementById("existingLicenseInput");
       var errEl = document.getElementById("existingLicenseError");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      if (boxEl) boxEl.classList.add("hidden");
       var key = keyInput && keyInput.value ? keyInput.value.trim() : "";
-      if (!key.startsWith("MM1-") || key.indexOf(".") === -1 || key.length < 24) {
-        if (errEl) errEl.classList.remove("hidden");
+      if (!key.startsWith("MM1-") || key.indexOf(".") === -1) {
+        if (errEl) {
+          errEl.textContent = "Invalid license key format. Genuine keys start with MM1- followed by a cryptographic Ed25519 signature.";
+          errEl.classList.remove("hidden");
+        }
+        return;
+      }
+      try {
+        var res = await fetch("/api/license/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ key: key })
+        });
+        if (res.ok) {
+          var data = await res.json();
+          if (data && data.ok) {
+            if (errEl) errEl.classList.add("hidden");
+            showUnlockedDownloads(key, data.payload, data.downloads);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Fallback: cryptographic Ed25519 verification in WebCrypto
+      var verifiedPayload = await verifyEd25519InBrowser(key);
+      if (!verifiedPayload) {
+        if (errEl) {
+          errEl.textContent = "Invalid Ed25519 cryptographic signature. Downloads only unlock with a genuine purchased MM1-... license key.";
+          errEl.classList.remove("hidden");
+        }
         return;
       }
       if (errEl) errEl.classList.add("hidden");
-      var keyEl = document.getElementById("checkoutLicenseKey");
-      var boxEl = document.getElementById("checkoutLicenseBox");
-      if (keyEl) keyEl.textContent = key;
-      if (boxEl) boxEl.classList.remove("hidden");
+      showUnlockedDownloads(key, verifiedPayload, null);
     };
-    window.startProviderCheckout = function (tierChoice) {
+
+    window.startProviderCheckout = async function (tierChoice) {
       var emailEl = document.getElementById("checkoutEmailInput");
       var errEl = document.getElementById("checkoutEmailError");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      if (boxEl) boxEl.classList.add("hidden");
       var email = emailEl && emailEl.value ? emailEl.value.trim() : "";
       if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
         if (errEl) errEl.classList.remove("hidden");
@@ -495,23 +615,71 @@ import { Badge } from "@/components/ui/badge";
         return;
       }
       if (errEl) errEl.classList.add("hidden");
-      var cfg = window.DISPLAYS_CHECKOUT_CONFIG || {};
-      if (tierChoice === "personal" && cfg.stripePersonalUrl) {
-        window.location.href = cfg.stripePersonalUrl + "?prefilled_email=" + encodeURIComponent(email);
-        return;
+
+      try {
+        var res = await fetch("/api/checkout/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, tier: tierChoice })
+        });
+        var data = await res.json();
+        if (data && data.ok && data.mode === "stripe_redirect" && data.checkoutUrl) {
+          window.location.href = data.checkoutUrl;
+          return;
+        }
+        if (data && data.ok && data.mode === "direct_invoice") {
+          var invBox = document.getElementById("checkoutOrderInvoiceBox");
+          var ordEl = document.getElementById("invoiceOrderId");
+          var amtEl = document.getElementById("invoiceAmountText");
+          var emEl = document.getElementById("invoiceEmailText");
+          var memoEl = document.getElementById("invoiceMemoText");
+          var mailtoEl = document.getElementById("invoiceConfirmMailto");
+          if (ordEl) ordEl.textContent = data.orderId;
+          if (amtEl) amtEl.textContent = data.amount + " (" + data.productName + ")";
+          if (emEl) emEl.textContent = data.email;
+          if (memoEl) memoEl.textContent = data.paymentInstructions.memo;
+          if (mailtoEl) {
+            var subj = encodeURIComponent("ScreenStage Order " + data.orderId + " (" + data.amount + ")");
+            var bodyText = encodeURIComponent(
+              "Hi Build Forward Tech,\n\nI just sent " + data.amount + " for " + data.productName + ".\n\nOrder ID: " + data.orderId + "\nLicense Email: " + data.email + "\n\nPlease send my signed MM1-... license key.\n"
+            );
+            mailtoEl.href = "mailto:vinnie@buildforwardtech.com?subject=" + subj + "&body=" + bodyText;
+          }
+          if (invBox) invBox.classList.remove("hidden");
+          return;
+        }
+      } catch (e) {
+        // Static preview fallback: still NEVER unlocks downloads without payment!
+        var fallbackOrderId = "ORD-" + new Date().toISOString().slice(0, 10).replace(/-/g, "") + "-" + Math.random().toString(36).slice(2, 6).toUpperCase();
+        var invBox2 = document.getElementById("checkoutOrderInvoiceBox");
+        var ordEl2 = document.getElementById("invoiceOrderId");
+        var amtEl2 = document.getElementById("invoiceAmountText");
+        var emEl2 = document.getElementById("invoiceEmailText");
+        var memoEl2 = document.getElementById("invoiceMemoText");
+        if (ordEl2) ordEl2.textContent = fallbackOrderId;
+        if (amtEl2) amtEl2.textContent = (tierChoice === "team" ? "$199.00 (Studio & Team Pack)" : "$19.00 (Personal License)");
+        if (emEl2) emEl2.textContent = email;
+        if (memoEl2) memoEl2.textContent = fallbackOrderId + " (" + email + ")";
+        if (invBox2) invBox2.classList.remove("hidden");
       }
-      if (tierChoice === "team" && cfg.stripeTeamUrl) {
-        window.location.href = cfg.stripeTeamUrl + "?prefilled_email=" + encodeURIComponent(email);
-        return;
-      }
-      var tier = tierChoice === "team" ? "studio-team-15" : "personal-3";
-      var payloadObj = { p: "screenstage", e: email, t: tier, i: new Date().toISOString().slice(0, 10) };
-      var payloadB64 = btoa(JSON.stringify(payloadObj)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-      var key = "MM1-" + payloadB64 + ".Ed25519LicenseKey";
-      var keyEl = document.getElementById("checkoutLicenseKey");
-      var boxEl = document.getElementById("checkoutLicenseBox");
-      if (keyEl) keyEl.textContent = key;
-      if (boxEl) boxEl.classList.remove("hidden");
     };
+
+    // Auto-verify returning Stripe Checkout sessions (?checkout_session_id=cs_...)
+    (async function () {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get("checkout_session_id");
+      if (sessionId) {
+        window.openDisplaysCheckout("personal");
+        try {
+          var res = await fetch("/api/checkout/session?session_id=" + encodeURIComponent(sessionId));
+          if (res.ok) {
+            var data = await res.json();
+            if (data && data.ok && data.licenseKey) {
+              showUnlockedDownloads(data.licenseKey, data.payload, data.downloads);
+            }
+          }
+        } catch (e) {}
+      }
+    })();
   </script>
 </PageLayout>
