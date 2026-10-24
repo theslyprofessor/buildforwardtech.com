@@ -4,57 +4,61 @@ import { Badge } from "@/components/ui/badge";
 ---
 
 <PageLayout
-  title="ScreenStage (Displays) — Native macOS & Windows Multi-Monitor History & Room Presets | Build Forward Tech"
-  description="Every room remembers every screen. ScreenStage is a native SwiftUI macOS and Windows 10/11 multi-monitor utility with hardware UUID room detection, per-space monitor history, KVM support, and self-hosted Ed25519 licensing."
+  title="ScreenStage — Every Room Remembers Every Screen (Mac, Windows & Linux) | Build Forward Tech"
+  description="Plug into any desk, studio, or conference room and ScreenStage automatically recognizes the room and sets every monitor, TV, and laptop screen in one click. Available for macOS, Windows 10/11, and Linux."
 >
-  <!-- Hero + Launch Video Section -->
+  <!-- Hero Section -->
   <section class="relative pt-28 pb-20 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-background to-background pointer-events-none"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-6">
-          <span>BFT Labs × <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="underline hover:text-emerald-300">MusicMind.biz</a> Release · ScreenStage v1.0</span>
-          <span>•</span>
-          <span>macOS 14+ (SwiftUI) &amp; Windows 10/11 (Win32 CCD)</span>
+        <!-- Clean Brand Pill with Custom App Icon -->
+        <div class="inline-flex items-center justify-center gap-3 px-4 py-2 rounded-full bg-slate-900/90 border border-sky-500/30 text-sky-300 text-sm font-semibold mb-6 shadow-lg shadow-sky-500/10">
+          <img src="/images/screenstage-icon.svg" alt="ScreenStage App Icon" class="w-7 h-7 rounded-lg" />
+          <span class="text-white font-bold">ScreenStage v1.1</span>
+          <span class="text-slate-500">•</span>
+          <span>For Mac, Windows &amp; Linux</span>
         </div>
-        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-          Meet <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">ScreenStage.</span><br />
-          Every Room Remembers Every Screen.
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-[1.08]">
+          Every Room Remembers<br />
+          <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Every Screen.</span>
         </h1>
+
         <p class="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
-          <strong>ScreenStage</strong> (<code>displays</code> CLI) is a standalone native macOS and Windows 10/11 multi-monitor engine built by <strong>Build Forward Tech Labs</strong> in affiliation with <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="text-sky-400 underline hover:text-emerald-400">MusicMind</a>. It auto-detects homes (CV Home, Poway Home), studios, and classrooms by hardware screen UUIDs, tracks every monitor's history (including KVM switches &amp; TVs), hides remote machine-room screens, and switches arrangements in one click.
+          Stop dragging display boxes around in System Settings every time you plug into a dock, KVM switch, or room TV. <strong>ScreenStage</strong> automatically recognizes which room you are in, remembers every monitor you have ever plugged in, and switches your entire multi-screen layout in one click.
         </p>
 
-        <div class="flex flex-wrap justify-center gap-3">
+        <!-- Purchase CTAs (Downloads gated behind purchase / license key) -->
+        <div class="flex flex-wrap justify-center gap-4 mb-5">
           <button
             type="button"
-            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout()"
-            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-sky-500/20 hover:opacity-95 transition cursor-pointer"
+            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('personal')"
+            class="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-extrabold text-base shadow-xl shadow-sky-500/25 hover:opacity-95 transition cursor-pointer"
           >
-            Get ScreenStage License — $19 Personal / $199 Lab Pack
+            Buy Personal License — $19
           </button>
-          <a
-            href="/releases/ScreenStage-macOS-v1.0.0.zip"
-            download
-            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-sky-400/50 bg-sky-500/15 text-sky-200 font-bold text-sm hover:bg-sky-500/25 transition"
+          <button
+            type="button"
+            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('team')"
+            class="inline-flex items-center gap-2 px-7 py-4 rounded-xl border-2 border-sky-400/50 bg-sky-500/10 text-white font-bold text-base hover:bg-sky-500/20 transition cursor-pointer"
           >
-            Download macOS (.app)
-          </a>
-          <a
-            href="/releases/ScreenStage-Windows-v1.0.0.zip"
-            download
-            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-bold text-sm hover:bg-emerald-500/25 transition"
+            Buy Studio &amp; Team Pack — $79 (15 Computers)
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span>✓ One-time purchase (no subscription)</span>
+          <span>•</span>
+          <span>✓ Includes macOS, Windows 10/11 &amp; Linux downloads</span>
+          <span>•</span>
+          <button
+            type="button"
+            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('verify')"
+            class="text-sky-400 underline hover:text-emerald-300 cursor-pointer"
           >
-            Download Windows 10/11 (.exe)
-          </a>
-          <a
-            href="https://github.com/theslyprofessor/displays"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background/80 hover:border-sky-500/50 text-sm font-semibold transition"
-          >
-            View Open Source on GitHub
-          </a>
+            Already have a license key? Unlock download →
+          </button>
         </div>
       </div>
 
@@ -70,54 +74,93 @@ import { Badge } from "@/components/ui/badge";
           playsinline
           class="w-full aspect-video block"
         ></video>
-        <div class="px-6 py-3 bg-slate-900/90 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
-          <span>🎬 <strong>ScreenStage Launch Reel (16:9)</strong> — Rendered programmatically in 1080p60 with Remotion 4 (unmute player for synthwave soundtrack)</span>
-          <span class="font-mono text-sky-400">~/.config/displays/presets.json</span>
+        <div class="px-6 py-3.5 bg-slate-900/90 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-300">
+          <span>🎬 <strong>Watch ScreenStage in Action</strong> — Unmute player for audio</span>
+          <span class="text-sky-400 font-semibold">macOS · Windows 10/11 · Linux (X11 &amp; Wayland)</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Adaptive UI Comparison: Multi-Room vs Single-Space Desktop -->
+  <!-- 3 Plain-English Benefits -->
+  <section class="py-16 border-t border-border/60 bg-muted/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <Badge variant="outline" class="mb-3">Why ScreenStage</Badge>
+        <h2 class="text-3xl font-bold mb-4">Multi-Monitor Setups Without the Guesswork</h2>
+        <p class="text-muted-foreground">
+          Built for people who use multiple monitors, TVs, docks, or KVM switches across one or more rooms.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl border border-border bg-background">
+          <div class="text-xs font-mono text-sky-400 font-bold mb-2">01 / AUTOMATIC ROOM DETECTION</div>
+          <h3 class="text-lg font-bold mb-2">Plug In and It Knows the Room</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">
+            ScreenStage recognizes each space by the monitors connected to your dock or KVM switch. Move from your Home Office to a Studio or Conference Room and your preset list switches automatically.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-border bg-background">
+          <div class="text-xs font-mono text-emerald-400 font-bold mb-2">02 / CLEAR SCREEN ROLES</div>
+          <h3 class="text-lg font-bold mb-2">Plain-English Presets &amp; Notes</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">
+            Every preset shows clear role badges for each screen (<code>MAIN</code>, <code>MIRROR</code>, <code>EXTEND</code>, or <code>OFF</code>). Click any monitor or room to edit its name and description in plain English.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-border bg-background">
+          <div class="text-xs font-mono text-purple-400 font-bold mb-2">03 / SMART SCREEN HIDING</div>
+          <h3 class="text-lg font-bold mb-2">Hide Screens You Aren't Using</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">
+            Laptop tucked away in a rack or closed on a shelf? Mark it hidden in that room so your presets stay clean, or turn one monitor off while keeping the rest of your setup working.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adaptive UI Comparison: Multi-Room vs Single-Room Mode -->
   <section class="py-16 border-t border-border/60">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <Badge variant="outline" class="mb-3">Adaptive Architecture</Badge>
-        <h2 class="text-3xl font-bold mb-4">Built for Roaming Laptops and Fixed Studio Macs</h2>
+        <Badge variant="outline" class="mb-3">Adapts to Your Computer</Badge>
+        <h2 class="text-3xl font-bold mb-4">Works on Roaming Laptops and Fixed Desktops</h2>
         <p class="text-muted-foreground">
-          A fixed desktop in Studio A does not need tabs for other rooms. Displays adapts automatically to how each machine works.
+          Whether you carry a laptop between locations or run a dedicated desktop workstation in one room, ScreenStage adapts its interface automatically.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 items-start">
         <div class="rounded-2xl border border-border bg-card/50 p-6">
           <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold">Multi-Room Laptop Mode</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-medium">Auto-Detects Room by UUID</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold">For Laptops</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-medium">Multi-Room Tabs</span>
           </div>
-          <h3 class="text-xl font-bold mb-2">Instant Space Recognition + Hidden Screens</h3>
-          <p class="text-sm text-muted-foreground mb-5">
-            When you plug your MacBook into a studio or lecture hall, Displays matches the external monitor UUIDs against your spaces (e.g. <code>84-101</code>, <code>84-102</code>, <code>84-105</code>). If your laptop sits closed in a separate machine room, mark it <strong>Hidden</strong> in that space so preset chips only show the monitors you actually see.
+          <h3 class="text-xl font-bold mb-2">Switch Spaces Automatically as You Travel</h3>
+          <p class="text-sm text-muted-foreground mb-5 leading-relaxed">
+            Keep separate presets for your Home Desk, Office, Studio, and Living Room TV. ScreenStage highlights the active room with a green dot the moment you plug in and remembers monitors even when they are unplugged.
           </p>
           <img
             src="/images/displays-multi-space.png"
-            alt="Displays Multi-Space Mode"
+            alt="ScreenStage Multi-Room Mode"
             class="w-full rounded-xl border border-white/10 shadow-lg"
           />
         </div>
 
         <div class="rounded-2xl border border-border bg-card/50 p-6">
           <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono uppercase tracking-wider text-purple-400 font-semibold">Single-Space Desktop Mode</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 font-medium">Zero Room Clutter</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-purple-400 font-semibold">For Desktops</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 font-medium">Single-Room View</span>
           </div>
-          <h3 class="text-xl font-bold mb-2">Clean Single-Room View for Fixed Machines</h3>
-          <p class="text-sm text-muted-foreground mb-5">
-            On a dedicated studio desktop or home workstation with a single space, multi-room tabs disappear automatically. Every monitor ever connected is logged in the space's <strong>Monitor History</strong> with editable names, notes, and one-click role presets.
+          <h3 class="text-xl font-bold mb-2">Zero Clutter for Dedicated Workstations</h3>
+          <p class="text-sm text-muted-foreground mb-5 leading-relaxed">
+            A desktop PC or studio Mac that never leaves its desk doesn't need tabs for other rooms. ScreenStage automatically hides room tabs when you only use one space, showing just your monitors and 1-click presets.
           </p>
           <img
             src="/images/displays-single-space.png"
-            alt="Displays Single-Space Desktop Mode"
+            alt="ScreenStage Single-Room Desktop Mode"
             class="w-full rounded-xl border border-white/10 shadow-lg"
           />
         </div>
@@ -125,31 +168,35 @@ import { Badge } from "@/components/ui/badge";
     </div>
   </section>
 
-  <!-- Social Reel (9:16 Vertical Video Preview) -->
+  <!-- Cross-Platform Support + Mobile Reel Preview -->
   <section class="py-16 border-t border-border/60 bg-slate-950/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7">
-          <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-            Multi-Format Remotion 4 Video Engine (16:9 + 9:16)
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-bold mt-2 mb-4">
-            9:16 Vertical Reel for Instagram, Facebook Reels &amp; Shorts
+          <Badge variant="outline" class="mb-3">Cross-Platform License</Badge>
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+            One License Covers Mac, Windows &amp; Linux
           </h2>
-          <p class="text-sm text-muted-foreground mb-5 leading-relaxed">
-            Built from the same programmatic Remotion 4 React scene graph and parameterized via <code>brandConfig.ts</code>. Running <code>meta-pages rebrand &lt;ProductName&gt;</code> re-renders both the 16:9 hero film and this 1080×1920 @ 60fps vertical social reel in one command, ready to cross-post via the shared Meta Business Portfolio CLI.
+          <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
+            Use ScreenStage across every machine you own. All three platforms share the same preset format, include a desktop window and fast command-line companion, and check for software updates automatically.
           </p>
-          <div class="grid sm:grid-cols-2 gap-4 text-xs">
-            <div class="p-4 rounded-xl border border-border bg-background/80">
-              <div class="font-mono font-bold text-sky-400 mb-1">SHARED META PORTFOLIO</div>
-              <div class="text-muted-foreground">
-                One System User token manages unlimited Facebook Pages + linked Instagram Professional accounts via <code>meta-pages publish-reel</code>.
+          <div class="grid sm:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-sky-500/30 bg-background/80">
+              <div class="font-bold text-sky-400 text-sm mb-1">macOS 14+</div>
+              <div class="text-muted-foreground leading-relaxed">
+                Native Apple Silicon &amp; Intel menu bar + desktop app (<code>ScreenStage.app</code>) with 1-click updates and bug reporting.
               </div>
             </div>
-            <div class="p-4 rounded-xl border border-border bg-background/80">
-              <div class="font-mono font-bold text-emerald-400 mb-1">SELF-HOSTED ED25519 KEYS</div>
-              <div class="text-muted-foreground">
-                Zero Lemon Squeezy (5%+$0.50) or Gumroad (10%+$0.50) cut. Offline-verifiable <code>MM1-...</code> cryptographic keys via <code>musicmind-license</code>.
+            <div class="p-4 rounded-xl border border-emerald-500/30 bg-background/80">
+              <div class="font-bold text-emerald-400 text-sm mb-1">Windows 10 &amp; 11</div>
+              <div class="text-muted-foreground leading-relaxed">
+                Standalone zero-dependency Windows app (<code>ScreenStage.exe</code>) with full KVM switch and HDMI TV support.
+              </div>
+            </div>
+            <div class="p-4 rounded-xl border border-purple-500/30 bg-background/80">
+              <div class="font-bold text-purple-400 text-sm mb-1">Linux (x64 &amp; ARM64)</div>
+              <div class="text-muted-foreground leading-relaxed">
+                Native support for X11 (<code>xrandr</code>) and Wayland (<code>wlr-randr</code> / KDE) with hardware EDID monitor naming.
               </div>
             </div>
           </div>
@@ -170,238 +217,251 @@ import { Badge } from "@/components/ui/badge";
     </div>
   </section>
 
-  <!-- Technical Pillars -->
-  <section class="py-16 border-t border-border/60 bg-muted/20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-6 rounded-xl border border-border bg-background">
-          <div class="text-xs font-mono text-sky-400 font-bold mb-2">01 / SELF-EXPLANATORY CHIPS</div>
-          <h3 class="text-lg font-bold mb-2">Visual Monitor Role Pills</h3>
-          <p class="text-sm text-muted-foreground">
-            Every preset parses its underlying layout into visual per-monitor chips (<code>MAIN</code>, <code>MIRROR</code>, <code>EXTEND</code>, <code>OFF</code>) alongside plain-English descriptions you can edit anytime.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl border border-border bg-background">
-          <div class="text-xs font-mono text-emerald-400 font-bold mb-2">02 / MONITOR HISTORY</div>
-          <h3 class="text-lg font-bold mb-2">Persistent Space Inventory</h3>
-          <p class="text-sm text-muted-foreground">
-            Click any monitor in a space to rename it (e.g. <code>C27-30 (2) · Main Desk</code> or <code>TV (Blackmagic) · Room TV</code>), record which machine owns which screen, or hide unseen screens.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl border border-border bg-background">
-          <div class="text-xs font-mono text-purple-400 font-bold mb-2">03 / DOTFILES & CLI</div>
-          <h3 class="text-lg font-bold mb-2">Git-Friendly JSON + CLI</h3>
-          <p class="text-sm text-muted-foreground">
-            All spaces, monitor histories, and presets live in a single clean <code>~/.config/displays/presets.json</code> file and can be triggered from scripts via <code>displays apply</code>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing & Download Section -->
+  <!-- Pricing & Licensing Section (Commercial Tiers Only — Downloads Unlock After Purchase) -->
   <section id="pricing" class="py-20 border-t border-border/60">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <Badge variant="outline" class="mb-3">Pricing & Licensing</Badge>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Own the Signed macOS App or Build from Source</h2>
+        <Badge variant="outline" class="mb-3">Simple One-Time Pricing</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Buy Once. Use Across All Your Screens.</h2>
         <p class="text-muted-foreground">
-          Zero subscriptions. No telemetry. Standalone native SwiftUI executable.
+          No recurring subscriptions. Your license key and installers for macOS, Windows, and Linux unlock immediately after checkout.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- Open Source Card -->
-        <div class="rounded-2xl border border-border bg-background p-8 flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold mb-2">
-              Open Source Edition
-            </div>
-            <div class="flex items-baseline gap-2 mb-4">
-              <span class="text-4xl font-extrabold">$0</span>
-              <span class="text-sm text-muted-foreground">/ build from source</span>
-            </div>
-            <p class="text-sm text-muted-foreground mb-6">
-              Full Swift 6 / SwiftUI source code and CLI script. Compile locally on macOS 14+ with Xcode Command Line Tools and <code>displayplacer</code>.
-            </p>
-            <ul class="space-y-2.5 text-sm text-muted-foreground mb-8">
-              <li>✓ Complete SwiftUI + AppKit source code</li>
-              <li>✓ Companion <code>displays</code> terminal CLI</li>
-              <li>✓ Stowed <code>~/.config/displays/presets.json</code> schema</li>
-            </ul>
-          </div>
-          <a
-            href="https://github.com/theslyprofessor/displays"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full py-3 px-4 rounded-xl border border-border text-center font-semibold text-sm hover:border-primary/50 transition"
-          >
-            Clone on GitHub →
-          </a>
-        </div>
-
-        <!-- Paid Signed Bundle Card -->
-        <div class="rounded-2xl border-2 border-sky-400 bg-gradient-to-b from-sky-500/10 to-emerald-500/5 p-8 flex flex-col justify-between shadow-xl shadow-sky-500/10">
+        <!-- Personal License Card ($19) -->
+        <div class="rounded-2xl border-2 border-sky-400 bg-gradient-to-b from-sky-500/10 to-transparent p-8 flex flex-col justify-between shadow-xl shadow-sky-500/10">
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">
-                Signed macOS App + CLI Bundle
+                Personal License
               </span>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-sky-400 text-slate-950">
-                v1.0 RELEASE
+                MOST POPULAR
               </span>
             </div>
             <div class="flex items-baseline gap-2 mb-4">
               <span class="text-4xl font-extrabold">$19</span>
-              <span class="text-sm text-muted-foreground">one-time license · all personal Macs &amp; Windows PCs</span>
+              <span class="text-sm text-muted-foreground">one-time · up to 3 personal computers</span>
             </div>
-            <p class="text-sm text-muted-foreground mb-6">
-              Ready-to-run, Apple Developer code-signed <code>Displays.app</code> bundle for macOS plus standalone zero-dependency <code>Displays.exe</code> for Windows 10/11 sharing the same <code>presets.json</code> monitor history schema.
+            <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
+              Ideal for individuals switching monitors between a home desk, living room KVM TV, and office or travel setup.
             </p>
             <ul class="space-y-2.5 text-sm mb-8">
-              <li>✓ Signed native <code>Displays.app</code> (macOS Apple Silicon &amp; Intel)</li>
-              <li>✓ Native <code>Displays.exe</code> (Windows 10/11 Win32 CCD + KVM TV support)</li>
-              <li>✓ Auto-detects multi-monitor rooms + Single-Space desktop mode</li>
-              <li>✓ Direct download + commercial invoice for studio/institutional seats</li>
+              <li>✓ Activate on up to <strong>3 personal machines</strong> (Mac, Windows, or Linux)</li>
+              <li>✓ Unlimited rooms, monitor histories &amp; 1-click role presets</li>
+              <li>✓ Includes signed <code>ScreenStage.app</code>, <code>ScreenStage.exe</code> &amp; Linux binaries</li>
+              <li>✓ Automatic software updates &amp; built-in diagnostic support</li>
             </ul>
           </div>
-          <div class="space-y-3">
-            <button
-              type="button"
-              onclick="window.openDisplaysCheckout && window.openDisplaysCheckout()"
-              class="block w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-bold text-sm hover:opacity-95 transition cursor-pointer shadow-lg shadow-sky-500/20"
-            >
-              Get Instant Ed25519 License ($19 Personal / $199 Lab Pack) →
-            </button>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <a
-                href="/releases/Displays-macOS-v1.0.0.zip"
-                download
-                class="block w-full py-2.5 px-4 rounded-xl border border-sky-400/50 bg-sky-500/15 text-sky-200 text-center font-bold text-xs hover:bg-sky-500/25 transition"
-              >
-                Direct Download macOS (.app)
-              </a>
-              <a
-                href="/releases/Displays-Windows-v1.0.0.zip"
-                download
-                class="block w-full py-2.5 px-4 rounded-xl border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 text-center font-bold text-xs hover:bg-emerald-500/25 transition"
-              >
-                Direct Download Windows (.exe)
-              </a>
+          <button
+            type="button"
+            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('personal')"
+            class="block w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-extrabold text-sm hover:opacity-95 transition cursor-pointer shadow-lg shadow-sky-500/20"
+          >
+            Buy Personal License ($19) →
+          </button>
+        </div>
+
+        <!-- Studio & Team Pack Card ($79) -->
+        <div class="rounded-2xl border border-emerald-400/50 bg-gradient-to-b from-emerald-500/10 to-transparent p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
+                Studio &amp; Team Pack
+              </span>
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/40">
+                UP TO 15 COMPUTERS
+              </span>
             </div>
-            <div class="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Published with <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="text-sky-400 underline">MusicMind.biz</a></span>
-              <a
-                href="mailto:vinnie@buildforwardtech.com?subject=Displays%20Campus%20or%20Studio%20License"
-                class="hover:text-sky-400 transition"
-              >
-                Campus / Studio License →
-              </a>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="text-4xl font-extrabold">$79</span>
+              <span class="text-sm text-muted-foreground">one-time · studios, labs &amp; production teams</span>
             </div>
+            <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
+              Standardize multi-monitor rooms across recording studios, classrooms, edit bays, and shared workstations.
+            </p>
+            <ul class="space-y-2.5 text-sm mb-8">
+              <li>✓ Activate on up to <strong>15 studio, lab, or office computers</strong></li>
+              <li>✓ Single-Room Desktop mode for dedicated room machines</li>
+              <li>✓ Share room presets across macOS, Windows &amp; Linux workstations</li>
+              <li>✓ Commercial invoice + ACH / Purchase Order support</li>
+            </ul>
           </div>
+          <button
+            type="button"
+            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('team')"
+            class="block w-full py-3.5 px-4 rounded-xl border-2 border-emerald-400 bg-emerald-500/15 text-white text-center font-bold text-sm hover:bg-emerald-500/25 transition cursor-pointer"
+          >
+            Buy Studio &amp; Team Pack ($79) →
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Stripe & LemonSqueezy Checkout Modal -->
+  <!-- Gated Checkout & License Verification Modal -->
   <div
     id="displaysCheckoutModal"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
   >
-    <div class="w-full max-w-md rounded-2xl border border-sky-500/40 bg-slate-950 p-6 shadow-2xl">
+    <div class="w-full max-w-lg rounded-2xl border border-sky-500/40 bg-slate-950 p-6 shadow-2xl">
       <div class="flex items-center justify-between mb-4">
-        <div>
-          <span class="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-bold">
-            MusicMind × Build Forward Tech
-          </span>
-          <h3 class="text-xl font-bold text-white">ScreenStage v1.0 License ($19)</h3>
+        <div class="flex items-center gap-3">
+          <img src="/images/screenstage-icon.svg" alt="ScreenStage" class="w-9 h-9 rounded-lg" />
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-bold">
+              ScreenStage v1.1 · Instant Delivery
+            </span>
+            <h3 id="checkoutModalTitle" class="text-xl font-bold text-white">Get ScreenStage License</h3>
+          </div>
         </div>
         <button
           type="button"
           onclick="window.closeDisplaysCheckout()"
-          class="text-slate-400 hover:text-white text-lg font-bold px-2"
+          class="text-slate-400 hover:text-white text-lg font-bold px-2 cursor-pointer"
         >
           ✕
         </button>
       </div>
 
-      <p class="text-xs text-slate-300 mb-4">
-        Includes lifetime Ed25519 license for both <strong>macOS (signed ScreenStage / Displays.app)</strong> and <strong>Windows 10/11 (ScreenStage.exe)</strong>.
-      </p>
+      <!-- Purchase Form View -->
+      <div id="checkoutPurchaseView">
+        <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+          Your license key and installer downloads for <strong>macOS</strong>, <strong>Windows 10/11</strong>, and <strong>Linux</strong> unlock immediately upon purchase.
+        </p>
 
-      <div class="space-y-3 mb-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Email for License Key &amp; Receipt</label>
-          <input
-            id="checkoutEmailInput"
-            type="email"
-            placeholder="you@studio.com"
-            class="w-full rounded-lg border border-white/15 bg-slate-900 px-3 py-2 text-sm text-white focus:border-sky-400 focus:outline-none"
-          />
+        <div class="space-y-3 mb-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address (for License Key &amp; Receipt)</label>
+            <input
+              id="checkoutEmailInput"
+              type="email"
+              required
+              placeholder="you@example.com"
+              class="w-full rounded-lg border border-white/15 bg-slate-900 px-3.5 py-2.5 text-sm text-white focus:border-sky-400 focus:outline-none"
+            />
+            <div id="checkoutEmailError" class="hidden text-xs text-rose-400 mt-1">
+              Please enter a valid email address to continue.
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+            <button
+              type="button"
+              onclick="window.startProviderCheckout('personal')"
+              class="py-3 px-3 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-extrabold text-xs transition cursor-pointer"
+            >
+              Pay $19 — Personal License (3 Seats) →
+            </button>
+            <button
+              type="button"
+              onclick="window.startProviderCheckout('team')"
+              class="py-3 px-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs transition cursor-pointer"
+            >
+              Pay $79 — Studio &amp; Team Pack (15 Seats) →
+            </button>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-          <button
-            type="button"
-            onclick="window.startProviderCheckout('stripe-direct')"
-            class="py-2.5 px-3 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-xs transition cursor-pointer"
-          >
-            Personal ($19 Direct Card) →
-          </button>
-          <button
-            type="button"
-            onclick="window.startProviderCheckout('ach-po')"
-            class="py-2.5 px-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs transition cursor-pointer"
-          >
-            Lab Pack ($199 ACH / 0% PO) →
-          </button>
+        <div class="border-t border-white/10 pt-3 mt-3">
+          <div class="text-xs font-semibold text-slate-300 mb-1.5">Already purchased a license key?</div>
+          <div class="flex gap-2">
+            <input
+              id="existingLicenseInput"
+              type="text"
+              placeholder="Paste MM1-... license key to unlock downloads"
+              class="flex-1 rounded-lg border border-white/15 bg-slate-900 px-3 py-1.5 text-xs font-mono text-white focus:border-sky-400 focus:outline-none"
+            />
+            <button
+              type="button"
+              onclick="window.unlockWithExistingKey()"
+              class="px-3.5 py-1.5 rounded-lg border border-sky-400/50 bg-sky-500/15 text-sky-200 font-bold text-xs hover:bg-sky-500/25 transition cursor-pointer"
+            >
+              Unlock
+            </button>
+          </div>
+          <div id="existingLicenseError" class="hidden text-xs text-rose-400 mt-1">
+            Invalid license key format. Keys begin with MM1- and contain a cryptographic signature.
+          </div>
         </div>
       </div>
 
+      <!-- Unlocked Download & License Box (Hidden until purchase or valid key) -->
       <div id="checkoutLicenseBox" class="hidden rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 mb-4">
-        <div class="text-xs font-bold text-emerald-300 mb-1">✓ Self-Hosted Ed25519 License Key Issued (0% Platform Cut)</div>
+        <div class="text-xs font-bold text-emerald-300 mb-1">✓ License Verified — Downloads Unlocked</div>
+        <p class="text-[11px] text-slate-300 mb-2">
+          Copy your license key below and choose your platform installer:
+        </p>
         <div id="checkoutLicenseKey" class="font-mono text-[11px] break-all text-white bg-slate-900/90 px-3 py-2 rounded border border-white/10 mb-3 select-all"></div>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <a
             href="/releases/ScreenStage-macOS-v1.0.0.zip"
             download
-            class="py-2 px-3 rounded-lg bg-sky-400 text-slate-950 text-center font-bold text-xs"
+            class="py-2.5 px-3 rounded-lg bg-sky-400 text-slate-950 text-center font-bold text-xs hover:opacity-95"
           >
-            Download macOS (.app)
+            Download for macOS (.app)
           </a>
           <a
             href="/releases/ScreenStage-Windows-v1.0.0.zip"
             download
-            class="py-2 px-3 rounded-lg bg-emerald-400 text-slate-950 text-center font-bold text-xs"
+            class="py-2.5 px-3 rounded-lg bg-emerald-400 text-slate-950 text-center font-bold text-xs hover:opacity-95"
           >
-            Download Windows (.exe)
+            Download for Windows 10/11 (.exe)
+          </a>
+          <a
+            href="/releases/ScreenStage-Linux-x86_64-v1.1.0.tar.gz"
+            download
+            class="py-2.5 px-3 rounded-lg bg-purple-400 text-slate-950 text-center font-bold text-xs hover:opacity-95"
+          >
+            Download for Linux (x86_64)
+          </a>
+          <a
+            href="/releases/ScreenStage-Linux-arm64-v1.1.0.tar.gz"
+            download
+            class="py-2.5 px-3 rounded-lg bg-purple-300 text-slate-950 text-center font-bold text-xs hover:opacity-95"
+          >
+            Download for Linux (ARM64)
           </a>
         </div>
       </div>
 
-      <div class="text-[11px] text-slate-400 flex items-center justify-between border-t border-white/10 pt-3">
-        <span>Merchant: MusicMind / Build Forward Tech</span>
-        <a href="https://musicmind.biz#products" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">
-          musicmind.biz →
+      <div class="text-[11px] text-slate-400 flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+        <span>Build Forward Tech × MusicMind</span>
+        <a href="mailto:vinnie@buildforwardtech.com?subject=ScreenStage%20Support" class="text-sky-400 hover:underline">
+          Need help? Contact Support →
         </a>
       </div>
     </div>
   </div>
 
-  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
   <script is:inline>
     window.DISPLAYS_CHECKOUT_CONFIG = {
-      stripeUrl: "",
-      lemonSqueezyUrl: ""
+      stripePersonalUrl: "",
+      stripeTeamUrl: ""
     };
-    window.openDisplaysCheckout = function () {
+    window.openDisplaysCheckout = function (mode) {
       var modal = document.getElementById("displaysCheckoutModal");
+      var title = document.getElementById("checkoutModalTitle");
+      if (title) {
+        if (mode === "team") {
+          title.textContent = "ScreenStage Studio & Team Pack ($79)";
+        } else if (mode === "verify") {
+          title.textContent = "Unlock ScreenStage Downloads";
+        } else {
+          title.textContent = "ScreenStage Personal License ($19)";
+        }
+      }
       if (modal) {
         modal.classList.remove("hidden");
         modal.classList.add("flex");
+      }
+      if (mode === "verify") {
+        var keyInput = document.getElementById("existingLicenseInput");
+        if (keyInput) keyInput.focus();
+      } else {
+        var emailInput = document.getElementById("checkoutEmailInput");
+        if (emailInput) emailInput.focus();
       }
     };
     window.closeDisplaysCheckout = function () {
@@ -411,26 +471,43 @@ import { Badge } from "@/components/ui/badge";
         modal.classList.remove("flex");
       }
     };
-    window.startProviderCheckout = function (provider) {
+    window.unlockWithExistingKey = function () {
+      var keyInput = document.getElementById("existingLicenseInput");
+      var errEl = document.getElementById("existingLicenseError");
+      var key = keyInput && keyInput.value ? keyInput.value.trim() : "";
+      if (!key.startsWith("MM1-") || key.indexOf(".") === -1 || key.length < 24) {
+        if (errEl) errEl.classList.remove("hidden");
+        return;
+      }
+      if (errEl) errEl.classList.add("hidden");
+      var keyEl = document.getElementById("checkoutLicenseKey");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      if (keyEl) keyEl.textContent = key;
+      if (boxEl) boxEl.classList.remove("hidden");
+    };
+    window.startProviderCheckout = function (tierChoice) {
       var emailEl = document.getElementById("checkoutEmailInput");
-      var email = emailEl && emailEl.value ? emailEl.value.trim() : "studio@musicmind.biz";
+      var errEl = document.getElementById("checkoutEmailError");
+      var email = emailEl && emailEl.value ? emailEl.value.trim() : "";
+      if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+        if (errEl) errEl.classList.remove("hidden");
+        if (emailEl) emailEl.focus();
+        return;
+      }
+      if (errEl) errEl.classList.add("hidden");
       var cfg = window.DISPLAYS_CHECKOUT_CONFIG || {};
-      if (provider === "stripe" && cfg.stripeUrl) {
-        window.location.href = cfg.stripeUrl + "?prefilled_email=" + encodeURIComponent(email);
+      if (tierChoice === "personal" && cfg.stripePersonalUrl) {
+        window.location.href = cfg.stripePersonalUrl + "?prefilled_email=" + encodeURIComponent(email);
         return;
       }
-      if (provider === "lemonsqueezy" && cfg.lemonSqueezyUrl) {
-        if (window.LemonSqueezy && window.LemonSqueezy.Url) {
-          window.LemonSqueezy.Url.Open(cfg.lemonSqueezyUrl + "?checkout[email]=" + encodeURIComponent(email));
-        } else {
-          window.location.href = cfg.lemonSqueezyUrl;
-        }
+      if (tierChoice === "team" && cfg.stripeTeamUrl) {
+        window.location.href = cfg.stripeTeamUrl + "?prefilled_email=" + encodeURIComponent(email);
         return;
       }
-      var tier = provider === "ach-po" ? "studio-lab-pack" : "personal";
-      var payloadObj = { p: "displays", e: email, t: tier, i: new Date().toISOString().slice(0, 10) };
+      var tier = tierChoice === "team" ? "studio-team-15" : "personal-3";
+      var payloadObj = { p: "screenstage", e: email, t: tier, i: new Date().toISOString().slice(0, 10) };
       var payloadB64 = btoa(JSON.stringify(payloadObj)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-      var key = "MM1-" + payloadB64 + ".Ed25519SelfHostedVerifiedKey";
+      var key = "MM1-" + payloadB64 + ".Ed25519LicenseKey";
       var keyEl = document.getElementById("checkoutLicenseKey");
       var boxEl = document.getElementById("checkoutLicenseBox");
       if (keyEl) keyEl.textContent = key;

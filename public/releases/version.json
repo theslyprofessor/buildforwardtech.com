@@ -1,6 +1,8 @@
 {
   "version": "1.1.0",
-  "notes": "ScreenStage v1.1.0: Wrapping FlowLayout for spaces, monitors, and preset role badges (zero clipping), built-in 1-click Bug Reporter with hardware diagnostics, and automatic update checker + installer.",
+  "notes": "ScreenStage v1.1.0: Native macOS (SwiftUI), Windows 10/11 (CCD API), and Linux (X11 xrandr + Wayland wlr-randr) support, custom ScreenStage brand icon, wrapping FlowLayout for spaces/monitors/presets, built-in 1-click Bug Reporter, and automatic update checker.",
   "macDownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-macOS-v1.0.0.zip",
-  "winDownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-Windows-v1.0.0.zip"
+  "winDownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-Windows-v1.0.0.zip",
+  "linuxAmd64DownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-Linux-x86_64-v1.1.0.tar.gz",
+  "linuxArm64DownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-Linux-arm64-v1.1.0.tar.gz"
 }

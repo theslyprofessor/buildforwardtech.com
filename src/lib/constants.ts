@@ -95,12 +95,12 @@ export const LABS_PROJECTS = [
   {
     id: "screenstage",
     name: "ScreenStage",
-    fullName: "Native macOS & Windows Multi-Monitor History & Space Preset Engine",
+    fullName: "Multi-Monitor Room Detection & Preset Manager (Mac, Windows & Linux)",
     url: "/screenstage",
     tagline: "Every room remembers every screen",
-    description: "A MusicMind (musicmind.biz) × BFT Labs desktop utility for macOS (SwiftUI) and Windows 10/11 (Win32 CCD). Auto-detects studios, classrooms, and homes by hardware screen UUIDs, tracks the full monitor history of every space (including KVM switches and TVs), hides remote machine-room screens per room, and switches complex multi-display arrangements in one click with visual role chips (MAIN, MIRROR, EXTEND, OFF) and a companion CLI. Self-hosted Ed25519 license ($19 personal / $199 lab pack).",
-    tag: "MusicMind × BFT · $19",
-    status: "v1.0 — shipped",
+    description: "Plug into your home desk, recording studio, or conference room and ScreenStage automatically recognizes the room, remembers every monitor and KVM TV, hides screens you aren't using, and switches layouts in one click. Available for macOS, Windows 10/11, and Linux ($19 Personal / $79 Studio & Team Pack).",
+    tag: "Mac · Windows · Linux · $19",
+    status: "v1.1 — available",
     gradient: "from-sky-500/20 to-emerald-500/20",
   },
   {
@@ -220,7 +220,7 @@ export const PORTFOLIO_SITES = [
   {
     name: "MusicMind",
     url: "https://musicmind.biz",
-    description: "Affiliated music technology and business studio publishing commercial creator software (Displays, abletools, QuietPlease) alongside artist consulting, catalog administration, and licensing workflows.",
+    description: "Affiliated music technology and business studio publishing commercial creator software (ScreenStage, abletools, QuietPlease) alongside artist consulting, catalog administration, and licensing workflows.",
     tag: "Affiliated Studio & Software",
     gradient: "from-cyan-500/20 to-blue-500/20",
     thumbnail: "/thumbnails/musicmind.webp?v=4",
