@@ -1,0 +1,6 @@
+{
+  "version": "1.1.0",
+  "notes": "ScreenStage v1.1.0: Wrapping FlowLayout for spaces, monitors, and preset role badges (zero clipping), built-in 1-click Bug Reporter with hardware diagnostics, and automatic update checker + installer.",
+  "macDownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-macOS-v1.0.0.zip",
+  "winDownloadURL": "https://github.com/theslyprofessor/displays/releases/download/v1.0.0/ScreenStage-Windows-v1.0.0.zip"
+}
