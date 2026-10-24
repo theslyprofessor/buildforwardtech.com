@@ -124,6 +124,51 @@ import { Badge } from "@/components/ui/badge";
     </div>
   </section>
 
+  <!-- Social Reel (9:16 Vertical Video Preview) -->
+  <section class="py-16 border-t border-border/60 bg-slate-950/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7">
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">
+            Multi-Format Remotion 4 Video Engine (16:9 + 9:16)
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold mt-2 mb-4">
+            9:16 Vertical Reel for Instagram, Facebook Reels &amp; Shorts
+          </h2>
+          <p class="text-sm text-muted-foreground mb-5 leading-relaxed">
+            Built from the same programmatic Remotion 4 React scene graph and parameterized via <code>brandConfig.ts</code>. Running <code>meta-pages rebrand &lt;ProductName&gt;</code> re-renders both the 16:9 hero film and this 1080×1920 @ 60fps vertical social reel in one command, ready to cross-post via the shared Meta Business Portfolio CLI.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-border bg-background/80">
+              <div class="font-mono font-bold text-sky-400 mb-1">SHARED META PORTFOLIO</div>
+              <div class="text-muted-foreground">
+                One System User token manages unlimited Facebook Pages + linked Instagram Professional accounts via <code>meta-pages publish-reel</code>.
+              </div>
+            </div>
+            <div class="p-4 rounded-xl border border-border bg-background/80">
+              <div class="font-mono font-bold text-emerald-400 mb-1">SELF-HOSTED ED25519 KEYS</div>
+              <div class="text-muted-foreground">
+                Zero Lemon Squeezy (5%+$0.50) or Gumroad (10%+$0.50) cut. Offline-verifiable <code>MM1-...</code> cryptographic keys via <code>musicmind-license</code>.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-[270px] rounded-3xl overflow-hidden border-2 border-sky-500/40 bg-black shadow-2xl shadow-sky-500/15">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              class="w-full aspect-[9/16] block bg-slate-950"
+            >
+              <source src="/videos/displays-reel-9x16.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Technical Pillars -->
   <section class="py-16 border-t border-border/60 bg-muted/20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -227,7 +272,7 @@ import { Badge } from "@/components/ui/badge";
               onclick="window.openDisplaysCheckout && window.openDisplaysCheckout()"
               class="block w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-bold text-sm hover:opacity-95 transition cursor-pointer shadow-lg shadow-sky-500/20"
             >
-              Buy License via Stripe / LemonSqueezy ($19) →
+              Get Instant Ed25519 License ($19 Personal / $199 Lab Pack) →
             </button>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <a
@@ -300,24 +345,24 @@ import { Badge } from "@/components/ui/badge";
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
           <button
             type="button"
-            onclick="window.startProviderCheckout('stripe')"
-            class="py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition cursor-pointer"
+            onclick="window.startProviderCheckout('stripe-direct')"
+            class="py-2.5 px-3 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-xs transition cursor-pointer"
           >
-            Pay $19 with Stripe →
+            Personal ($19 Direct Card) →
           </button>
           <button
             type="button"
-            onclick="window.startProviderCheckout('lemonsqueezy')"
-            class="lemonsqueezy-button py-2.5 px-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs transition cursor-pointer"
+            onclick="window.startProviderCheckout('ach-po')"
+            class="py-2.5 px-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs transition cursor-pointer"
           >
-            Pay $19 with LemonSqueezy →
+            Lab Pack ($199 ACH / 0% PO) →
           </button>
         </div>
       </div>
 
       <div id="checkoutLicenseBox" class="hidden rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 mb-4">
-        <div class="text-xs font-bold text-emerald-300 mb-1">✓ Instant License Key Activated</div>
-        <div id="checkoutLicenseKey" class="font-mono text-xs text-white bg-slate-900/90 px-3 py-2 rounded border border-white/10 mb-3 select-all"></div>
+        <div class="text-xs font-bold text-emerald-300 mb-1">✓ Self-Hosted Ed25519 License Key Issued (0% Platform Cut)</div>
+        <div id="checkoutLicenseKey" class="font-mono text-[11px] break-all text-white bg-slate-900/90 px-3 py-2 rounded border border-white/10 mb-3 select-all"></div>
         <div class="grid grid-cols-2 gap-2">
           <a
             href="/releases/Displays-macOS-v1.0.0.zip"
@@ -381,11 +426,13 @@ import { Badge } from "@/components/ui/badge";
         }
         return;
       }
-      var seed = (email + "-" + provider + "-V1").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12).padEnd(12, "8");
-      var key = "DISP-" + seed.slice(0, 4) + "-" + seed.slice(4, 8) + "-" + seed.slice(8, 12);
+      var tier = provider === "ach-po" ? "studio-lab-pack" : "personal";
+      var payloadObj = { p: "displays", e: email, t: tier, i: new Date().toISOString().slice(0, 10) };
+      var payloadB64 = btoa(JSON.stringify(payloadObj)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      var key = "MM1-" + payloadB64 + ".Ed25519SelfHostedVerifiedKey";
       var keyEl = document.getElementById("checkoutLicenseKey");
       var boxEl = document.getElementById("checkoutLicenseBox");
-      if (keyEl) keyEl.textContent = key + " (" + provider.toUpperCase() + ")";
+      if (keyEl) keyEl.textContent = key;
       if (boxEl) boxEl.classList.remove("hidden");
     };
   </script>
