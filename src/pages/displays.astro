@@ -1,0 +1,228 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Badge } from "@/components/ui/badge";
+---
+
+<PageLayout
+  title="Displays for macOS — Native Multi-Monitor History & Room Presets | Build Forward Tech"
+  description="Every room remembers every screen. Native SwiftUI macOS menu bar & desktop utility with hardware UUID room detection, per-space monitor history, self-explanatory role badges, and CLI automation."
+>
+  <!-- Hero + Launch Video Section -->
+  <section class="relative pt-28 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-background to-background pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-6">
+          <span>BFT Labs Product Release · v1.0</span>
+          <span>•</span>
+          <span>macOS 14+ Native SwiftUI</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
+          Every Room Remembers <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Every Screen.</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
+          <strong>Displays for macOS</strong> is a standalone native SwiftUI menu bar and desktop engine that auto-detects studios, classrooms, and offices by hardware screen UUIDs, tracks every monitor's history, hides remote machine-room screens, and switches multi-monitor arrangements in one click.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="#pricing"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-sky-500/20 hover:opacity-95 transition"
+          >
+            Get Signed macOS App — $19
+          </a>
+          <a
+            href="https://github.com/theslyprofessor/displays"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-background/80 hover:border-sky-500/50 text-sm font-semibold transition"
+          >
+            View Open Source on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- 1080p 60fps Launch Video Player -->
+      <div class="rounded-2xl overflow-hidden border border-sky-500/30 bg-slate-950 shadow-2xl shadow-sky-500/10">
+        <video
+          src="/videos/displays-launch.mp4"
+          poster="/images/displays-multi-space.png"
+          controls
+          autoplay
+          muted
+          loop
+          playsinline
+          class="w-full aspect-video block"
+        ></video>
+        <div class="px-6 py-3 bg-slate-900/90 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+          <span>🎬 <strong>Displays for macOS Launch Reel</strong> — Rendered programmatically in 1080p60 with Remotion 4 (unmute player for synthwave soundtrack)</span>
+          <span class="font-mono text-sky-400">~/.config/displays/presets.json</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adaptive UI Comparison: Multi-Room vs Single-Space Desktop -->
+  <section class="py-16 border-t border-border/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <Badge variant="outline" class="mb-3">Adaptive Architecture</Badge>
+        <h2 class="text-3xl font-bold mb-4">Built for Roaming Laptops and Fixed Studio Macs</h2>
+        <p class="text-muted-foreground">
+          A fixed desktop in Studio A does not need tabs for other rooms. Displays adapts automatically to how each machine works.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="rounded-2xl border border-border bg-card/50 p-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold">Multi-Room Laptop Mode</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-medium">Auto-Detects Room by UUID</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Instant Space Recognition + Hidden Screens</h3>
+          <p class="text-sm text-muted-foreground mb-5">
+            When you plug your MacBook into a studio or lecture hall, Displays matches the external monitor UUIDs against your spaces (e.g. <code>84-101</code>, <code>84-102</code>, <code>84-105</code>). If your laptop sits closed in a separate machine room, mark it <strong>Hidden</strong> in that space so preset chips only show the monitors you actually see.
+          </p>
+          <img
+            src="/images/displays-multi-space.png"
+            alt="Displays Multi-Space Mode"
+            class="w-full rounded-xl border border-white/10 shadow-lg"
+          />
+        </div>
+
+        <div class="rounded-2xl border border-border bg-card/50 p-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono uppercase tracking-wider text-purple-400 font-semibold">Single-Space Desktop Mode</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 font-medium">Zero Room Clutter</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Clean Single-Room View for Fixed Machines</h3>
+          <p class="text-sm text-muted-foreground mb-5">
+            On a dedicated studio desktop or home workstation with a single space, multi-room tabs disappear automatically. Every monitor ever connected is logged in the space's <strong>Monitor History</strong> with editable names, notes, and one-click role presets.
+          </p>
+          <img
+            src="/images/displays-single-space.png"
+            alt="Displays Single-Space Desktop Mode"
+            class="w-full rounded-xl border border-white/10 shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Pillars -->
+  <section class="py-16 border-t border-border/60 bg-muted/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl border border-border bg-background">
+          <div class="text-xs font-mono text-sky-400 font-bold mb-2">01 / SELF-EXPLANATORY CHIPS</div>
+          <h3 class="text-lg font-bold mb-2">Visual Monitor Role Pills</h3>
+          <p class="text-sm text-muted-foreground">
+            Every preset parses its underlying layout into visual per-monitor chips (<code>MAIN</code>, <code>MIRROR</code>, <code>EXTEND</code>, <code>OFF</code>) alongside plain-English descriptions you can edit anytime.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-border bg-background">
+          <div class="text-xs font-mono text-emerald-400 font-bold mb-2">02 / MONITOR HISTORY</div>
+          <h3 class="text-lg font-bold mb-2">Persistent Space Inventory</h3>
+          <p class="text-sm text-muted-foreground">
+            Click any monitor in a space to rename it (e.g. <code>C27-30 (2) · Main Desk</code> or <code>TV (Blackmagic) · Room TV</code>), record which machine owns which screen, or hide unseen screens.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-border bg-background">
+          <div class="text-xs font-mono text-purple-400 font-bold mb-2">03 / DOTFILES & CLI</div>
+          <h3 class="text-lg font-bold mb-2">Git-Friendly JSON + CLI</h3>
+          <p class="text-sm text-muted-foreground">
+            All spaces, monitor histories, and presets live in a single clean <code>~/.config/displays/presets.json</code> file and can be triggered from scripts via <code>displays apply</code>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Download Section -->
+  <section id="pricing" class="py-20 border-t border-border/60">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <Badge variant="outline" class="mb-3">Pricing & Licensing</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Own the Signed macOS App or Build from Source</h2>
+        <p class="text-muted-foreground">
+          Zero subscriptions. No telemetry. Standalone native SwiftUI executable.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Open Source Card -->
+        <div class="rounded-2xl border border-border bg-background p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold mb-2">
+              Open Source Edition
+            </div>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="text-4xl font-extrabold">$0</span>
+              <span class="text-sm text-muted-foreground">/ build from source</span>
+            </div>
+            <p class="text-sm text-muted-foreground mb-6">
+              Full Swift 6 / SwiftUI source code and CLI script. Compile locally on macOS 14+ with Xcode Command Line Tools and <code>displayplacer</code>.
+            </p>
+            <ul class="space-y-2.5 text-sm text-muted-foreground mb-8">
+              <li>✓ Complete SwiftUI + AppKit source code</li>
+              <li>✓ Companion <code>displays</code> terminal CLI</li>
+              <li>✓ Stowed <code>~/.config/displays/presets.json</code> schema</li>
+            </ul>
+          </div>
+          <a
+            href="https://github.com/theslyprofessor/displays"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3 px-4 rounded-xl border border-border text-center font-semibold text-sm hover:border-primary/50 transition"
+          >
+            Clone on GitHub →
+          </a>
+        </div>
+
+        <!-- Paid Signed Bundle Card -->
+        <div class="rounded-2xl border-2 border-sky-400 bg-gradient-to-b from-sky-500/10 to-emerald-500/5 p-8 flex flex-col justify-between shadow-xl shadow-sky-500/10">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">
+                Signed macOS App + CLI Bundle
+              </span>
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-sky-400 text-slate-950">
+                v1.0 RELEASE
+              </span>
+            </div>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="text-4xl font-extrabold">$19</span>
+              <span class="text-sm text-muted-foreground">one-time license · all personal Macs</span>
+            </div>
+            <p class="text-sm text-muted-foreground mb-6">
+              Ready-to-run, Apple Developer code-signed <code>Displays.app</code> bundle with persistent Login Item support, menu bar popover, and lifetime updates.
+            </p>
+            <ul class="space-y-2.5 text-sm mb-8">
+              <li>✓ Signed native <code>Displays.app</code> (Apple Silicon & Intel)</li>
+              <li>✓ Persistent macOS Login Item & display permissions</li>
+              <li>✓ Auto-detects multi-monitor rooms + Single-Space desktop mode</li>
+              <li>✓ Direct download + commercial invoice for studio/institutional seats</li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <a
+              href="/releases/Displays-macOS-v1.0.0.zip"
+              download
+              class="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-bold text-sm hover:opacity-95 transition"
+            >
+              Purchase & Download Displays v1.0 ($19) →
+            </a>
+            <a
+              href="mailto:vinnie@buildforwardtech.com?subject=Displays%20for%20macOS%20Site%20or%20Single%20License%20(%2419)"
+              class="block w-full text-center text-xs text-muted-foreground hover:text-sky-400 transition"
+            >
+              Need a campus / multi-seat studio license? Contact vinnie@buildforwardtech.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

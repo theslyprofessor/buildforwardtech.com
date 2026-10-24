@@ -68,7 +68,7 @@ export function LabsCard({
         {url && (
           <div className="mt-4 pt-4 border-t border-border">
             <span className="inline-flex items-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
-              {url.replace("https://", "")}
+              {url.startsWith("/") ? `buildforwardtech.com${url}` : url.replace("https://", "")}
               <ExternalLink className="w-3 h-3" />
             </span>
           </div>
@@ -78,8 +78,14 @@ export function LabsCard({
   );
 
   if (url) {
+    const isInternal = url.startsWith("/");
     return (
-      <a href={url} target="_blank" rel="noopener noreferrer" className="group block h-full">
+      <a
+        href={url}
+        target={isInternal ? undefined : "_blank"}
+        rel={isInternal ? undefined : "noopener noreferrer"}
+        className="group block h-full"
+      >
         {CardContent}
       </a>
     );

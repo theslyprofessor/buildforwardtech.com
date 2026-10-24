@@ -93,6 +93,17 @@ export const SERVICES = [
  */
 export const LABS_PROJECTS = [
   {
+    id: "displays",
+    name: "Displays",
+    fullName: "Native macOS Multi-Monitor History & Room Preset Engine",
+    url: "/displays",
+    tagline: "Every room remembers every screen",
+    description: "A native SwiftUI macOS menu bar and desktop utility that auto-detects studios, classrooms, and offices by hardware screen UUIDs, tracks the full monitor history of every space, hides remote/clamshell screens per room, and switches complex multi-display arrangements in one click with visual role chips (MAIN, MIRROR, EXTEND, OFF) and a companion CLI. Open source on GitHub; signed ready-to-run macOS bundle sold for $19.",
+    tag: "macOS Utility · $19",
+    status: "v1.0 — shipped",
+    gradient: "from-sky-500/20 to-emerald-500/20",
+  },
+  {
     id: "nnt",
     name: "NNT",
     fullName: "Nakul Notation Tool",
@@ -102,6 +113,17 @@ export const LABS_PROJECTS = [
     tag: "PhD Research",
     status: "Active",
     gradient: "from-violet-500/20 to-purple-500/20",
+  },
+  {
+    id: "abletools",
+    name: "abletools",
+    fullName: "Ableton Live Productivity Suite",
+    url: "https://github.com/theslyprofessor/abletools",
+    tagline: "Pro Tools workflows, in Ableton",
+    description: "An open-source suite of Ableton Live productivity enhancements inspired by Pro Tools: a batch New Tracks dialog and cascading input/output routing with mono/stereo pair-aware allocation. Built on the Ableton Extensions SDK (webview dialogs) and the Live Object Model (routing), sharing one unit-tested TypeScript allocation core. Open source; a signed, ready-to-use build is sold separately.",
+    tag: "Open Source",
+    status: "v0.1 — shipped",
+    gradient: "from-orange-500/20 to-amber-500/20",
   },
   {
     id: "midimaze-platform",
