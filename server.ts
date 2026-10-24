@@ -21,7 +21,7 @@ export interface LicensePayload {
   iat: number;
 }
 
-export type ProductId = "screenstage" | "quietplease" | "trackcascade";
+export type ProductId = "screenstage" | "quietplease" | "trackcascade" | "barstage";
 
 interface ProductCatalogItem {
   id: ProductId;
@@ -40,6 +40,28 @@ interface ProductCatalogItem {
 }
 
 const PRODUCT_CATALOG: Record<ProductId, ProductCatalogItem> = {
+  barstage: {
+    id: "barstage",
+    name: "BarStage v1.0",
+    route: "/barstage",
+    personalCents: 900,
+    personalDisplay: "$9.00",
+    personalSeats: 3,
+    personalTitle: "BarStage v1.0 - Ad-Free Personal License (3 Macs)",
+    teamCents: 8900,
+    teamDisplay: "$89.00",
+    teamSeats: 25,
+    teamTitle: "BarStage v1.0 - Ad-Free Studio & Team Pack (25 Macs)",
+    description:
+      "Removes sponsor ads permanently in BarStage.app on up to 3 Macs (or 25 Studio Macs) with an offline Ed25519 MM1-... license key.",
+    platforms: {
+      "barstage-zip": {
+        relPath: "releases/BarStage-macOS-v1.0.0.zip",
+        filename: "BarStage-macOS-v1.0.0.zip",
+        mime: "application/zip",
+      },
+    },
+  },
   screenstage: {
     id: "screenstage",
     name: "ScreenStage v1.1",
@@ -47,13 +69,13 @@ const PRODUCT_CATALOG: Record<ProductId, ProductCatalogItem> = {
     personalCents: 1900,
     personalDisplay: "$19.00",
     personalSeats: 3,
-    personalTitle: "ScreenStage v1.1 — Personal License (3 Computers)",
+    personalTitle: "ScreenStage v1.1 - Ad-Free Personal License (3 Computers)",
     teamCents: 19900,
     teamDisplay: "$199.00",
     teamSeats: 25,
-    teamTitle: "ScreenStage v1.1 — Studio & Team Pack (25 Computers)",
+    teamTitle: "ScreenStage v1.1 - Ad-Free Studio & Team Pack (25 Computers)",
     description:
-      "Includes native macOS (.app), Windows 10/11 (.exe), and Linux (x86_64 & ARM64) + offline Ed25519 license key.",
+      "Removes sponsor ads permanently across macOS (.app), Windows 10/11 (.exe), and Linux (x86_64 & ARM64) with an offline Ed25519 license key.",
     platforms: {
       macos: {
         relPath: "releases/ScreenStage-macOS-v1.0.0.zip",
@@ -84,13 +106,13 @@ const PRODUCT_CATALOG: Record<ProductId, ProductCatalogItem> = {
     personalCents: 1500,
     personalDisplay: "$15.00",
     personalSeats: 3,
-    personalTitle: "QuietPlease v0.3 — Educator & Personal License (3 Macs)",
+    personalTitle: "QuietPlease v0.3 - Ad-Free Educator & Personal License (3 Macs)",
     teamCents: 14900,
     teamDisplay: "$149.00",
     teamSeats: 25,
-    teamTitle: "QuietPlease v0.3 — Classroom & Studio Pack (25 Macs)",
+    teamTitle: "QuietPlease v0.3 - Ad-Free Classroom & Studio Pack (25 Macs)",
     description:
-      "Includes signed native macOS 14+ QuietPlease.app (.dmg + .zip) with 4-scope compressor visualizer & full-screen wall sign + offline Ed25519 license key.",
+      "Removes sponsor ads permanently in QuietPlease.app (macOS 14+) with an offline Ed25519 license key.",
     platforms: {
       "quietplease-dmg": {
         relPath: "releases/QuietPlease-macOS-v0.3.0.dmg",
@@ -111,13 +133,13 @@ const PRODUCT_CATALOG: Record<ProductId, ProductCatalogItem> = {
     personalCents: 2900,
     personalDisplay: "$29.00",
     personalSeats: 3,
-    personalTitle: "TrackCascade v1.0 (abletools) — Producer License (3 Computers)",
+    personalTitle: "TrackCascade v1.0 (abletools) - Ad-Free Producer License (3 Computers)",
     teamCents: 24900,
     teamDisplay: "$249.00",
     teamSeats: 25,
-    teamTitle: "TrackCascade v1.0 (abletools) — Studio & Lab Pack (25 Computers)",
+    teamTitle: "TrackCascade v1.0 (abletools) - Ad-Free Studio & Lab Pack (25 Computers)",
     description:
-      "Includes signed Ableton Live .ablx New Tracks extension, Max for Live cascade-router device, CLI preset bundle, and offline Ed25519 license key.",
+      "Removes sponsor ads permanently across the Ableton Live .ablx New Tracks extension, Max for Live cascade-router device, and CLI preset bundle with an offline Ed25519 license key.",
     platforms: {
       "trackcascade-bundle": {
         relPath: "releases/TrackCascade-Complete-Bundle-v1.0.0.zip",
@@ -135,6 +157,7 @@ const PRODUCT_CATALOG: Record<ProductId, ProductCatalogItem> = {
 
 function normalizeProductId(raw?: string | null): ProductId {
   const clean = (raw || "").trim().toLowerCase();
+  if (clean === "barstage") return "barstage";
   if (clean === "quietplease") return "quietplease";
   if (clean === "trackcascade" || clean === "abletools") return "trackcascade";
   return "screenstage";
@@ -208,17 +231,18 @@ for (const prod of Object.values(PRODUCT_CATALOG)) {
   }
 }
 
-function buildDownloadLinks(validKey: string) {
-  const q = encodeURIComponent(validKey.trim());
+function buildDownloadLinks(validKey?: string) {
+  const q = validKey ? `&key=${encodeURIComponent(validKey.trim())}` : "";
   return {
-    macos: `/api/download?platform=macos&key=${q}`,
-    windows: `/api/download?platform=windows&key=${q}`,
-    linuxX64: `/api/download?platform=linux-x64&key=${q}`,
-    linuxArm64: `/api/download?platform=linux-arm64&key=${q}`,
-    quietpleaseDmg: `/api/download?platform=quietplease-dmg&key=${q}`,
-    quietpleaseZip: `/api/download?platform=quietplease-zip&key=${q}`,
-    trackcascadeBundle: `/api/download?platform=trackcascade-bundle&key=${q}`,
-    trackcascadeAblx: `/api/download?platform=trackcascade-ablx&key=${q}`,
+    macos: `/api/download?platform=macos${q}`,
+    windows: `/api/download?platform=windows${q}`,
+    linuxX64: `/api/download?platform=linux-x64${q}`,
+    linuxArm64: `/api/download?platform=linux-arm64${q}`,
+    quietpleaseDmg: `/api/download?platform=quietplease-dmg${q}`,
+    quietpleaseZip: `/api/download?platform=quietplease-zip${q}`,
+    trackcascadeBundle: `/api/download?platform=trackcascade-bundle${q}`,
+    trackcascadeAblx: `/api/download?platform=trackcascade-ablx${q}`,
+    barstageZip: `/api/download?platform=barstage-zip${q}`,
   };
 }
 
@@ -333,21 +357,9 @@ Bun.serve({
       }
     }
 
-    // 2. GET /api/download -> Gated binary download requiring valid Ed25519 MM1-... key
+    // 2. GET /api/download -> Free-Forever (Ad-Supported) direct binary download (MM1-... key unlocks Ad-Free in-app)
     if (pathname === "/api/download" && req.method === "GET") {
       const platform = url.searchParams.get("platform") || "";
-      const key = url.searchParams.get("key") || "";
-      const verified = verifyEd25519LicenseKey(key);
-      if (!verified) {
-        return Response.json(
-          {
-            ok: false,
-            error:
-              "402 Payment Required: A valid Ed25519-signed MM1-... license key is required to download this build. Purchase a license at https://buildforwardtech.com",
-          },
-          { status: 402 }
-        );
-      }
       const target = ALL_PLATFORM_FILES[platform];
       if (!target) {
         return Response.json({ ok: false, error: "Unknown platform" }, { status: 404 });
@@ -361,7 +373,7 @@ Bun.serve({
         headers: {
           "Content-Type": target.mime,
           "Content-Disposition": `attachment; filename="${target.filename}"`,
-          "Cache-Control": "private, no-store",
+          "Cache-Control": "public, max-age=300",
         },
       });
     }
@@ -677,27 +689,7 @@ Bun.serve({
       }
     }
 
-    // 8. Block direct unauthenticated requests to /releases/*.zip, *.tar.gz, *.dmg, *.ablx
-    if (
-      pathname.startsWith("/releases/") &&
-      (pathname.endsWith(".zip") ||
-        pathname.endsWith(".tar.gz") ||
-        pathname.endsWith(".dmg") ||
-        pathname.endsWith(".ablx"))
-    ) {
-      const key = url.searchParams.get("key") || "";
-      const verified = verifyEd25519LicenseKey(key);
-      if (!verified) {
-        return Response.json(
-          {
-            ok: false,
-            error:
-              "402 Payment Required: Direct binary downloads require a valid Ed25519 MM1-... license key. Purchase a license at https://buildforwardtech.com",
-          },
-          { status: 402 }
-        );
-      }
-    }
+    // 8. Allow direct Free-Forever (Ad-Supported) downloads from /releases/* (MM1-... key unlocks Ad-Free in-app)
 
     // 9. Serve static files from DIST_DIR with Range support for MP4 videos
     let filePath = path.join(DIST_DIR, pathname);

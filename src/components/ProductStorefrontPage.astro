@@ -16,7 +16,7 @@ interface FeatureCard {
 }
 
 interface Props {
-  productId: "quietplease" | "trackcascade";
+  productId: "quietplease" | "trackcascade" | "barstage";
   productName: string;
   version: string;
   platformBadge: string;
@@ -28,8 +28,8 @@ interface Props {
   pricePersonal: string;
   pricePersonalCentsLabel: string;
   priceTeam: string;
-  launchVideoSrc: string;
-  verticalReelSrc: string;
+  launchVideoSrc?: string;
+  verticalReelSrc?: string;
   features: FeatureCard[];
   personalBullets: string[];
   teamBullets: string[];
@@ -58,7 +58,7 @@ const {
 ---
 
 <PageLayout
-  title={`${productName} — ${heroGradientSubtitle} | Build Forward Tech`}
+  title={`${productName} - ${heroGradientSubtitle} | Build Forward Tech`}
   description={heroDescription}
 >
   <section class="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
@@ -73,6 +73,8 @@ const {
         <span class="text-white font-bold">{productName} {version}</span>
         <span class="text-slate-500">•</span>
         <span>{platformBadge}</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-emerald-400 font-bold">Free Forever (Ad-Supported)</span>
       </div>
 
       <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05]">
@@ -86,49 +88,78 @@ const {
         {heroDescription}
       </p>
 
+      <!-- Free-Forever Direct Download Buttons + Pay Once to Remove Ads -->
       <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+        {downloads.map((d, idx) => (
+          <a
+            href={`/api/download?platform=${encodeURIComponent(d.platformParam)}`}
+            class={
+              idx === 0
+                ? "inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-emerald-400 to-sky-400 px-8 py-4 text-base font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:brightness-110"
+                : "inline-flex items-center gap-2 rounded-xl border border-emerald-400/45 bg-emerald-500/15 px-6 py-4 text-sm font-bold text-emerald-200 transition hover:bg-emerald-500/25"
+            }
+          >
+            <span>Download Free Forever ({d.label})</span>
+          </a>
+        ))}
+
         <button
           type="button"
           onclick="window.openProductCheckout('personal')"
-          class="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 px-8 py-4 text-base font-extrabold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:brightness-110 cursor-pointer"
+          class="inline-flex items-center gap-2 rounded-xl border border-sky-400/40 bg-sky-500/15 px-6 py-4 text-sm font-bold text-sky-200 transition hover:bg-sky-500/25 cursor-pointer"
         >
-          <span>Buy {productName} — {pricePersonal} Personal / {priceTeam} Team Pack</span>
+          <span>Remove Ads Forever ({pricePersonal} One-Time)</span>
         </button>
+      </div>
 
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-slate-400">
+        <span class="text-emerald-300 font-semibold">✓ 100% Free Forever (Ad-Supported)</span>
+        <span>•</span>
+        <span>✓ Full features unlocked immediately with zero sign-up</span>
+        <span>•</span>
         <button
           type="button"
           onclick="window.openProductCheckout('verify')"
-          class="inline-flex items-center gap-2 rounded-xl border border-sky-400/35 bg-sky-500/10 px-6 py-4 text-sm font-bold text-sky-300 transition hover:bg-sky-500/20 cursor-pointer"
+          class="text-sky-400 underline hover:text-emerald-300 cursor-pointer"
         >
-          <span>Already Purchased? Enter License Key to Download</span>
+          Already bought an Ad-Free MM1-... key? Verify or re-download →
         </button>
       </div>
 
-      <!-- 16:9 Launch Video Player -->
-      <div class="mt-14 rounded-2xl border border-white/15 bg-slate-950/90 p-2 sm:p-3 shadow-2xl shadow-sky-950/40">
-        <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/10 text-xs text-slate-400">
-          <div class="flex items-center gap-2">
-            <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
-            <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
-            <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
-            <span class="ml-2 font-mono text-slate-300">
-              🎬 {productName} Overview (27s) — Turn on sound for audio
-            </span>
+      {launchVideoSrc ? (
+        <div class="mt-14 rounded-2xl border border-white/15 bg-slate-950/90 p-2 sm:p-3 shadow-2xl shadow-sky-950/40">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/10 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+              <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+              <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+              <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+              <span class="ml-2 font-mono text-slate-300">
+                🎬 {productName} Overview (27s) · Turn on sound for audio
+              </span>
+            </div>
+            <span class="font-mono text-sky-400 hidden sm:inline">{productName} {version}</span>
           </div>
-          <span class="font-mono text-sky-400 hidden sm:inline">{productName} {version}</span>
+          <video
+            class="w-full rounded-xl mt-2 bg-black aspect-video"
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source src={launchVideoSrc} type="video/mp4" />
+          </video>
         </div>
-        <video
-          class="w-full rounded-xl mt-2 bg-black aspect-video"
-          controls
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src={launchVideoSrc} type="video/mp4" />
-        </video>
-      </div>
+      ) : (
+        <div class="mt-14 rounded-2xl border border-sky-400/25 bg-slate-950/90 p-3 sm:p-5 shadow-2xl shadow-sky-950/40">
+          <img
+            src={uiPreviewSrc}
+            alt={`${productName} Interface Preview`}
+            class="w-full rounded-xl border border-white/10"
+          />
+        </div>
+      )}
     </div>
   </section>
 
@@ -136,12 +167,12 @@ const {
   <section class="py-16 border-t border-white/10 bg-slate-950/40">
     <div class="container-narrow">
       <div class="grid gap-10 lg:grid-cols-12 items-center rounded-3xl border border-sky-500/25 bg-gradient-to-br from-slate-900/95 via-slate-950 to-emerald-950/20 p-8 sm:p-12">
-        <div class="lg:col-span-7">
+        <div class={verticalReelSrc ? "lg:col-span-7" : "lg:col-span-12"}>
           <div class="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-300 mb-4">
             Native Studio Interface
           </div>
           <h3 class="font-display text-2xl sm:text-4xl font-bold text-white leading-tight mb-6">
-            Designed for Real Classrooms, Tracking Rooms, and Production Studios
+            Designed for Real Classrooms, Tracking Rooms, and Production Workstations
           </h3>
           <img
             src={uiPreviewSrc}
@@ -162,58 +193,100 @@ const {
           </div>
         </div>
 
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="w-[270px] sm:w-[300px] rounded-[2rem] border-2 border-white/15 bg-black p-2.5 shadow-2xl shadow-sky-950/50">
-            <div class="flex items-center justify-between px-3 py-1.5 text-[11px] font-mono text-slate-400">
-              <span>9:16 VERTICAL REEL</span>
-              <span class="text-emerald-400">● 1080×1920 60FPS</span>
+        {verticalReelSrc && (
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-[270px] sm:w-[300px] rounded-[2rem] border-2 border-white/15 bg-black p-2.5 shadow-2xl shadow-sky-950/50">
+              <div class="flex items-center justify-between px-3 py-1.5 text-[11px] font-mono text-slate-400">
+                <span>9:16 VERTICAL REEL</span>
+                <span class="text-emerald-400">● 1080×1920 60FPS</span>
+              </div>
+              <video
+                class="w-full rounded-[1.4rem] bg-slate-950 aspect-[9/16]"
+                controls
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              >
+                <source src={verticalReelSrc} type="video/mp4" />
+              </video>
             </div>
-            <video
-              class="w-full rounded-[1.4rem] bg-slate-950 aspect-[9/16]"
-              controls
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            >
-              <source src={verticalReelSrc} type="video/mp4" />
-            </video>
           </div>
-        </div>
+        )}
       </div>
     </div>
   </section>
 
-  <!-- Commercial Pricing & Licensing -->
+  <!-- Free Forever (Ad-Supported) + Pay Once to Remove Ads Pricing -->
   <section id="pricing" class="py-20 border-t border-white/10">
     <div class="container-narrow">
-      <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="text-center max-w-3xl mx-auto mb-14">
         <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">
-          Pricing &amp; Licensing
+          Free Forever + One-Time Ad-Free Upgrade
         </span>
         <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3">
-          One-Time Purchase. Own It Forever.
+          Download &amp; Use Free Forever. Pay Once to Remove Ads.
         </h2>
         <p class="mt-4 text-slate-400">
-          No subscriptions. No cloud account required. Purchase a license key once to unlock instant signed downloads.
+          Every person can download and run the full version of {productName} free forever (supported by a subtle studio sponsor strip). Want a 100% ad-free studio interface? Pay once for an offline Ed25519 license key.
         </p>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-        <!-- Personal License -->
-        <div class="rounded-2xl border-2 border-sky-400/60 bg-gradient-to-b from-sky-950/40 to-slate-900/90 p-8 flex flex-col justify-between shadow-xl shadow-sky-950/30 relative">
+      <div class="grid gap-6 lg:grid-cols-3 max-w-6xl mx-auto">
+        <!-- Tier 0: Free Forever (Ad-Supported) -->
+        <div class="rounded-2xl border border-emerald-400/50 bg-gradient-to-b from-emerald-950/35 to-slate-900/90 p-7 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-emerald-400">
+              Free Forever (Ad-Supported)
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="font-display text-5xl font-extrabold text-white">$0</span>
+              <span class="text-sm text-slate-400">forever · no credit card required</span>
+            </div>
+            <ul class="mt-6 space-y-2.5 text-sm text-slate-200">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Full {productName} {version} feature set unlocked forever
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Instant direct download with zero login or trial timer
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Includes a compact Build Forward Tech / MusicMind sponsor banner
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Upgrade to Ad-Free in-app anytime with an <code>MM1-...</code> key
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 space-y-2.5">
+            {downloads.map((d) => (
+              <a
+                href={`/api/download?platform=${encodeURIComponent(d.platformParam)}`}
+                class="block w-full rounded-xl border border-emerald-400/50 bg-emerald-500/20 px-4 py-3 text-center text-xs font-extrabold text-emerald-200 transition hover:bg-emerald-500/30"
+              >
+                Download Free Forever · {d.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Tier 1: Ad-Free Personal License -->
+        <div class="rounded-2xl border-2 border-sky-400/60 bg-gradient-to-b from-sky-950/40 to-slate-900/90 p-7 flex flex-col justify-between shadow-xl shadow-sky-950/30 relative">
           <div class="absolute -top-3.5 right-6 rounded-full bg-gradient-to-r from-sky-400 to-emerald-400 px-3.5 py-1 text-xs font-extrabold text-slate-950">
-            MOST POPULAR
+            REMOVE ADS FOREVER
           </div>
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-sky-400">
-              Personal &amp; Educator License
+              Ad-Free Personal &amp; Educator License
             </div>
             <div class="mt-3 flex items-baseline gap-2">
               <span class="font-display text-5xl font-extrabold text-white">{pricePersonal}</span>
               <span class="text-sm text-slate-400">one-time · up to 3 computers</span>
             </div>
             <ul class="mt-6 space-y-2.5 text-sm text-slate-200">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Removes all sponsor banners forever across 3 computers
+              </li>
               {personalBullets.map((b) => (
                 <li class="flex items-center gap-2">
                   <span class="text-emerald-400">✓</span> {b}
@@ -227,22 +300,25 @@ const {
               onclick="window.openProductCheckout('personal')"
               class="block w-full rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 px-5 py-3.5 text-center text-sm font-extrabold text-slate-950 transition hover:brightness-110 cursor-pointer"
             >
-              Buy Personal License ({pricePersonal}) →
+              Remove Ads Forever ({pricePersonal}) →
             </button>
           </div>
         </div>
 
-        <!-- Studio & Lab Pack -->
-        <div class="rounded-2xl border border-purple-400/40 bg-slate-900/75 p-8 flex flex-col justify-between">
+        <!-- Tier 2: Studio & Lab Pack -->
+        <div class="rounded-2xl border border-purple-400/40 bg-slate-900/75 p-7 flex flex-col justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-purple-300">
-              Classroom, Studio &amp; Lab Pack
+              Ad-Free Classroom, Studio &amp; Lab Pack
             </div>
             <div class="mt-3 flex items-baseline gap-2">
               <span class="font-display text-5xl font-extrabold text-white">{priceTeam}</span>
               <span class="text-sm text-slate-400">one-time · up to 25 computers</span>
             </div>
             <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+              <li class="flex items-center gap-2">
+                <span class="text-purple-400">✓</span> Removes all sponsor banners across up to 25 lab/studio seats
+              </li>
               {teamBullets.map((b) => (
                 <li class="flex items-center gap-2">
                   <span class="text-purple-400">✓</span> {b}
@@ -256,7 +332,7 @@ const {
               onclick="window.openProductCheckout('team')"
               class="block w-full rounded-xl border border-purple-400/50 bg-purple-500/20 px-5 py-3.5 text-center text-sm font-extrabold text-purple-200 transition hover:bg-purple-500/30 cursor-pointer"
             >
-              Buy Classroom &amp; Studio Pack ({priceTeam}) →
+              Buy Ad-Free Studio Pack ({priceTeam}) →
             </button>
           </div>
         </div>
@@ -264,7 +340,7 @@ const {
     </div>
   </section>
 
-  <!-- Self-Hosted Storefront & Ed25519 License Verification Modal -->
+  <!-- Self-Hosted Storefront & Ed25519 Ad-Free License Verification Modal -->
   <div
     id="productCheckoutModal"
     class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/85 backdrop-blur-md p-4"
@@ -280,21 +356,21 @@ const {
 
       <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300 mb-3">
         <img src={iconSrc} alt="" class="h-4 w-4 rounded-sm" />
-        <span>{productName} {version} · Verified License Gate</span>
+        <span>{productName} {version} · Ad-Free License Key</span>
       </div>
 
       <h3 id="checkoutModalTitle" class="font-display text-2xl font-bold text-white">
-        Get Your {productName} License
+        Remove Ads Forever in {productName}
       </h3>
       <p class="mt-2 text-sm text-slate-300 leading-relaxed">
-        Downloads are unlocked with a cryptographically signed <code class="text-sky-300">MM1-...</code> license key issued immediately upon payment.
+        {productName} is free forever with ads. Purchase once below to receive a cryptographically signed <code class="text-sky-300">MM1-...</code> license key that permanently removes ads across your computers.
       </p>
 
-      <!-- Step 1: Purchase New License -->
+      <!-- Step 1: Purchase New Ad-Free License -->
       <div id="checkoutPurchaseSection" class="mt-5 space-y-3">
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-            Your Email (for license key &amp; receipt)
+            Your Email (for Ad-Free MM1-... license key &amp; receipt)
           </label>
           <input
             id="checkoutEmailInput"
@@ -312,7 +388,7 @@ const {
           onclick="window.startProductCheckout('personal')"
           class="flex w-full items-center justify-between rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 px-5 py-3.5 text-sm font-extrabold text-slate-950 hover:brightness-110 cursor-pointer"
         >
-          <span>Pay {pricePersonal} — Personal License (3 Computers)</span>
+          <span>Pay {pricePersonal} · Ad-Free Personal License (3 Computers)</span>
           <span>Checkout →</span>
         </button>
 
@@ -321,7 +397,7 @@ const {
           onclick="window.startProductCheckout('team')"
           class="flex w-full items-center justify-between rounded-xl border border-purple-400/40 bg-purple-500/15 px-5 py-3.5 text-sm font-bold text-purple-200 hover:bg-purple-500/25 cursor-pointer"
         >
-          <span>Pay {priceTeam} — Studio &amp; Lab Pack (25 Computers)</span>
+          <span>Pay {priceTeam} · Ad-Free Studio &amp; Lab Pack (25 Computers)</span>
           <span>Checkout →</span>
         </button>
 
@@ -342,15 +418,15 @@ const {
             <div><span class="text-slate-400">Payment Memo:</span> <span id="invoiceMemoText" class="text-amber-300 select-all"></span></div>
           </div>
           <p class="text-[11px] text-slate-300 leading-relaxed">
-            Keep this window open or paste your <code class="text-emerald-300">MM1-...</code> key below once issued to <span id="invoiceEmailText" class="font-semibold text-white"></span>.
+            Keep this window open or paste your <code class="text-emerald-300">MM1-...</code> key inside {productName} once issued to <span id="invoiceEmailText" class="font-semibold text-white"></span>.
           </p>
         </div>
       </div>
 
-      <!-- Step 2: Existing License Key Verification Gate -->
+      <!-- Step 2: Existing License Key Verification -->
       <div class="mt-6 pt-5 border-t border-white/10">
         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-          Already Purchased? Paste Your License Key to Unlock Downloads
+          Already Purchased? Verify Your Ad-Free MM1-... Key
         </label>
         <div class="flex gap-2">
           <input
@@ -364,16 +440,16 @@ const {
             onclick="window.unlockProductWithKey()"
             class="rounded-xl border border-sky-400/40 bg-sky-500/20 px-4 py-2 text-xs font-bold text-sky-200 hover:bg-sky-500/30 cursor-pointer"
           >
-            Verify &amp; Unlock
+            Verify Key
           </button>
         </div>
         <p id="existingLicenseError" class="hidden mt-1.5 text-xs text-rose-400"></p>
       </div>
 
-      <!-- Unlocked Download Section -->
+      <!-- Verified Key Box -->
       <div id="checkoutLicenseBox" class="hidden mt-5 rounded-xl border border-emerald-400/40 bg-slate-950 p-4">
         <div class="flex items-center justify-between text-xs text-slate-400 mb-1.5">
-          <span class="text-emerald-400 font-bold">✓ Verified License Key</span>
+          <span class="text-emerald-400 font-bold">✓ Verified Ad-Free License Key</span>
           <span id="verifiedLicenseTier" class="font-mono text-[11px] text-sky-300"></span>
         </div>
         <div class="text-[11px] text-slate-400 mb-2">
@@ -382,14 +458,14 @@ const {
         <code id="checkoutLicenseKey" class="block break-all text-xs text-emerald-300 font-mono select-all mb-4 p-2 rounded bg-slate-900 border border-white/10"></code>
 
         <div class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-          Unlocked Direct Downloads ({version}):
+          Direct Downloads ({version}):
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {downloads.map((d) => (
             <a
               id={d.id}
               data-platform={d.platformParam}
-              href="#"
+              href={`/api/download?platform=${encodeURIComponent(d.platformParam)}`}
               class="product-dl-link rounded-lg bg-sky-500/20 border border-sky-400/40 px-3 py-2.5 text-center text-xs font-bold text-sky-200 hover:bg-sky-500/30"
             >
               <div>{d.label}</div>
@@ -450,7 +526,7 @@ const {
       var tierEl = document.getElementById("verifiedLicenseTier");
       if (keyEl) keyEl.textContent = licenseKey;
       if (emailEl && payload) emailEl.textContent = payload.e || "Verified Customer";
-      if (tierEl && payload) tierEl.textContent = (payload.t === "lab" ? "Studio & Lab Pack · " : "Personal License · ") + (payload.s || 3) + " seats";
+      if (tierEl && payload) tierEl.textContent = (payload.t === "lab" ? "Ad-Free Studio Pack · " : "Ad-Free Personal · ") + (payload.s || 3) + " seats";
       var q = encodeURIComponent(licenseKey);
       var links = document.querySelectorAll(".product-dl-link");
       links.forEach(function (el) {
@@ -467,11 +543,11 @@ const {
       var title = document.getElementById("checkoutModalTitle");
       if (title) {
         if (mode === "team") {
-          title.textContent = productName + " Studio & Lab Pack (" + priceTeam + ")";
+          title.textContent = productName + " Ad-Free Studio Pack (" + priceTeam + ")";
         } else if (mode === "verify") {
-          title.textContent = "Unlock " + productName + " Downloads";
+          title.textContent = "Verify Your " + productName + " Ad-Free Key";
         } else {
-          title.textContent = productName + " Personal License (" + pricePersonal + ")";
+          title.textContent = "Remove Ads Forever in " + productName + " (" + pricePersonal + ")";
         }
       }
       if (modal) {
@@ -520,7 +596,7 @@ const {
       var verifiedPayload = await verifyEd25519InBrowser(key);
       if (!verifiedPayload) {
         if (errEl) {
-          errEl.textContent = "Invalid Ed25519 cryptographic signature. Downloads only unlock with a genuine purchased MM1-... license key.";
+          errEl.textContent = "Invalid Ed25519 cryptographic signature.";
           errEl.classList.remove("hidden");
         }
         return;

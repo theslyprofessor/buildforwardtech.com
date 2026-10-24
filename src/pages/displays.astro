@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 ---
 
 <PageLayout
-  title="ScreenStage — Every Room Remembers Every Screen (Mac, Windows & Linux) | Build Forward Tech"
-  description="Plug into any desk, studio, or conference room and ScreenStage automatically recognizes the room and sets every monitor, TV, and laptop screen in one click. Available for macOS, Windows 10/11, and Linux."
+  title="ScreenStage - Every Room Remembers Every Screen (Mac, Windows & Linux) | Build Forward Tech"
+  description="Plug into any desk, studio, or conference room and ScreenStage automatically recognizes the room and sets every monitor, TV, and laptop screen in one click. Free forever (ad-supported) or pay once to remove ads."
 >
   <!-- Hero Section -->
   <section class="relative pt-28 pb-20 overflow-hidden">
@@ -18,6 +18,8 @@ import { Badge } from "@/components/ui/badge";
           <span class="text-white font-bold">ScreenStage v1.1</span>
           <span class="text-slate-500">•</span>
           <span>For Mac, Windows &amp; Linux</span>
+          <span class="text-slate-500">•</span>
+          <span class="text-emerald-400 font-bold">Free Forever (Ad-Supported)</span>
         </div>
 
         <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-[1.08]">
@@ -29,35 +31,46 @@ import { Badge } from "@/components/ui/badge";
           Stop dragging display boxes around in System Settings every time you plug into a dock, KVM switch, or room TV. <strong>ScreenStage</strong> automatically recognizes which room you are in, remembers every monitor you have ever plugged in, and switches your entire multi-screen layout in one click.
         </p>
 
-        <!-- Purchase CTAs (Downloads gated behind purchase / license key) -->
-        <div class="flex flex-wrap justify-center gap-4 mb-5">
+        <!-- Free Forever Direct Downloads + Pay Once to Remove Ads -->
+        <div class="flex flex-wrap justify-center gap-3 mb-5">
+          <a
+            href="/api/download?platform=macos"
+            class="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-400 to-sky-400 text-slate-950 font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/25 hover:opacity-95 transition"
+          >
+            Download Free Forever · macOS (.zip)
+          </a>
+          <a
+            href="/api/download?platform=windows"
+            class="inline-flex items-center gap-2 px-5 py-4 rounded-xl border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-bold text-sm hover:bg-emerald-500/25 transition"
+          >
+            Windows 10/11 (.zip)
+          </a>
+          <a
+            href="/api/download?platform=linux-x64"
+            class="inline-flex items-center gap-2 px-5 py-4 rounded-xl border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-bold text-sm hover:bg-emerald-500/25 transition"
+          >
+            Linux x64 (.tar.gz)
+          </a>
           <button
             type="button"
             onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('personal')"
-            class="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-extrabold text-base shadow-xl shadow-sky-500/25 hover:opacity-95 transition cursor-pointer"
+            class="inline-flex items-center gap-2 px-5 py-4 rounded-xl border-2 border-sky-400/50 bg-sky-500/15 text-white font-bold text-sm hover:bg-sky-500/25 transition cursor-pointer"
           >
-            Buy Personal License — $19
-          </button>
-          <button
-            type="button"
-            onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('team')"
-            class="inline-flex items-center gap-2 px-7 py-4 rounded-xl border-2 border-sky-400/50 bg-sky-500/10 text-white font-bold text-base hover:bg-sky-500/20 transition cursor-pointer"
-          >
-            Buy Studio &amp; Team Pack — $199 (15 Computers)
+            Remove Ads Forever ($19 One-Time)
           </button>
         </div>
 
         <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
-          <span>✓ One-time purchase (no subscription)</span>
+          <span class="text-emerald-400 font-semibold">✓ Free Forever (Ad-Supported)</span>
           <span>•</span>
-          <span>✓ Includes macOS, Windows 10/11 &amp; Linux downloads</span>
+          <span>✓ Pay once ($19 Personal / $199 Studio Pack) to remove ads forever</span>
           <span>•</span>
           <button
             type="button"
             onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('verify')"
             class="text-sky-400 underline hover:text-emerald-300 cursor-pointer"
           >
-            Already have a license key? Unlock download →
+            Already have an Ad-Free MM1-... key? Verify →
           </button>
         </div>
       </div>
@@ -217,27 +230,76 @@ import { Badge } from "@/components/ui/badge";
     </div>
   </section>
 
-  <!-- Pricing & Licensing Section (Commercial Tiers Only — Downloads Unlock After Purchase) -->
+  <!-- Pricing & Licensing Section (Free Forever Ad-Supported + Pay Once to Remove Ads) -->
   <section id="pricing" class="py-20 border-t border-border/60">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <Badge variant="outline" class="mb-3">Simple One-Time Pricing</Badge>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Buy Once. Use Across All Your Screens.</h2>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <Badge variant="outline" class="mb-3">Free Forever + One-Time Ad-Free Upgrade</Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Download Free Forever. Pay Once to Remove Ads.</h2>
         <p class="text-muted-foreground">
-          No recurring subscriptions. Your license key and installers for macOS, Windows, and Linux unlock immediately after checkout.
+          Every person can download and run the full version of ScreenStage free forever (supported by a subtle studio sponsor strip). Want a 100% ad-free experience? Pay once for an offline Ed25519 license key.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Free Forever Card ($0) -->
+        <div class="rounded-2xl border border-emerald-400/50 bg-gradient-to-b from-emerald-500/10 to-transparent p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
+                Free Forever (Ad-Supported)
+              </span>
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/40">
+                INSTANT DOWNLOAD
+              </span>
+            </div>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="text-4xl font-extrabold">$0</span>
+              <span class="text-sm text-muted-foreground">forever · no credit card required</span>
+            </div>
+            <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
+              Full multi-room detection, unlimited presets, and all platform builds unlocked forever with a subtle footer sponsor banner.
+            </p>
+            <ul class="space-y-2.5 text-sm mb-8">
+              <li>✓ Full ScreenStage v1.1 feature set unlocked forever</li>
+              <li>✓ Immediate download with zero account or trial timer</li>
+              <li>✓ Includes macOS, Windows 10/11, and Linux builds</li>
+              <li>✓ Upgrade to Ad-Free anytime with an <code>MM1-...</code> key</li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <a
+              href="/api/download?platform=macos"
+              class="block w-full py-3 px-4 rounded-xl border border-emerald-400/50 bg-emerald-500/20 text-emerald-200 text-center font-extrabold text-xs hover:bg-emerald-500/30 transition"
+            >
+              Download Free Forever · macOS (.zip)
+            </a>
+            <div class="grid grid-cols-2 gap-2">
+              <a
+                href="/api/download?platform=windows"
+                class="block py-2.5 px-3 rounded-lg border border-white/15 bg-white/5 text-center font-bold text-xs hover:bg-white/10 transition"
+              >
+                Windows (.zip)
+              </a>
+              <a
+                href="/api/download?platform=linux-x64"
+                class="block py-2.5 px-3 rounded-lg border border-white/15 bg-white/5 text-center font-bold text-xs hover:bg-white/10 transition"
+              >
+                Linux (.tar.gz)
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Personal License Card ($19) -->
-        <div class="rounded-2xl border-2 border-sky-400 bg-gradient-to-b from-sky-500/10 to-transparent p-8 flex flex-col justify-between shadow-xl shadow-sky-500/10">
+        <div class="rounded-2xl border-2 border-sky-400 bg-gradient-to-b from-sky-500/10 to-transparent p-7 flex flex-col justify-between shadow-xl shadow-sky-500/10">
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">
-                Personal License
+                Ad-Free Personal License
               </span>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-sky-400 text-slate-950">
-                MOST POPULAR
+                REMOVE ADS FOREVER
               </span>
             </div>
             <div class="flex items-baseline gap-2 mb-4">
@@ -245,13 +307,13 @@ import { Badge } from "@/components/ui/badge";
               <span class="text-sm text-muted-foreground">one-time · up to 3 personal computers</span>
             </div>
             <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
-              Ideal for individuals switching monitors between a home desk, living room KVM TV, and office or travel setup.
+              Removes all sponsor banners forever across your personal Mac, Windows, and Linux computers.
             </p>
             <ul class="space-y-2.5 text-sm mb-8">
-              <li>✓ Activate on up to <strong>3 personal machines</strong> (Mac, Windows, or Linux)</li>
+              <li>✓ <strong>Removes all ads forever</strong> on up to <strong>3 personal machines</strong></li>
               <li>✓ Unlimited rooms, monitor histories &amp; 1-click role presets</li>
               <li>✓ Includes signed <code>ScreenStage.app</code>, <code>ScreenStage.exe</code> &amp; Linux binaries</li>
-              <li>✓ Automatic software updates &amp; built-in diagnostic support</li>
+              <li>✓ Offline Ed25519 <code>MM1-...</code> key with zero cloud dependency</li>
             </ul>
           </div>
           <button
@@ -259,16 +321,16 @@ import { Badge } from "@/components/ui/badge";
             onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('personal')"
             class="block w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 text-center font-extrabold text-sm hover:opacity-95 transition cursor-pointer shadow-lg shadow-sky-500/20"
           >
-            Buy Personal License ($19) →
+            Remove Ads Forever ($19) →
           </button>
         </div>
 
-        <!-- Studio & Team Pack Card ($79) -->
-        <div class="rounded-2xl border border-emerald-400/50 bg-gradient-to-b from-emerald-500/10 to-transparent p-8 flex flex-col justify-between">
+        <!-- Studio & Team Pack Card ($199) -->
+        <div class="rounded-2xl border border-emerald-400/50 bg-gradient-to-b from-emerald-500/10 to-transparent p-7 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
-                Studio &amp; Team Pack
+                Ad-Free Studio &amp; Team Pack
               </span>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/40">
                 UP TO 15 COMPUTERS
@@ -279,10 +341,10 @@ import { Badge } from "@/components/ui/badge";
               <span class="text-sm text-muted-foreground">one-time · studios, labs &amp; production teams</span>
             </div>
             <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
-              Standardize multi-monitor rooms across recording studios, classrooms, edit bays, and shared workstations.
+              Standardize ad-free multi-monitor rooms across recording studios, classrooms, edit bays, and shared workstations.
             </p>
             <ul class="space-y-2.5 text-sm mb-8">
-              <li>✓ Activate on up to <strong>15 studio, lab, or office computers</strong></li>
+              <li>✓ <strong>Removes all ads forever</strong> on up to <strong>15 studio or lab computers</strong></li>
               <li>✓ Single-Room Desktop mode for dedicated room machines</li>
               <li>✓ Share room presets across macOS, Windows &amp; Linux workstations</li>
               <li>✓ Commercial invoice + ACH / Purchase Order support</li>
@@ -293,7 +355,7 @@ import { Badge } from "@/components/ui/badge";
             onclick="window.openDisplaysCheckout && window.openDisplaysCheckout('team')"
             class="block w-full py-3.5 px-4 rounded-xl border-2 border-emerald-400 bg-emerald-500/15 text-white text-center font-bold text-sm hover:bg-emerald-500/25 transition cursor-pointer"
           >
-            Buy Studio &amp; Team Pack ($199) →
+            Buy Ad-Free Studio Pack ($199) →
           </button>
         </div>
       </div>

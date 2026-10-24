@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#0e7490"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#bg)" stroke="#38bdf8" stroke-opacity="0.45" stroke-width="4"/>
+  <!-- Top Menu Bar Strip -->
+  <rect x="28" y="42" width="200" height="36" rx="12" fill="#020617" stroke="#38bdf8" stroke-opacity="0.6" stroke-width="2.5"/>
+  <!-- Notch indicator -->
+  <rect x="96" y="42" width="44" height="16" rx="6" fill="#1e293b"/>
+  <!-- Pinned Rightmost Slots -->
+  <rect x="148" y="50" width="20" height="20" rx="5" fill="#10b981"/>
+  <rect x="174" y="50" width="20" height="20" rx="5" fill="#38bdf8"/>
+  <rect x="200" y="50" width="20" height="20" rx="5" fill="#f59e0b"/>
+  <!-- Popover Card -->
+  <rect x="36" y="92" width="184" height="126" rx="18" fill="#090d16" stroke="#34d399" stroke-opacity="0.55" stroke-width="2.5"/>
+  <rect x="52" y="110" width="46" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="105" y="110" width="46" height="36" rx="8" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <rect x="158" y="110" width="46" height="36" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Order Slots -->
+  <rect x="52" y="158" width="152" height="18" rx="6" fill="url(#pill)" opacity="0.9"/>
+  <rect x="52" y="184" width="116" height="16" rx="6" fill="#1e293b"/>
+</svg>

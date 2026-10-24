@@ -1,0 +1,60 @@
+---
+import ProductStorefrontPage from "@/components/ProductStorefrontPage.astro";
+---
+
+<ProductStorefrontPage
+  productId="barstage"
+  productName="BarStage"
+  version="v1.0"
+  platformBadge="For macOS 14+ (Native SwiftUI & AXExtrasMenuBar)"
+  iconSrc="/images/barstage-icon.svg"
+  uiPreviewSrc="/images/barstage-ui-preview.svg"
+  heroTitle="Meet BarStage."
+  heroGradientSubtitle="Pin Your Own Apps First & Control Every macOS Menu Bar Slot."
+  heroDescription="BarStage puts your own menu bar apps first in a dedicated My App Bar dock, rescues icons swallowed behind the MacBook camera notch so you can open them in one click, and physically reorders your macOS menu bar slots (#1 rightmost to leftmost) via automated Command-drag."
+  pricePersonal="$9"
+  pricePersonalCentsLabel="900"
+  priceTeam="$89"
+  features={[
+    {
+      step: "01 / My App Bar Dock",
+      title: "Your Own Apps Always First",
+      desc: "Automatically pins ScreenStage, QuietPlease, Tidy, Loops, Blackbox, Ambient, MIDI Bridge, AI Writer, and Herdr into a dedicated top dock.",
+      colorClass: "text-emerald-400",
+    },
+    {
+      step: "02 / Notch Rescue",
+      title: "Open Notch-Hidden Icons in 1 Click",
+      desc: "Detects menu bar items shoved left of x=575 behind the MacBook camera notch and opens their menus directly via Accessibility AXPress.",
+      colorClass: "text-amber-400",
+    },
+    {
+      step: "03 / Exact Slot Order",
+      title: "Automated Cmd-Drag Reordering",
+      desc: "Set the exact #1 rightmost to leftmost slot order for every menu bar app and apply it to the live macOS menu bar in one click.",
+      colorClass: "text-sky-400",
+    },
+  ]}
+  personalBullets={[
+    "Signed native BarStage.app for macOS 14+ (Apple Silicon & Intel)",
+    "Dedicated My App Bar dock + 1-click Notch Rescue for hidden icons",
+    "Exact #1 rightmost-to-leftmost slot ordering with automated Cmd-drag",
+    "Zero SwiftBar or Hammerspoon dependencies (standalone SwiftUI binary)",
+    "Offline Ed25519 MM1-... license key for up to 3 personal Macs",
+  ]}
+  teamBullets={[
+    "Removes sponsor banners across up to 25 studio, classroom, or lab Macs",
+    "Standardizes menu bar layouts across shared recording and edit bays",
+    "Persists slot ordering in ~/.config/barstage/config.json for easy deployment",
+    "Commercial & institutional receipt for department purchase orders",
+    "Priority support from Build Forward Tech & MusicMind",
+  ]}
+  downloads={[
+    {
+      id: "dlBarStageZip",
+      label: "macOS App Bundle (.zip)",
+      sublabel: "BarStage-macOS-v1.0.0.zip",
+      platformParam: "barstage-zip",
+    },
+  ]}
+/>
