@@ -1,0 +1,68 @@
+---
+import ProductStorefrontPage from "@/components/ProductStorefrontPage.astro";
+---
+
+<ProductStorefrontPage
+  productId="trackcascade"
+  productName="TrackCascade"
+  version="v1.0"
+  platformBadge="For Ableton Live 11 & 12 (macOS & Windows)"
+  iconSrc="/images/trackcascade-icon-1024.png"
+  uiPreviewSrc="/images/trackcascade-ui-preview.png"
+  heroTitle="Meet TrackCascade."
+  heroGradientSubtitle="Pro Tools-Speed Track Setup & Cascading I/O for Ableton Live."
+  heroDescription="TrackCascade (abletools) brings instant batch track creation and smart mono/stereo cascading hardware I/O to Ableton Live. Spin up 16 drum or synth tracks by count, type, name, and record-arm in one undo step, and automatically fan stereo pairs (1/2, 5/6) and mono channels (3, 4) across your audio interface."
+  pricePersonal="$29"
+  pricePersonalCentsLabel="2900"
+  priceTeam="$249"
+  launchVideoSrc="/videos/trackcascade-launch.mp4"
+  verticalReelSrc="/videos/trackcascade-reel-9x16.mp4"
+  features={[
+    {
+      step: "01 / New Tracks Modal",
+      title: "Batch Track Creation (.ablx)",
+      desc: "Right-click in Ableton Live to batch-create Audio and MIDI tracks with custom prefixes and record-arm in a single undo step.",
+      colorClass: "text-amber-400",
+    },
+    {
+      step: "02 / Pair-Aware I/O",
+      title: "Smart Stereo & Mono Cascade",
+      desc: "Automatically allocates stereo pairs (Out 1/2, Out 5/6) and mono channels (Out 3, Out 4) without overlapping hardware channels.",
+      colorClass: "text-sky-400",
+    },
+    {
+      step: "03 / M4L + CLI",
+      title: "Session Presets in 1 Click",
+      desc: "Includes the signed .ablx extension, Max for Live cascade-router device, and CLI preset runner for 16-ch drum and console stem setups.",
+      colorClass: "text-emerald-400",
+    },
+  ]}
+  personalBullets={[
+    "Signed double-click TrackCascade-New-Tracks-v1.0.0.ablx extension",
+    "Max for Live cascade-router device for Live 11 & 12 (macOS & Windows)",
+    "Pair-aware mono/stereo hardware input & output cascading",
+    "Pre-built drum tracking & SSL/console stem routing presets",
+    "Offline Ed25519 license key for up to 3 personal studio computers",
+  ]}
+  teamBullets={[
+    "Activates up to 25 studio workstations or college media lab seats",
+    "Complete bundle (.ablx + Max for Live + CLI automation + lab install guide)",
+    "Standardizes tracking templates across multi-room recording facilities",
+    "Commercial & institutional invoice for department purchase orders",
+    "Priority support from Build Forward Tech & MusicMind",
+  ]}
+  downloads={[
+    {
+      id: "dlTcBundle",
+      label: "Complete Bundle (.zip)",
+      sublabel: ".ablx + Max for Live + CLI + Presets",
+      platformParam: "trackcascade-bundle",
+    },
+    {
+      id: "dlTcAblx",
+      label: "Extension Only (.ablx)",
+      sublabel: "TrackCascade-New-Tracks-v1.0.0.ablx",
+      platformParam: "trackcascade-ablx",
+    },
+  ]}
+/>

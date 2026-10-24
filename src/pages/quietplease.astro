@@ -1,0 +1,68 @@
+---
+import ProductStorefrontPage from "@/components/ProductStorefrontPage.astro";
+---
+
+<ProductStorefrontPage
+  productId="quietplease"
+  productName="QuietPlease"
+  version="v0.3"
+  platformBadge="For macOS 14+ (SwiftUI & Accelerate DSP)"
+  iconSrc="/images/quietplease-icon-1024.png"
+  uiPreviewSrc="/images/quietplease-ui-preview.png"
+  heroTitle="Meet QuietPlease."
+  heroGradientSubtitle="A Real Audio Compressor Detector for Your Room."
+  heroDescription="QuietPlease runs a real-time audio compressor detector on your room microphone. Threshold, ratio, knee, attack, release, Peak vs RMS detection, a sidechain voice filter, and 32-band matched-filter sound training all work just like a studio plug-in—except when the room gets too loud, it puts a full-screen Quiet Please sign on every display."
+  pricePersonal="$15"
+  pricePersonalCentsLabel="1500"
+  priceTeam="$149"
+  launchVideoSrc="/videos/quietplease-launch.mp4"
+  verticalReelSrc="/videos/quietplease-reel-9x16.mp4"
+  features={[
+    {
+      step: "01 / 4 Live Scopes",
+      title: "Visual Compressor Engine",
+      desc: "See 15-second room history, the dB transfer curve knee, Peak vs RMS step response, and a 32-band spectrum analyzer at the same time.",
+      colorClass: "text-sky-400",
+    },
+    {
+      step: "02 / Train Mode",
+      title: "32-Band Matched Filter",
+      desc: "Record 3 seconds of talking or applause so QuietPlease catches conversation without triggering during music playback.",
+      colorClass: "text-emerald-400",
+    },
+    {
+      step: "03 / SPL Calibrated",
+      title: "Zero-Recording Privacy",
+      desc: "Calibrates to real dB SPL, uses ~3% of one CPU core alongside any DAW, and immediately discards audio samples.",
+      colorClass: "text-amber-400",
+    },
+  ]}
+  personalBullets={[
+    "Signed native QuietPlease.app for macOS 14+ (Apple Silicon & Intel)",
+    "4 real-time compressor scopes (History, Transfer Curve, Envelope, Spectrum)",
+    "32-band matched-filter Train Mode + A-weighted dB SPL calibration",
+    "Full-screen customizable Quiet Please sign across all displays",
+    "Offline Ed25519 license key for up to 3 personal or educator Macs",
+  ]}
+  teamBullets={[
+    "Activates up to 25 classroom, studio, or lab Macs",
+    "Includes both .dmg installer and deployable .zip bundle",
+    "Ideal for Recording Arts, music technology, and media classrooms",
+    "Commercial & institutional receipt for school/department purchase orders",
+    "Priority support from Build Forward Tech & MusicMind",
+  ]}
+  downloads={[
+    {
+      id: "dlQpDmg",
+      label: "macOS Installer (.dmg)",
+      sublabel: "QuietPlease-macOS-v0.3.0.dmg",
+      platformParam: "quietplease-dmg",
+    },
+    {
+      id: "dlQpZip",
+      label: "macOS App Bundle (.zip)",
+      sublabel: "QuietPlease-macOS-v0.3.0.zip",
+      platformParam: "quietplease-zip",
+    },
+  ]}
+/>

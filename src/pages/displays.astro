@@ -646,6 +646,7 @@ import { Badge } from "@/components/ui/badge";
             mailtoEl.href = "mailto:vinnie@buildforwardtech.com?subject=" + subj + "&body=" + bodyText;
           }
           if (invBox) invBox.classList.remove("hidden");
+          window.startOrderPolling(data.orderId);
           return;
         }
       } catch (e) {
@@ -662,6 +663,23 @@ import { Badge } from "@/components/ui/badge";
         if (memoEl2) memoEl2.textContent = fallbackOrderId + " (" + email + ")";
         if (invBox2) invBox2.classList.remove("hidden");
       }
+    };
+
+    var activeOrderPollTimer = null;
+    window.startOrderPolling = function (orderId) {
+      if (activeOrderPollTimer) clearInterval(activeOrderPollTimer);
+      activeOrderPollTimer = setInterval(async function () {
+        try {
+          var res = await fetch("/api/orders/status?orderId=" + encodeURIComponent(orderId));
+          if (res.ok) {
+            var data = await res.json();
+            if (data && data.ok && data.status === "paid" && data.licenseKey) {
+              clearInterval(activeOrderPollTimer);
+              showUnlockedDownloads(data.licenseKey, data.payload, data.downloads);
+            }
+          }
+        } catch (e) {}
+      }, 4000);
     };
 
     // Auto-verify returning Stripe Checkout sessions (?checkout_session_id=cs_...)

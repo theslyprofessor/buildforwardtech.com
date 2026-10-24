@@ -1,0 +1,607 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+
+interface DownloadOption {
+  id: string;
+  label: string;
+  sublabel: string;
+  platformParam: string;
+}
+
+interface FeatureCard {
+  step: string;
+  title: string;
+  desc: string;
+  colorClass: string;
+}
+
+interface Props {
+  productId: "quietplease" | "trackcascade";
+  productName: string;
+  version: string;
+  platformBadge: string;
+  iconSrc: string;
+  uiPreviewSrc: string;
+  heroTitle: string;
+  heroGradientSubtitle: string;
+  heroDescription: string;
+  pricePersonal: string;
+  pricePersonalCentsLabel: string;
+  priceTeam: string;
+  launchVideoSrc: string;
+  verticalReelSrc: string;
+  features: FeatureCard[];
+  personalBullets: string[];
+  teamBullets: string[];
+  downloads: DownloadOption[];
+}
+
+const {
+  productId,
+  productName,
+  version,
+  platformBadge,
+  iconSrc,
+  uiPreviewSrc,
+  heroTitle,
+  heroGradientSubtitle,
+  heroDescription,
+  pricePersonal,
+  priceTeam,
+  launchVideoSrc,
+  verticalReelSrc,
+  features,
+  personalBullets,
+  teamBullets,
+  downloads,
+} = Astro.props;
+---
+
+<PageLayout
+  title={`${productName} — ${heroGradientSubtitle} | Build Forward Tech`}
+  description={heroDescription}
+>
+  <section class="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 left-1/2 h-[540px] w-[920px] -translate-x-1/2 rounded-full bg-sky-500/15 blur-[130px]"></div>
+      <div class="absolute top-60 right-10 h-[360px] w-[360px] rounded-full bg-emerald-500/10 blur-[110px]"></div>
+    </div>
+
+    <div class="container-narrow relative z-10 text-center">
+      <div class="inline-flex items-center gap-3 rounded-full border border-sky-400/35 bg-slate-900/90 px-5 py-2 text-sm font-semibold text-sky-300 mb-6 shadow-lg shadow-sky-950/50">
+        <img src={iconSrc} alt={`${productName} Icon`} class="h-7 w-7 rounded-md" />
+        <span class="text-white font-bold">{productName} {version}</span>
+        <span class="text-slate-500">•</span>
+        <span>{platformBadge}</span>
+      </div>
+
+      <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05]">
+        {heroTitle}<br />
+        <span class="bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+          {heroGradientSubtitle}
+        </span>
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-3xl text-lg sm:text-xl text-slate-300 leading-relaxed">
+        {heroDescription}
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <button
+          type="button"
+          onclick="window.openProductCheckout('personal')"
+          class="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 px-8 py-4 text-base font-extrabold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:brightness-110 cursor-pointer"
+        >
+          <span>Buy {productName} — {pricePersonal} Personal / {priceTeam} Team Pack</span>
+        </button>
+
+        <button
+          type="button"
+          onclick="window.openProductCheckout('verify')"
+          class="inline-flex items-center gap-2 rounded-xl border border-sky-400/35 bg-sky-500/10 px-6 py-4 text-sm font-bold text-sky-300 transition hover:bg-sky-500/20 cursor-pointer"
+        >
+          <span>Already Purchased? Enter License Key to Download</span>
+        </button>
+      </div>
+
+      <!-- 16:9 Launch Video Player -->
+      <div class="mt-14 rounded-2xl border border-white/15 bg-slate-950/90 p-2 sm:p-3 shadow-2xl shadow-sky-950/40">
+        <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/10 text-xs text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+            <span class="ml-2 font-mono text-slate-300">
+              🎬 {productName} Overview (27s) — Turn on sound for audio
+            </span>
+          </div>
+          <span class="font-mono text-sky-400 hidden sm:inline">{productName} {version}</span>
+        </div>
+        <video
+          class="w-full rounded-xl mt-2 bg-black aspect-video"
+          controls
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src={launchVideoSrc} type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- UI Preview + 9:16 Vertical Reel Section -->
+  <section class="py-16 border-t border-white/10 bg-slate-950/40">
+    <div class="container-narrow">
+      <div class="grid gap-10 lg:grid-cols-12 items-center rounded-3xl border border-sky-500/25 bg-gradient-to-br from-slate-900/95 via-slate-950 to-emerald-950/20 p-8 sm:p-12">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-300 mb-4">
+            Native Studio Interface
+          </div>
+          <h3 class="font-display text-2xl sm:text-4xl font-bold text-white leading-tight mb-6">
+            Designed for Real Classrooms, Tracking Rooms, and Production Studios
+          </h3>
+          <img
+            src={uiPreviewSrc}
+            alt={`${productName} Interface Preview`}
+            class="w-full rounded-2xl border border-white/15 shadow-2xl mb-6"
+            loading="lazy"
+          />
+          <div class="grid gap-4 sm:grid-cols-3">
+            {features.map((f) => (
+              <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <div class={`text-xs font-bold uppercase tracking-wider mb-1 ${f.colorClass}`}>
+                  {f.step}
+                </div>
+                <div class="text-sm font-bold text-white mb-1">{f.title}</div>
+                <p class="text-xs text-slate-400 leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-[270px] sm:w-[300px] rounded-[2rem] border-2 border-white/15 bg-black p-2.5 shadow-2xl shadow-sky-950/50">
+            <div class="flex items-center justify-between px-3 py-1.5 text-[11px] font-mono text-slate-400">
+              <span>9:16 VERTICAL REEL</span>
+              <span class="text-emerald-400">● 1080×1920 60FPS</span>
+            </div>
+            <video
+              class="w-full rounded-[1.4rem] bg-slate-950 aspect-[9/16]"
+              controls
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src={verticalReelSrc} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial Pricing & Licensing -->
+  <section id="pricing" class="py-20 border-t border-white/10">
+    <div class="container-narrow">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">
+          Pricing &amp; Licensing
+        </span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3">
+          One-Time Purchase. Own It Forever.
+        </h2>
+        <p class="mt-4 text-slate-400">
+          No subscriptions. No cloud account required. Purchase a license key once to unlock instant signed downloads.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+        <!-- Personal License -->
+        <div class="rounded-2xl border-2 border-sky-400/60 bg-gradient-to-b from-sky-950/40 to-slate-900/90 p-8 flex flex-col justify-between shadow-xl shadow-sky-950/30 relative">
+          <div class="absolute -top-3.5 right-6 rounded-full bg-gradient-to-r from-sky-400 to-emerald-400 px-3.5 py-1 text-xs font-extrabold text-slate-950">
+            MOST POPULAR
+          </div>
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sky-400">
+              Personal &amp; Educator License
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="font-display text-5xl font-extrabold text-white">{pricePersonal}</span>
+              <span class="text-sm text-slate-400">one-time · up to 3 computers</span>
+            </div>
+            <ul class="mt-6 space-y-2.5 text-sm text-slate-200">
+              {personalBullets.map((b) => (
+                <li class="flex items-center gap-2">
+                  <span class="text-emerald-400">✓</span> {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="mt-8 space-y-3">
+            <button
+              type="button"
+              onclick="window.openProductCheckout('personal')"
+              class="block w-full rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 px-5 py-3.5 text-center text-sm font-extrabold text-slate-950 transition hover:brightness-110 cursor-pointer"
+            >
+              Buy Personal License ({pricePersonal}) →
+            </button>
+          </div>
+        </div>
+
+        <!-- Studio & Lab Pack -->
+        <div class="rounded-2xl border border-purple-400/40 bg-slate-900/75 p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-purple-300">
+              Classroom, Studio &amp; Lab Pack
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="font-display text-5xl font-extrabold text-white">{priceTeam}</span>
+              <span class="text-sm text-slate-400">one-time · up to 25 computers</span>
+            </div>
+            <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+              {teamBullets.map((b) => (
+                <li class="flex items-center gap-2">
+                  <span class="text-purple-400">✓</span> {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="mt-8 space-y-3">
+            <button
+              type="button"
+              onclick="window.openProductCheckout('team')"
+              class="block w-full rounded-xl border border-purple-400/50 bg-purple-500/20 px-5 py-3.5 text-center text-sm font-extrabold text-purple-200 transition hover:bg-purple-500/30 cursor-pointer"
+            >
+              Buy Classroom &amp; Studio Pack ({priceTeam}) →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Self-Hosted Storefront & Ed25519 License Verification Modal -->
+  <div
+    id="productCheckoutModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/85 backdrop-blur-md p-4"
+  >
+    <div class="relative w-full max-w-lg rounded-2xl border border-sky-400/40 bg-slate-900 p-6 sm:p-8 shadow-2xl">
+      <button
+        type="button"
+        onclick="window.closeProductCheckout()"
+        class="absolute top-4 right-4 rounded-lg px-2.5 py-1 text-sm text-slate-400 hover:bg-white/10 hover:text-white cursor-pointer"
+      >
+        ✕
+      </button>
+
+      <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300 mb-3">
+        <img src={iconSrc} alt="" class="h-4 w-4 rounded-sm" />
+        <span>{productName} {version} · Verified License Gate</span>
+      </div>
+
+      <h3 id="checkoutModalTitle" class="font-display text-2xl font-bold text-white">
+        Get Your {productName} License
+      </h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+        Downloads are unlocked with a cryptographically signed <code class="text-sky-300">MM1-...</code> license key issued immediately upon payment.
+      </p>
+
+      <!-- Step 1: Purchase New License -->
+      <div id="checkoutPurchaseSection" class="mt-5 space-y-3">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+            Your Email (for license key &amp; receipt)
+          </label>
+          <input
+            id="checkoutEmailInput"
+            type="email"
+            placeholder="you@studio.com"
+            class="w-full rounded-xl border border-white/15 bg-slate-950 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none"
+          />
+          <p id="checkoutEmailError" class="hidden mt-1.5 text-xs text-rose-400">
+            Please enter a valid email address first.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onclick="window.startProductCheckout('personal')"
+          class="flex w-full items-center justify-between rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 px-5 py-3.5 text-sm font-extrabold text-slate-950 hover:brightness-110 cursor-pointer"
+        >
+          <span>Pay {pricePersonal} — Personal License (3 Computers)</span>
+          <span>Checkout →</span>
+        </button>
+
+        <button
+          type="button"
+          onclick="window.startProductCheckout('team')"
+          class="flex w-full items-center justify-between rounded-xl border border-purple-400/40 bg-purple-500/15 px-5 py-3.5 text-sm font-bold text-purple-200 hover:bg-purple-500/25 cursor-pointer"
+        >
+          <span>Pay {priceTeam} — Studio &amp; Lab Pack (25 Computers)</span>
+          <span>Checkout →</span>
+        </button>
+
+        <!-- Pending Order Box (0%-Fee Self-Hosted Storefront Invoice) -->
+        <div id="checkoutOrderInvoiceBox" class="hidden mt-4 rounded-xl border border-amber-400/40 bg-amber-950/30 p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-300">
+              Order Created · Awaiting Payment Verification
+            </span>
+            <span id="invoiceOrderId" class="font-mono text-xs font-bold text-white bg-amber-500/20 border border-amber-400/40 px-2 py-0.5 rounded"></span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed">
+            To keep prices low with <strong>0% middleman platform fees</strong>, complete your <strong id="invoiceAmountText" class="text-emerald-300"></strong> payment via instant transfer or studio invoice:
+          </p>
+          <div class="rounded-lg bg-slate-950/90 border border-white/10 p-3 text-xs space-y-1.5 font-mono">
+            <div><span class="text-slate-400">Zelle / Apple Cash:</span> <span class="text-sky-300 select-all">vinnie@buildforwardtech.com</span></div>
+            <div><span class="text-slate-400">Studio / PO Invoice:</span> <span class="text-sky-300 select-all">info@musicmind.biz</span></div>
+            <div><span class="text-slate-400">Payment Memo:</span> <span id="invoiceMemoText" class="text-amber-300 select-all"></span></div>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-relaxed">
+            Keep this window open or paste your <code class="text-emerald-300">MM1-...</code> key below once issued to <span id="invoiceEmailText" class="font-semibold text-white"></span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2: Existing License Key Verification Gate -->
+      <div class="mt-6 pt-5 border-t border-white/10">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+          Already Purchased? Paste Your License Key to Unlock Downloads
+        </label>
+        <div class="flex gap-2">
+          <input
+            id="existingLicenseInput"
+            type="text"
+            placeholder="MM1-..."
+            class="flex-1 rounded-xl border border-white/15 bg-slate-950 px-3.5 py-2 text-xs font-mono text-emerald-300 placeholder-slate-600 focus:border-sky-400 focus:outline-none"
+          />
+          <button
+            type="button"
+            onclick="window.unlockProductWithKey()"
+            class="rounded-xl border border-sky-400/40 bg-sky-500/20 px-4 py-2 text-xs font-bold text-sky-200 hover:bg-sky-500/30 cursor-pointer"
+          >
+            Verify &amp; Unlock
+          </button>
+        </div>
+        <p id="existingLicenseError" class="hidden mt-1.5 text-xs text-rose-400"></p>
+      </div>
+
+      <!-- Unlocked Download Section -->
+      <div id="checkoutLicenseBox" class="hidden mt-5 rounded-xl border border-emerald-400/40 bg-slate-950 p-4">
+        <div class="flex items-center justify-between text-xs text-slate-400 mb-1.5">
+          <span class="text-emerald-400 font-bold">✓ Verified License Key</span>
+          <span id="verifiedLicenseTier" class="font-mono text-[11px] text-sky-300"></span>
+        </div>
+        <div class="text-[11px] text-slate-400 mb-2">
+          Licensed to: <span id="verifiedLicenseEmail" class="text-slate-200 font-mono"></span>
+        </div>
+        <code id="checkoutLicenseKey" class="block break-all text-xs text-emerald-300 font-mono select-all mb-4 p-2 rounded bg-slate-900 border border-white/10"></code>
+
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+          Unlocked Direct Downloads ({version}):
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {downloads.map((d) => (
+            <a
+              id={d.id}
+              data-platform={d.platformParam}
+              href="#"
+              class="product-dl-link rounded-lg bg-sky-500/20 border border-sky-400/40 px-3 py-2.5 text-center text-xs font-bold text-sky-200 hover:bg-sky-500/30"
+            >
+              <div>{d.label}</div>
+              <div class="text-[10px] font-normal text-slate-300">{d.sublabel}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ productId, productName, pricePersonal, priceTeam }}>
+    var PUBKEY_B64 = "lKfWuwe6m2o92MiIRoKZOf3u41hxthu9mO7m7oRa8vY=";
+
+    function b64UrlToUint8Array(b64url) {
+      var b64 = b64url.replace(/-/g, "+").replace(/_/g, "/");
+      while (b64.length % 4 !== 0) b64 += "=";
+      var bin = atob(b64);
+      var bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes;
+    }
+
+    async function verifyEd25519InBrowser(rawKey) {
+      try {
+        if (!rawKey || !rawKey.startsWith("MM1-")) return null;
+        var body = rawKey.slice(4);
+        var dot = body.indexOf(".");
+        if (dot <= 0) return null;
+        var payloadB64Url = body.slice(0, dot);
+        var sigB64Url = body.slice(dot + 1);
+        var sigBytes = b64UrlToUint8Array(sigB64Url);
+        if (sigBytes.length !== 64) return null;
+        var pubBytes = b64UrlToUint8Array(PUBKEY_B64);
+        var cryptoKey = await window.crypto.subtle.importKey(
+          "raw",
+          pubBytes,
+          { name: "Ed25519" },
+          false,
+          ["verify"]
+        );
+        var dataBytes = new TextEncoder().encode(payloadB64Url);
+        var valid = await window.crypto.subtle.verify("Ed25519", cryptoKey, sigBytes, dataBytes);
+        if (!valid) return null;
+        var payloadJson = new TextDecoder().decode(b64UrlToUint8Array(payloadB64Url));
+        return JSON.parse(payloadJson);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function showUnlockedDownloads(licenseKey, payload) {
+      var invoiceBox = document.getElementById("checkoutOrderInvoiceBox");
+      if (invoiceBox) invoiceBox.classList.add("hidden");
+      var keyEl = document.getElementById("checkoutLicenseKey");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      var emailEl = document.getElementById("verifiedLicenseEmail");
+      var tierEl = document.getElementById("verifiedLicenseTier");
+      if (keyEl) keyEl.textContent = licenseKey;
+      if (emailEl && payload) emailEl.textContent = payload.e || "Verified Customer";
+      if (tierEl && payload) tierEl.textContent = (payload.t === "lab" ? "Studio & Lab Pack · " : "Personal License · ") + (payload.s || 3) + " seats";
+      var q = encodeURIComponent(licenseKey);
+      var links = document.querySelectorAll(".product-dl-link");
+      links.forEach(function (el) {
+        var plat = el.getAttribute("data-platform");
+        if (plat) {
+          el.setAttribute("href", "/api/download?platform=" + encodeURIComponent(plat) + "&key=" + q);
+        }
+      });
+      if (boxEl) boxEl.classList.remove("hidden");
+    }
+
+    window.openProductCheckout = function (mode) {
+      var modal = document.getElementById("productCheckoutModal");
+      var title = document.getElementById("checkoutModalTitle");
+      if (title) {
+        if (mode === "team") {
+          title.textContent = productName + " Studio & Lab Pack (" + priceTeam + ")";
+        } else if (mode === "verify") {
+          title.textContent = "Unlock " + productName + " Downloads";
+        } else {
+          title.textContent = productName + " Personal License (" + pricePersonal + ")";
+        }
+      }
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+    };
+
+    window.closeProductCheckout = function () {
+      var modal = document.getElementById("productCheckoutModal");
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    };
+
+    window.unlockProductWithKey = async function () {
+      var keyInput = document.getElementById("existingLicenseInput");
+      var errEl = document.getElementById("existingLicenseError");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      if (boxEl) boxEl.classList.add("hidden");
+      var key = keyInput && keyInput.value ? keyInput.value.trim() : "";
+      if (!key.startsWith("MM1-") || key.indexOf(".") === -1) {
+        if (errEl) {
+          errEl.textContent = "Invalid license key format. Genuine keys start with MM1- followed by a cryptographic Ed25519 signature.";
+          errEl.classList.remove("hidden");
+        }
+        return;
+      }
+      try {
+        var res = await fetch("/api/license/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ key: key, product: productId })
+        });
+        if (res.ok) {
+          var data = await res.json();
+          if (data && data.ok) {
+            if (errEl) errEl.classList.add("hidden");
+            showUnlockedDownloads(key, data.payload);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      var verifiedPayload = await verifyEd25519InBrowser(key);
+      if (!verifiedPayload) {
+        if (errEl) {
+          errEl.textContent = "Invalid Ed25519 cryptographic signature. Downloads only unlock with a genuine purchased MM1-... license key.";
+          errEl.classList.remove("hidden");
+        }
+        return;
+      }
+      if (errEl) errEl.classList.add("hidden");
+      showUnlockedDownloads(key, verifiedPayload);
+    };
+
+    var activeOrderPollTimer = null;
+    function startOrderPolling(orderId) {
+      if (activeOrderPollTimer) clearInterval(activeOrderPollTimer);
+      activeOrderPollTimer = setInterval(async function () {
+        try {
+          var res = await fetch("/api/orders/status?orderId=" + encodeURIComponent(orderId));
+          if (res.ok) {
+            var data = await res.json();
+            if (data && data.ok && data.status === "paid" && data.licenseKey) {
+              clearInterval(activeOrderPollTimer);
+              showUnlockedDownloads(data.licenseKey, data.payload);
+            }
+          }
+        } catch (e) {}
+      }, 4000);
+    }
+
+    window.startProductCheckout = async function (tierChoice) {
+      var emailEl = document.getElementById("checkoutEmailInput");
+      var errEl = document.getElementById("checkoutEmailError");
+      var boxEl = document.getElementById("checkoutLicenseBox");
+      if (boxEl) boxEl.classList.add("hidden");
+      var email = emailEl && emailEl.value ? emailEl.value.trim() : "";
+      if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+        if (errEl) errEl.classList.remove("hidden");
+        if (emailEl) emailEl.focus();
+        return;
+      }
+      if (errEl) errEl.classList.add("hidden");
+
+      try {
+        var res = await fetch("/api/checkout/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ product: productId, email: email, tier: tierChoice })
+        });
+        var data = await res.json();
+        if (data && data.ok && data.mode === "stripe_redirect" && data.checkoutUrl) {
+          window.location.href = data.checkoutUrl;
+          return;
+        }
+        if (data && data.ok && data.mode === "direct_invoice") {
+          var invBox = document.getElementById("checkoutOrderInvoiceBox");
+          var ordEl = document.getElementById("invoiceOrderId");
+          var amtEl = document.getElementById("invoiceAmountText");
+          var emEl = document.getElementById("invoiceEmailText");
+          var memoEl = document.getElementById("invoiceMemoText");
+          if (ordEl) ordEl.textContent = data.orderId;
+          if (amtEl) amtEl.textContent = data.amount + " (" + data.productName + ")";
+          if (emEl) emEl.textContent = data.email;
+          if (memoEl) memoEl.textContent = data.paymentInstructions.memo;
+          if (invBox) invBox.classList.remove("hidden");
+          startOrderPolling(data.orderId);
+          return;
+        }
+      } catch (e) {}
+    };
+
+    (async function () {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get("checkout_session_id");
+      if (sessionId) {
+        window.openProductCheckout("personal");
+        try {
+          var res = await fetch("/api/checkout/session?session_id=" + encodeURIComponent(sessionId));
+          if (res.ok) {
+            var data = await res.json();
+            if (data && data.ok && data.licenseKey) {
+              showUnlockedDownloads(data.licenseKey, data.payload);
+            }
+          }
+        } catch (e) {}
+      }
+    })();
+  </script>
+</PageLayout>
