@@ -98,7 +98,7 @@ export const LABS_PROJECTS = [
     fullName: "Multi-Monitor Room Detection & Preset Manager (Mac, Windows & Linux)",
     url: "/screenstage",
     tagline: "Every room remembers every screen",
-    description: "Plug into your home desk, recording studio, or conference room and ScreenStage automatically recognizes the room, remembers every monitor and KVM TV, hides screens you aren't using, and switches layouts in one click. Available for macOS, Windows 10/11, and Linux ($19 Personal / $79 Studio & Team Pack).",
+    description: "Plug into your home desk, recording studio, or conference room and ScreenStage automatically recognizes the room, remembers every monitor and KVM TV, hides screens you aren't using, and switches layouts in one click. Available for macOS, Windows 10/11, and Linux ($19 Personal / $199 Studio & Team Pack).",
     tag: "Mac · Windows · Linux · $19",
     status: "v1.1 — available",
     gradient: "from-sky-500/20 to-emerald-500/20",
