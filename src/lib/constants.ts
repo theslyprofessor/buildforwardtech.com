@@ -93,6 +93,28 @@ export const SERVICES = [
  */
 export const LABS_PROJECTS = [
   {
+    id: "blackbox",
+    name: "Blackbox",
+    fullName: "Always-On 24-Bit Lossless FLAC Multitrack DAW Safety Recorder (macOS 14+)",
+    url: "/blackbox",
+    tagline: "Never lose an un-armed take again, at 88.6% smaller file size",
+    description: "Taps directly into your macOS audio interface via an input-only CoreAudio AUHAL unit and records every channel continuously in the background in 24-bit Lossless FLAC (shrinking an 8-channel studio day from 33.2 GB down to 3.7 GB with 0 lost samples) plus sample-exact stem stitching. Free forever (ad-supported) or $19 one-time to remove ads ($149 Studio Pack).",
+    tag: "macOS 14+ · Free Forever ($19 Ad-Free)",
+    status: "available",
+    gradient: "from-emerald-500/20 to-sky-500/20",
+  },
+  {
+    id: "ambient",
+    name: "Ambient",
+    fullName: "Always-On Studio Audio Recorder, Whisper Metal Search & NAS Archive (macOS 14+)",
+    url: "/ambient",
+    tagline: "Every session recorded, transcribed on-device, and archived to your NAS",
+    description: "Sits in your macOS menu bar with dual-source live dBFS meters, continuously records MacBook Mic + studio interface audio, transcribes speech offline on Apple Silicon Metal via Whisper + Silero VAD, and keeps a fast 7-day rolling window on your laptop SSD while syncing forever to your NAS. Free forever (ad-supported) or $19 one-time to remove ads ($149 Studio Pack).",
+    tag: "macOS 14+ · Free Forever ($19 Ad-Free)",
+    status: "available",
+    gradient: "from-rose-500/20 to-sky-500/20",
+  },
+  {
     id: "barstage",
     name: "BarStage",
     fullName: "Pin Your Own Apps First & Control Every macOS Menu Bar Slot (macOS 14+)",
@@ -100,7 +122,7 @@ export const LABS_PROJECTS = [
     tagline: "Your own menu bar apps always first, never lost behind the notch",
     description: "Puts your own menu bar apps (ScreenStage, QuietPlease, Tidy, Loops, Blackbox, Ambient, MIDI Bridge, Herdr) first in a dedicated My App Bar dock, opens notch-hidden icons in one click via Accessibility AXPress, and physically reorders your macOS menu bar slots (#1 rightmost to leftmost) via automated Command-drag. Free forever (ad-supported) or $9 one-time to remove ads ($89 Studio Pack).",
     tag: "macOS 14+ · Free Forever ($9 Ad-Free)",
-    status: "v1.0 · available",
+    status: "available",
     gradient: "from-emerald-500/20 to-sky-500/20",
   },
   {
@@ -111,7 +133,7 @@ export const LABS_PROJECTS = [
     tagline: "Every room remembers every screen",
     description: "Plug into your home desk, recording studio, or conference room and ScreenStage automatically recognizes the room, remembers every monitor and KVM TV, hides screens you aren't using, and switches layouts in one click. Free forever (ad-supported) or $19 one-time to remove ads ($199 Studio & Team Pack).",
     tag: "Mac · Windows · Linux · Free Forever ($19 Ad-Free)",
-    status: "v1.1 · available",
+    status: "available",
     gradient: "from-sky-500/20 to-emerald-500/20",
   },
   {
@@ -122,7 +144,7 @@ export const LABS_PROJECTS = [
     tagline: "A real audio compressor detector for your room",
     description: "Runs a real audio compressor detector (Threshold, Ratio, Knee, Attack, Release, Peak vs RMS, Sidechain Filter, and 32-Band Sound Training) on a room microphone and puts a full-screen Quiet Please sign on every display when the room crosses threshold. Free forever (ad-supported) or $15 one-time to remove ads ($149 Classroom & Studio Pack).",
     tag: "macOS 14+ · Free Forever ($15 Ad-Free)",
-    status: "v0.3 · available",
+    status: "available",
     gradient: "from-emerald-500/20 to-teal-500/20",
   },
   {
@@ -133,7 +155,7 @@ export const LABS_PROJECTS = [
     tagline: "Pro Tools workflows inside Ableton Live",
     description: "Batch-create Audio and MIDI tracks by count, type, name, and record-arm in one undo step (.ablx), and automatically fan stereo pairs (1/2, 5/6) and mono channels (3, 4) across your hardware audio interface (.amxd + CLI). Free forever (ad-supported) or $29 one-time to remove ads ($249 Studio & Lab Pack).",
     tag: "Ableton Live 11 & 12 · Free Forever ($29 Ad-Free)",
-    status: "v1.0 · available",
+    status: "available",
     gradient: "from-orange-500/20 to-amber-500/20",
   },
   {
@@ -144,7 +166,7 @@ export const LABS_PROJECTS = [
     tagline: "Orchestrate parallel AI coding agents across workspaces",
     description: "A native-speed terminal workspace multiplexer for orchestrating parallel Claude Code, Gemini, and OpenCode sessions with visual pane dashboards, workspace naming, and menu bar quick-jump integration via BarStage.",
     tag: "macOS & Linux · Agent Multiplexer",
-    status: "v1.0 · active",
+    status: "active",
     gradient: "from-cyan-500/20 to-indigo-500/20",
   },
   {

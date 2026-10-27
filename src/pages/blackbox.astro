@@ -1,0 +1,62 @@
+---
+import ProductStorefrontPage from "@/components/ProductStorefrontPage.astro";
+---
+
+<ProductStorefrontPage
+  productId="blackbox"
+  productName="Blackbox"
+  version=""
+  platformBadge="For macOS 14+ (Native CoreAudio AUHAL + 24-Bit Lossless FLAC)"
+  iconSrc="/images/blackbox-icon.svg"
+  uiPreviewSrc="/images/barstage-ui-preview.svg"
+  launchVideoSrc="/videos/blackbox-launch-16x9.mp4"
+  verticalReelSrc="/videos/blackbox-reel-9x16.mp4"
+  heroTitle="Meet Blackbox."
+  heroGradientSubtitle="Always-On 24-Bit Lossless FLAC Multitrack DAW Safety Recorder."
+  heroDescription="Blackbox taps directly into your macOS audio interface via an input-only CoreAudio AUHAL unit and records every channel continuously in the background with 0 lost samples, native 24-bit lossless FLAC compression (88.6% smaller than WAV), and sample-exact stem stitching."
+  pricePersonal="$19"
+  pricePersonalCentsLabel="1900"
+  priceTeam="$149"
+  features={[
+    {
+      step: "01 / Input-Only CoreAudio AUHAL",
+      title: "Zero DAW Interference",
+      desc: "Captures every hardware channel alongside Pro Tools, Ableton Live, or Logic Pro at 1.3% CPU without touching your DAW buffer or master clock.",
+      colorClass: "text-emerald-400",
+    },
+    {
+      step: "02 / 24-Bit Lossless FLAC",
+      title: "88.6% Smaller Than WAV",
+      desc: "Hardware-accelerated Apple AudioToolbox 24-bit FLAC shrinks an 8-channel studio day from 33.2 GB down to 3.7 GB with bit-identical audio.",
+      colorClass: "text-sky-400",
+    },
+    {
+      step: "03 / Sample-Exact Stem Join",
+      title: "Continuous DAW Stems",
+      desc: "Stitches 10-minute safety chunks into one continuous per-channel stem with 0 frame drift, plus automatic nightly rsync to NAS storage.",
+      colorClass: "text-amber-400",
+    },
+  ]}
+  personalBullets={[
+    "Signed native Blackbox.app + blackbox-engine CLI for macOS 14+",
+    "Up to 64 simultaneous channels in 24-bit Lossless FLAC or WAV",
+    "Lock-free 10-second SPSC ring buffer between CoreAudio RT callback and disk",
+    "1-click sample-exact stem stitcher (blackbox join) for instant DAW import",
+    "Offline Ed25519 MM1-... license key for up to 3 personal or studio Macs",
+  ]}
+  teamBullets={[
+    "Removes sponsor banners across up to 25 tracking rooms, edit bays, or lab Macs",
+    "Automatic background launchd daemon with disk free-space guardrails",
+    "Built-in rsync archival to studio NAS servers after every session",
+    "Commercial & institutional receipt for department purchase orders",
+    "Priority support from Build Forward Tech & MusicMind",
+  ]}
+  downloads={[
+    {
+      id: "dlBlackboxZip",
+      label: "macOS App Bundle (.zip)",
+      sublabel: "Blackbox-macOS.zip",
+      platformParam: "blackbox-zip",
+    },
+  ]}
+/>

@@ -1,0 +1,62 @@
+---
+import ProductStorefrontPage from "@/components/ProductStorefrontPage.astro";
+---
+
+<ProductStorefrontPage
+  productId="ambient"
+  productName="Ambient"
+  version=""
+  platformBadge="For macOS 14+ (Dual-Source Recorder + Whisper Metal + NAS Archive)"
+  iconSrc="/images/ambient-icon.svg"
+  uiPreviewSrc="/images/barstage-ui-preview.svg"
+  launchVideoSrc="/videos/ambient-launch-16x9.mp4"
+  verticalReelSrc="/videos/ambient-reel-9x16.mp4"
+  heroTitle="Meet Ambient."
+  heroGradientSubtitle="Always-On Studio Audio Recorder, Instant Whisper Search & NAS Archive."
+  heroDescription="Ambient sits in your macOS menu bar with live dual-source dBFS meters, continuously records 5-minute Opus chunks and 24-bit interface stems, transcribes speech locally on Apple Silicon Metal via Whisper + Silero VAD, and automatically archives your studio history to your NAS while keeping a fast 7-day rolling window on your laptop SSD."
+  pricePersonal="$19"
+  pricePersonalCentsLabel="1900"
+  priceTeam="$149"
+  features={[
+    {
+      step: "01 / Menu Bar + Studio Window",
+      title: "Dual-Source Live Monitoring",
+      desc: "Simultaneously captures your MacBook microphone and studio interface with real-time dBFS meters and an in-app audio player.",
+      colorClass: "text-rose-400",
+    },
+    {
+      step: "02 / On-Device Whisper Metal",
+      title: "Search Every Word Spoken",
+      desc: "Silero VAD + Whisper on Apple Silicon GPU transcribes every session offline so you can search 31+ days of quotes in milliseconds.",
+      colorClass: "text-emerald-400",
+    },
+    {
+      step: "03 / 7-Day SSD + Forever NAS",
+      title: "Automatic Storage Tiering",
+      desc: "Keeps a lightweight 7-day rolling audio cache on your laptop SSD while syncing every recording and transcript to your NAS.",
+      colorClass: "text-sky-400",
+    },
+  ]}
+  personalBullets={[
+    "Signed native Ambient.app (menu bar item + 3-tab Studio Window) for macOS 14+",
+    "Simultaneous MacBook mic + USB/Thunderbolt audio interface capture",
+    "100% local on-device Whisper Metal transcription with Silero VAD filtering",
+    "Automatic 7-day local SSD retention + background rsync to NAS storage",
+    "Offline Ed25519 MM1-... license key for up to 3 personal Macs",
+  ]}
+  teamBullets={[
+    "Removes sponsor banners across up to 25 studio, classroom, or lab Macs",
+    "Centralized NAS archive support for multi-room production facilities",
+    "Full CLI + MCP integration (ambient last, ambient search, ambient archive)",
+    "Commercial & institutional receipt for department purchase orders",
+    "Priority support from Build Forward Tech & MusicMind",
+  ]}
+  downloads={[
+    {
+      id: "dlAmbientZip",
+      label: "macOS App Bundle (.zip)",
+      sublabel: "Ambient-macOS.zip",
+      platformParam: "ambient-zip",
+    },
+  ]}
+/>
